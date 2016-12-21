@@ -264,6 +264,127 @@
   
   
 
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/20/a静态库制作/" itemprop="url">
+                  .a静态库制作
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-20T15:41:23+08:00" content="Dec 20 2016">
+              Dec 20 2016
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="iOS开发之-a静态库制作"><a href="#iOS开发之-a静态库制作" class="headerlink" title="iOS开发之.a静态库制作"></a>iOS开发之.a静态库制作</h1><h2 id="以Xcode8-2为例，简单封装图片界面等资源文件到-a静态库。"><a href="#以Xcode8-2为例，简单封装图片界面等资源文件到-a静态库。" class="headerlink" title="以Xcode8.2为例，简单封装图片界面等资源文件到.a静态库。"></a>以Xcode8.2为例，简单封装图片界面等资源文件到.a静态库。</h2><h3 id="1-首先将资源文件打包成Bundle的模板"><a href="#1-首先将资源文件打包成Bundle的模板" class="headerlink" title="1.首先将资源文件打包成Bundle的模板"></a>1.首先将资源文件打包成Bundle的模板</h3><p>借助于OS X，因为iOS框架中没有创建Bundle的模板</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/initBundle.png" alt=""></p>
+<p>删除工程中多余的文件</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle1.png" alt=""></p>
+<p>由于删除了plist文件，所以必须在Build Settings中删除对它的引用</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle2.png" alt=""></p>
+<p>我们创建项目时选的是OS X中的框架，所以此处需要修改Base SDK为iOS</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle3.png" alt=""></p>
+<p>设置完后,可以把我们需要的资源拷贝过来</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle4.png" alt=""></p>
+<p>按快捷键”Command + B”编译，编译成功后，Products下面的PictureOCRImage.bundle由红色变成了黑色，表示编译成功</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle5.png" alt=""></p>
+<p>可以通过右击 Show in Finder -&gt; 查看文件夹 -&gt;右击显示包内容,查看里面的内容</p>
+<h3 id="至此-资源打包成bundle完成-如果只是普通的资源-完全可以创建一个文件夹，把需要封装的资源文件拷贝至该目录下，将其改成后缀名为bundle即可，然后就可以使用NSBundle提供的接口访问其内部的资源文件，当然，也可以通过访问普通文件目录的方法访问其内部的资源。这样写主要是考虑到xib文件打包"><a href="#至此-资源打包成bundle完成-如果只是普通的资源-完全可以创建一个文件夹，把需要封装的资源文件拷贝至该目录下，将其改成后缀名为bundle即可，然后就可以使用NSBundle提供的接口访问其内部的资源文件，当然，也可以通过访问普通文件目录的方法访问其内部的资源。这样写主要是考虑到xib文件打包" class="headerlink" title="至此,资源打包成bundle完成.如果只是普通的资源,完全可以创建一个文件夹，把需要封装的资源文件拷贝至该目录下，将其改成后缀名为bundle即可，然后就可以使用NSBundle提供的接口访问其内部的资源文件，当然，也可以通过访问普通文件目录的方法访问其内部的资源。这样写主要是考虑到xib文件打包"></a>至此,资源打包成bundle完成.如果只是普通的资源,完全可以创建一个文件夹，把需要封装的资源文件拷贝至该目录下，将其改成后缀名为bundle即可，然后就可以使用NSBundle提供的接口访问其内部的资源文件，当然，也可以通过访问普通文件目录的方法访问其内部的资源。这样写主要是考虑到xib文件打包</h3><h3 id="2-制作-a文件库"><a href="#2-制作-a文件库" class="headerlink" title="2.制作.a文件库"></a>2.制作.a文件库</h3><p>新建项目，点击iOS—Framework&amp;—Cocoa Touch Static Library。</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle10.png" alt=""></p>
+<p>系统自动生成以工程名命名的.h和.m文件，可自定义的在目录下添加或删除文件，注意目录下Products文件夹有一个.a文件为红色，说明文件并不存在。这里我们将系统生成的.h和.m文件删除。</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle11.png" alt=""></p>
+<p>将需要打包的文件添加到工程中</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle12.png" alt=""></p>
+<p>点击Build Phases—Copy Files，左下角点击+号按钮，添加你需要暴露的接口头文件。</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle13.png" alt=""></p>
+<p>点击左上角，选择Edit Scheme，Build Configuration下选择Release，先注意检查下面Release是否为NO：Yes表示只编译选中模拟器设备对应的架构，No则为编译所有模拟器设备支持的cup架构（Debug版本同理）,选择NO，然后分别在模拟器和真机下Command+B编译一下，会看到Products文件夹下的.a文件变为黑色，这个.a文件就是我们想要得到的静态库。</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle14.png" alt=""><br><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle15.png" alt=""></p>
+<p>可以通过右击 Show in Finder -&gt; 查看文件夹,打开Build—Products文件夹，会看到Release-iphoneos和Release-iphonesimulator文件夹，分别是真机和模拟器的.a文件，为了使用方便我们将两个版本的.a文件合并。<br>合并真机和模拟器.a文件，在终端输入以下命令行：lipo -create  模拟器.a文件的路径 真机.a文件的路径 -output 合并后的保存路径（例：lipo -create /Users/dcd/Library/Developer/Xcode/DerivedData/TestCocoa_Touch-gjlcdmvelybrhdfbqwxscxvvtsqy/Build/Products/Debug-iphonesimulator/libTestCocoa\ Touch.a /Users/dcd/Library/Developer/Xcode/DerivedData/TestCocoa_Touch-gjlcdmvelybrhdfbqwxscxvvtsqy/Build/Products/Release-iphonesimulator/libTestCocoa\ Touch.a -output /Users/dcd/Desktop/TestCocoaTouch.a）最终会在桌面得到一个合并后的TestCocoaTouch.a文件，再将暴露出来的.h头文件一起复制出来</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle6.png" alt=""><br><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle7.png" alt=""></p>
+<p>查看静态库.a对处理器架构的支持，先cd到.a文件的路径下，命令行输入：<br>lipo -info xxxxx.a</p>
+<p>至此,.a库的制作完成了</p>
+<p>参考文章:<br><a href="http://www.cnblogs.com/richard-youth/p/4856841.html" target="_blank" rel="external">http://www.cnblogs.com/richard-youth/p/4856841.html</a><br><a href="http://www.fx114.net/qa-173-100870.aspx" target="_blank" rel="external">http://www.fx114.net/qa-173-100870.aspx</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
   <article class="post post-type-其他 " itemscope itemtype="http://schema.org/Article">
 
     
@@ -519,7 +640,7 @@
 <h1 id="9-创建链接"><a href="#9-创建链接" class="headerlink" title="9.创建链接"></a>9.创建链接</h1><p>Markdown语法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;test@test.com&gt;</div></pre></td></tr></table></figure>
 <p>预览效果：</p>
-<p><a href="&#109;&#x61;&#105;&#x6c;&#x74;&#x6f;&#58;&#x74;&#x65;&#x73;&#x74;&#64;&#x74;&#101;&#115;&#116;&#46;&#99;&#111;&#x6d;">&#x74;&#x65;&#x73;&#x74;&#64;&#x74;&#101;&#115;&#116;&#46;&#99;&#111;&#x6d;</a></p>
+<p><a href="&#109;&#97;&#105;&#108;&#x74;&#111;&#x3a;&#116;&#x65;&#x73;&#116;&#x40;&#x74;&#101;&#x73;&#116;&#46;&#x63;&#111;&#x6d;">&#116;&#x65;&#x73;&#116;&#x40;&#x74;&#101;&#x73;&#116;&#46;&#x63;&#111;&#x6d;</a></p>
 <h1 id="10-转义字符"><a href="#10-转义字符" class="headerlink" title="10.转义字符"></a>10.转义字符</h1><p>Markdown语法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">\\</div><div class="line">\`</div><div class="line">\*</div><div class="line">\_</div><div class="line">\&#123;\&#125;</div><div class="line">\[\]</div><div class="line">\(\)</div><div class="line">\#</div><div class="line">\+</div><div class="line">\-</div><div class="line">\.</div><div class="line">\!</div></pre></td></tr></table></figure>
 <p>预览效果：</p>
@@ -883,7 +1004,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -893,7 +1014,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

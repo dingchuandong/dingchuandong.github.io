@@ -1,0 +1,713 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="iOS开发之.a静态库制作以Xcode8.2为例，简单封装图片界面等资源文件到.a静态库。1.首先将资源文件打包成Bundle的模板借助于OS X，因为iOS框架中没有创建Bundle的模板
+
+删除工程中多余的文件
+
+由于删除了plist文件，所以必须在Build Settings中删除对它的引用
+
+我们创建项目时选的是OS X中的框架，所以此处需要修改Base SDK为iOS
+
+设置完后,可以把">
+<meta property="og:type" content="article">
+<meta property="og:title" content=".a静态库制作">
+<meta property="og:url" content="http://yoursite.com/2016/12/20/a静态库制作/index.html">
+<meta property="og:site_name" content="Snow Memory">
+<meta property="og:description" content="iOS开发之.a静态库制作以Xcode8.2为例，简单封装图片界面等资源文件到.a静态库。1.首先将资源文件打包成Bundle的模板借助于OS X，因为iOS框架中没有创建Bundle的模板
+
+删除工程中多余的文件
+
+由于删除了plist文件，所以必须在Build Settings中删除对它的引用
+
+我们创建项目时选的是OS X中的框架，所以此处需要修改Base SDK为iOS
+
+设置完后,可以把">
+<meta property="og:image" content="http://oc1jw3mv7.bkt.clouddn.com/initBundle.png">
+<meta property="og:image" content="http://oc1jw3mv7.bkt.clouddn.com/bundle1.png">
+<meta property="og:image" content="http://oc1jw3mv7.bkt.clouddn.com/bundle2.png">
+<meta property="og:image" content="http://oc1jw3mv7.bkt.clouddn.com/bundle3.png">
+<meta property="og:image" content="http://oc1jw3mv7.bkt.clouddn.com/bundle4.png">
+<meta property="og:image" content="http://oc1jw3mv7.bkt.clouddn.com/bundle5.png">
+<meta property="og:image" content="http://oc1jw3mv7.bkt.clouddn.com/bundle10.png">
+<meta property="og:image" content="http://oc1jw3mv7.bkt.clouddn.com/bundle11.png">
+<meta property="og:image" content="http://oc1jw3mv7.bkt.clouddn.com/bundle12.png">
+<meta property="og:image" content="http://oc1jw3mv7.bkt.clouddn.com/bundle13.png">
+<meta property="og:image" content="http://oc1jw3mv7.bkt.clouddn.com/bundle14.png">
+<meta property="og:image" content="http://oc1jw3mv7.bkt.clouddn.com/bundle15.png">
+<meta property="og:image" content="http://oc1jw3mv7.bkt.clouddn.com/bundle6.png">
+<meta property="og:image" content="http://oc1jw3mv7.bkt.clouddn.com/bundle7.png">
+<meta property="og:updated_time" content="2016-12-21T06:48:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content=".a静态库制作">
+<meta name="twitter:description" content="iOS开发之.a静态库制作以Xcode8.2为例，简单封装图片界面等资源文件到.a静态库。1.首先将资源文件打包成Bundle的模板借助于OS X，因为iOS框架中没有创建Bundle的模板
+
+删除工程中多余的文件
+
+由于删除了plist文件，所以必须在Build Settings中删除对它的引用
+
+我们创建项目时选的是OS X中的框架，所以此处需要修改Base SDK为iOS
+
+设置完后,可以把">
+<meta name="twitter:image" content="http://oc1jw3mv7.bkt.clouddn.com/initBundle.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/12/20/a静态库制作/"/>
+
+  <title> .a静态库制作 | Snow Memory </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta custom-logo">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Snow Memory</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">雪忆, 如雪般单纯, 冷静思考.</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                .a静态库制作
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-20T15:41:23+08:00" content="Dec 20 2016">
+              Dec 20 2016
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="iOS开发之-a静态库制作"><a href="#iOS开发之-a静态库制作" class="headerlink" title="iOS开发之.a静态库制作"></a>iOS开发之.a静态库制作</h1><h2 id="以Xcode8-2为例，简单封装图片界面等资源文件到-a静态库。"><a href="#以Xcode8-2为例，简单封装图片界面等资源文件到-a静态库。" class="headerlink" title="以Xcode8.2为例，简单封装图片界面等资源文件到.a静态库。"></a>以Xcode8.2为例，简单封装图片界面等资源文件到.a静态库。</h2><h3 id="1-首先将资源文件打包成Bundle的模板"><a href="#1-首先将资源文件打包成Bundle的模板" class="headerlink" title="1.首先将资源文件打包成Bundle的模板"></a>1.首先将资源文件打包成Bundle的模板</h3><p>借助于OS X，因为iOS框架中没有创建Bundle的模板</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/initBundle.png" alt=""></p>
+<p>删除工程中多余的文件</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle1.png" alt=""></p>
+<p>由于删除了plist文件，所以必须在Build Settings中删除对它的引用</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle2.png" alt=""></p>
+<p>我们创建项目时选的是OS X中的框架，所以此处需要修改Base SDK为iOS</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle3.png" alt=""></p>
+<p>设置完后,可以把我们需要的资源拷贝过来</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle4.png" alt=""></p>
+<p>按快捷键”Command + B”编译，编译成功后，Products下面的PictureOCRImage.bundle由红色变成了黑色，表示编译成功</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle5.png" alt=""></p>
+<p>可以通过右击 Show in Finder -&gt; 查看文件夹 -&gt;右击显示包内容,查看里面的内容</p>
+<h3 id="至此-资源打包成bundle完成-如果只是普通的资源-完全可以创建一个文件夹，把需要封装的资源文件拷贝至该目录下，将其改成后缀名为bundle即可，然后就可以使用NSBundle提供的接口访问其内部的资源文件，当然，也可以通过访问普通文件目录的方法访问其内部的资源。这样写主要是考虑到xib文件打包"><a href="#至此-资源打包成bundle完成-如果只是普通的资源-完全可以创建一个文件夹，把需要封装的资源文件拷贝至该目录下，将其改成后缀名为bundle即可，然后就可以使用NSBundle提供的接口访问其内部的资源文件，当然，也可以通过访问普通文件目录的方法访问其内部的资源。这样写主要是考虑到xib文件打包" class="headerlink" title="至此,资源打包成bundle完成.如果只是普通的资源,完全可以创建一个文件夹，把需要封装的资源文件拷贝至该目录下，将其改成后缀名为bundle即可，然后就可以使用NSBundle提供的接口访问其内部的资源文件，当然，也可以通过访问普通文件目录的方法访问其内部的资源。这样写主要是考虑到xib文件打包"></a>至此,资源打包成bundle完成.如果只是普通的资源,完全可以创建一个文件夹，把需要封装的资源文件拷贝至该目录下，将其改成后缀名为bundle即可，然后就可以使用NSBundle提供的接口访问其内部的资源文件，当然，也可以通过访问普通文件目录的方法访问其内部的资源。这样写主要是考虑到xib文件打包</h3><h3 id="2-制作-a文件库"><a href="#2-制作-a文件库" class="headerlink" title="2.制作.a文件库"></a>2.制作.a文件库</h3><p>新建项目，点击iOS—Framework&amp;—Cocoa Touch Static Library。</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle10.png" alt=""></p>
+<p>系统自动生成以工程名命名的.h和.m文件，可自定义的在目录下添加或删除文件，注意目录下Products文件夹有一个.a文件为红色，说明文件并不存在。这里我们将系统生成的.h和.m文件删除。</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle11.png" alt=""></p>
+<p>将需要打包的文件添加到工程中</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle12.png" alt=""></p>
+<p>点击Build Phases—Copy Files，左下角点击+号按钮，添加你需要暴露的接口头文件。</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle13.png" alt=""></p>
+<p>点击左上角，选择Edit Scheme，Build Configuration下选择Release，先注意检查下面Release是否为NO：Yes表示只编译选中模拟器设备对应的架构，No则为编译所有模拟器设备支持的cup架构（Debug版本同理）,选择NO，然后分别在模拟器和真机下Command+B编译一下，会看到Products文件夹下的.a文件变为黑色，这个.a文件就是我们想要得到的静态库。</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle14.png" alt=""><br><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle15.png" alt=""></p>
+<p>可以通过右击 Show in Finder -&gt; 查看文件夹,打开Build—Products文件夹，会看到Release-iphoneos和Release-iphonesimulator文件夹，分别是真机和模拟器的.a文件，为了使用方便我们将两个版本的.a文件合并。<br>合并真机和模拟器.a文件，在终端输入以下命令行：lipo -create  模拟器.a文件的路径 真机.a文件的路径 -output 合并后的保存路径（例：lipo -create /Users/dcd/Library/Developer/Xcode/DerivedData/TestCocoa_Touch-gjlcdmvelybrhdfbqwxscxvvtsqy/Build/Products/Debug-iphonesimulator/libTestCocoa\ Touch.a /Users/dcd/Library/Developer/Xcode/DerivedData/TestCocoa_Touch-gjlcdmvelybrhdfbqwxscxvvtsqy/Build/Products/Release-iphonesimulator/libTestCocoa\ Touch.a -output /Users/dcd/Desktop/TestCocoaTouch.a）最终会在桌面得到一个合并后的TestCocoaTouch.a文件，再将暴露出来的.h头文件一起复制出来</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle6.png" alt=""><br><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle7.png" alt=""></p>
+<p>查看静态库.a对处理器架构的支持，先cd到.a文件的路径下，命令行输入：<br>lipo -info xxxxx.a</p>
+<p>至此,.a库的制作完成了</p>
+<p>参考文章:<br><a href="http://www.cnblogs.com/richard-youth/p/4856841.html" target="_blank" rel="external">http://www.cnblogs.com/richard-youth/p/4856841.html</a><br><a href="http://www.fx114.net/qa-173-100870.aspx" target="_blank" rel="external">http://www.fx114.net/qa-173-100870.aspx</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag">#iOS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/31/知名博主/" rel="next" title="知名博主">
+                <i class="fa fa-chevron-left"></i> 知名博主
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/AliPay.png"
+               alt="chuandong ding" />
+          <p class="site-author-name" itemprop="name">chuandong ding</p>
+          <p class="site-description motion-element" itemprop="description">iOS</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/dingchuandong" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="twitter" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2725322503" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://slarker.me/" title="slarker" target="_blank">slarker</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://opsnotes.net/about/" title="大神" target="_blank">大神</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#iOS开发之-a静态库制作"><span class="nav-number">1.</span> <span class="nav-text">iOS开发之.a静态库制作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#以Xcode8-2为例，简单封装图片界面等资源文件到-a静态库。"><span class="nav-number">1.1.</span> <span class="nav-text">以Xcode8.2为例，简单封装图片界面等资源文件到.a静态库。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-首先将资源文件打包成Bundle的模板"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.首先将资源文件打包成Bundle的模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#至此-资源打包成bundle完成-如果只是普通的资源-完全可以创建一个文件夹，把需要封装的资源文件拷贝至该目录下，将其改成后缀名为bundle即可，然后就可以使用NSBundle提供的接口访问其内部的资源文件，当然，也可以通过访问普通文件目录的方法访问其内部的资源。这样写主要是考虑到xib文件打包"><span class="nav-number">1.1.2.</span> <span class="nav-text">至此,资源打包成bundle完成.如果只是普通的资源,完全可以创建一个文件夹，把需要封装的资源文件拷贝至该目录下，将其改成后缀名为bundle即可，然后就可以使用NSBundle提供的接口访问其内部的资源文件，当然，也可以通过访问普通文件目录的方法访问其内部的资源。这样写主要是考虑到xib文件打包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-制作-a文件库"><span class="nav-number">1.1.3.</span> <span class="nav-text">2.制作.a文件库</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chuandong ding</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
