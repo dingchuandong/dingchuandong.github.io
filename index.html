@@ -781,11 +781,52 @@
 <h1 id="9-创建链接"><a href="#9-创建链接" class="headerlink" title="9.创建链接"></a>9.创建链接</h1><p>Markdown语法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;test@test.com&gt;</div></pre></td></tr></table></figure>
 <p>预览效果：</p>
-<p><a href="&#x6d;&#x61;&#105;&#108;&#x74;&#111;&#x3a;&#x74;&#x65;&#x73;&#116;&#x40;&#116;&#101;&#115;&#x74;&#x2e;&#x63;&#x6f;&#109;">&#x74;&#x65;&#x73;&#116;&#x40;&#116;&#101;&#115;&#x74;&#x2e;&#x63;&#x6f;&#109;</a></p>
+<p><a href="&#109;&#x61;&#105;&#108;&#116;&#111;&#58;&#116;&#x65;&#115;&#x74;&#64;&#x74;&#x65;&#115;&#x74;&#46;&#x63;&#x6f;&#109;">&#116;&#x65;&#115;&#x74;&#64;&#x74;&#x65;&#115;&#x74;&#46;&#x63;&#x6f;&#109;</a></p>
 <h1 id="10-转义字符"><a href="#10-转义字符" class="headerlink" title="10.转义字符"></a>10.转义字符</h1><p>Markdown语法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">\\</div><div class="line">\`</div><div class="line">\*</div><div class="line">\_</div><div class="line">\&#123;\&#125;</div><div class="line">\[\]</div><div class="line">\(\)</div><div class="line">\#</div><div class="line">\+</div><div class="line">\-</div><div class="line">\.</div><div class="line">\!</div></pre></td></tr></table></figure>
 <p>预览效果：</p>
 <p>\<br>`<br>*<br>_<br>{}<br>[]<br>()<br>#<br>+<br>-<br>.<br>!</p>
+<h1 id="11-引用"><a href="#11-引用" class="headerlink" title="11.引用"></a>11.引用</h1><h2 id="单行试"><a href="#单行试" class="headerlink" title="单行试"></a>单行试</h2><pre><code>&gt; hello world
+</code></pre><p>   预览效果</p>
+<blockquote>
+<p>hellow world</p>
+</blockquote>
+<h2 id="多行式"><a href="#多行式" class="headerlink" title="多行式"></a>多行式</h2><pre><code>&gt; hello world
+&gt; hello world
+&gt; hello world
+或者
+&gt; hello world
+  hello world
+  hello world
+</code></pre><p>   预览效果</p>
+<blockquote>
+<p>hello world<br>hello world<br>hello world      </p>
+<p>hello world<br>    hello world<br>    hello world</p>
+<h2 id="多层嵌套"><a href="#多层嵌套" class="headerlink" title="多层嵌套"></a>多层嵌套</h2><p>aaaaaaaaa</p>
+<blockquote>
+<p>bbbbbbbbb</p>
+<blockquote>
+<p>cccccccccc<br>   预览效果<br>aaaaaaaaa<br>bbbbbbbbb<br>cccccccccc</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h1 id="12-行内标记"><a href="#12-行内标记" class="headerlink" title="12.行内标记"></a>12.行内标记</h1><pre><code>标记之外`hello world`标记之外
+</code></pre><p>  标记之外<code>hello world</code>标记之外</p>
+<h1 id="13-代码块"><a href="#13-代码块" class="headerlink" title="13.代码块"></a>13.代码块</h1><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;div&gt;   </div><div class="line">  &lt;div&gt;&lt;/div&gt;</div><div class="line">  &lt;div&gt;&lt;/div&gt;</div><div class="line">  &lt;div&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+</code></pre> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;div&gt;   </div><div class="line">    &lt;div&gt;&lt;/div&gt;</div><div class="line">    &lt;div&gt;&lt;/div&gt;</div><div class="line">    &lt;div&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p> 自定义语法</p>
+<pre><code><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num = <span class="number">0</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</div><div class="line">  num+=i;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+</code></pre>  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num = <span class="number">0</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</div><div class="line">  num+=i;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<h1 id="14-任务列表"><a href="#14-任务列表" class="headerlink" title="14.任务列表"></a>14.任务列表</h1><p>注：兼容性一般 要隔开一行</p>
+<pre><code> 这是文字……
+- [x] 选项一
+- [ ] 选项二  
+- [ ]  [选项3]
+</code></pre><ul>
+<li>[x] 选项一</li>
+<li>[ ] 选项二  </li>
+<li>[ ]  [选项3]</li>
+</ul>
 
           
         
