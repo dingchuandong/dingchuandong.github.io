@@ -1,0 +1,694 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="UIViewController各方法的调用顺序及功能1.(instancetype)initWithNibName：bundle：//这个方法是在controller的类在IB中创建，但是是通过Xcode实例化controller的时候调用的.//一般情况下调用 init 方法或者调用 initWithNibName 方法的实例化UIViewController，不管调用哪个方法都会调用init">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UIViewController各方法的调用顺序及功能">
+<meta property="og:url" content="http://yoursite.com/2017/08/12/ViewController各方法执行顺序/index.html">
+<meta property="og:site_name" content="Snow Memory">
+<meta property="og:description" content="UIViewController各方法的调用顺序及功能1.(instancetype)initWithNibName：bundle：//这个方法是在controller的类在IB中创建，但是是通过Xcode实例化controller的时候调用的.//一般情况下调用 init 方法或者调用 initWithNibName 方法的实例化UIViewController，不管调用哪个方法都会调用init">
+<meta property="og:updated_time" content="2018-03-15T02:14:38.291Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="UIViewController各方法的调用顺序及功能">
+<meta name="twitter:description" content="UIViewController各方法的调用顺序及功能1.(instancetype)initWithNibName：bundle：//这个方法是在controller的类在IB中创建，但是是通过Xcode实例化controller的时候调用的.//一般情况下调用 init 方法或者调用 initWithNibName 方法的实例化UIViewController，不管调用哪个方法都会调用init">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/08/12/ViewController各方法执行顺序/"/>
+
+  <title> UIViewController各方法的调用顺序及功能 | Snow Memory </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta custom-logo">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Snow Memory</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">雪忆, 如雪般单纯, 冷静思考.</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-其他 " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                UIViewController各方法的调用顺序及功能
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-08-12T17:25:19+08:00" content="Aug 12 2017">
+              Aug 12 2017
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="UIViewController各方法的调用顺序及功能"><a href="#UIViewController各方法的调用顺序及功能" class="headerlink" title="UIViewController各方法的调用顺序及功能"></a>UIViewController各方法的调用顺序及功能</h1><h2 id="1-instancetype-initWithNibName：bundle："><a href="#1-instancetype-initWithNibName：bundle：" class="headerlink" title="1.(instancetype)initWithNibName：bundle："></a>1.(instancetype)initWithNibName：bundle：</h2><p>//这个方法是在controller的类在IB中创建，但是是通过Xcode实例化controller的时候调用的.<br>//一般情况下调用 init 方法或者调用 initWithNibName 方法的实例化UIViewController，不管调用哪个方法都会调用initWithNibName。<br>/<em><br>如果是通过调用initWithNibName:bundle指定nib文件名初始化的话，ViewController会根据此nib来创建View。如果name参数为nil，则ViewController会通过以下两个步骤找到与其关联的nib：<br>1）找跟ViewController类名一样的文件，例如MyViewController，则查找是否存在MyViewController.nib<br>2）如果ViewController的类名以“Controller”结尾，例如ViewController的类名是MyViewController，则查找是否存在MyView.nib；    
+</em>/</p>
+<pre><code>-(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+</code></pre><h2 id="2-void-loadView"><a href="#2-void-loadView" class="headerlink" title="2. -(void)loadView"></a>2. -(void)loadView</h2><p>当访问 UIViewController 的 view 属性时，view 如果此时是 nil，那么 VC 会自动调用 loadView 方法来初始化一个 UIView 并赋值给 view 属性。如果没有重载 loadView 方法，则 UIViewController 会从 nib 或 StoryBoard 中查找默认的 loadView ，默认的 loadView 会返回一个空白的 UIView 对象。</p>
+<p>此方法在控制器的 view 为 nil 的时候被调用。 此方法用于以编程的方式创建 view 的时候用到。loadView 是使用代码生成视图的时候，当视图第一次载入的时候调用的方法。用于使用（写）代码来实现控件。用于使用代码生成控件的函数</p>
+<p>需要注意的是，在view初始化之前，不能先调用view的getter方法，否则将导致死循环（除非先调用了[supper loadView]）;</p>
+<h2 id="3-void-viewDidLoad"><a href="#3-void-viewDidLoad" class="headerlink" title="3. -(void)viewDidLoad"></a>3. -(void)viewDidLoad</h2><p>如果 loadView 不能生成 UIViewController.view, 系统将会反复调用 loadView 及 viewDidLoad 方法, 并且最终调用 [super loadView] 方法返回 UIViewController.view。</p>
+<p>当VC的view对象载入内存后调用，用于对view进行额外的初始化操作 。</p>
+<h2 id="4-void-viewWillAppear-BOOL-animated"><a href="#4-void-viewWillAppear-BOOL-animated" class="headerlink" title="4. -(void)viewWillAppear:(BOOL)animated"></a>4. -(void)viewWillAppear:(BOOL)animated</h2><p>视图即将可见时调用(这个时候 supperView 还是 nil，即显示动画切换之前调用 )。默认情况下不执行任何操作。</p>
+<p>这个方法中完成任何与视图显示相关的任务，例如改变视图方向、状态栏方向、视图显示样式等。</p>
+<h2 id="5-void-viewWillLayoutSubviews"><a href="#5-void-viewWillLayoutSubviews" class="headerlink" title="5. -(void)viewWillLayoutSubviews"></a>5. -(void)viewWillLayoutSubviews</h2><p>view 即将布局其 Subviews。比如 view 的 bounds 改变了(例如状态栏从不显示到显示，视图方向变化)，要调整 Subviews 的位置，在调整之前要做的一些工作就可以在该方法中实现。</p>
+<h2 id="6-void-viewDidLayoutSubviews"><a href="#6-void-viewDidLayoutSubviews" class="headerlink" title="6. -(void)viewDidLayoutSubviews"></a>6. -(void)viewDidLayoutSubviews</h2><p>view 已经布局其 Subviews。比如 view 的 bounds 改变了(例如状态栏从不显示到显示，视图方向变化)，已经调整 Subviews 的位置，在调整完成之后要做的一些工作就可以在该方法中实现。</p>
+<h2 id="7-void-viewDidAppear-BOOL-animated"><a href="#7-void-viewDidAppear-BOOL-animated" class="headerlink" title="7. -(void)viewDidAppear:(BOOL)animated"></a>7. -(void)viewDidAppear:(BOOL)animated</h2><p>视图已完全过渡到屏幕上时调用。在这个方法中执行视图显示相关附件任务，如果重载了这个方法，必须在方法中调用 [supper<br>viewDidAppear]。</p>
+<h1 id="释放过程"><a href="#释放过程" class="headerlink" title="释放过程"></a>释放过程</h1><h2 id="8-void-viewWillDisappear-BOOL-animated"><a href="#8-void-viewWillDisappear-BOOL-animated" class="headerlink" title="8. -(void)viewWillDisappear:(BOOL)animated"></a>8. -(void)viewWillDisappear:(BOOL)animated</h2><p>view 即将从 superView 中移除且移除动画切换之前，此时还没有调用 removeFromSuperview。</p>
+<h2 id="9-void-viewDidDisappear-BOOL-animated"><a href="#9-void-viewDidDisappear-BOOL-animated" class="headerlink" title="9. -(void)viewDidDisappear:(BOOL)animated"></a>9. -(void)viewDidDisappear:(BOOL)animated</h2><p>view从superView中移除，移除动画切换之后调用，此时已调用removeFromSuperview。</p>
+<h2 id="10-void-didReceiveMemoryWarning"><a href="#10-void-didReceiveMemoryWarning" class="headerlink" title="10. -(void)didReceiveMemoryWarning"></a>10. -(void)didReceiveMemoryWarning</h2><p>当系统的内存不足时，该方法会被调用，我们可以在该方法里释放掉部分暂时不用的资源。</p>
+<h2 id="11-void-dealloc"><a href="#11-void-dealloc" class="headerlink" title="11. - (void)dealloc"></a>11. - (void)dealloc</h2><p>viewController 最后的清理工作，释放视图对象的引用和 viewController 所需数据结构。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li>loadView (当访问UIViewController的view属性时)</li>
+<li>viewDidLoad (加载视图时调用)</li>
+<li>viewWillAppear (视图即将可见时调用)</li>
+<li>viewDidAppear (视图即将加入窗口时调用)</li>
+<li>viewWillLayoutSubviews (视图布局改变时调用，如：屏幕旋转）</li>
+<li>viewDidLayoutSubviews 在以下情况下会被调用：<ul>
+<li>1、init初始化不会触发layoutSubviews</li>
+<li>2、addSubview会触发layoutSubviews</li>
+<li>3、设置view的Frame会触发layoutSubviews，当然前提是frame的值设置前后发生了变化</li>
+<li>4、滚动一个UIScrollView会触发layoutSubviews</li>
+<li>5、旋转Screen会触发父UIView上的layoutSubviews事件</li>
+<li>6、改变一个UIView大小的时候也会触发父UIView上的layoutSubviews事件<br>viewWillDisappear（视图将被从屏幕上移除之前调用）<br>viewDidDisappear ( 视图已经被从屏幕上移除，用户看不到这个视图了调用)</li>
+</ul>
+</li>
+<li>当一个视图控制器被创建，并在屏幕上显示的时候。 代码的执行顺序<ul>
+<li>1、alloc                  创建对象，分配空间</li>
+<li>2、init (initWithNibName) 初始化对象，初始化数据</li>
+<li>3、loadView               从nib载入视图 ，通常这一步不需要去干涉。除非你没有使用xib文件创建视图</li>
+<li>4、viewDidLoad            载入完成，可以进行自定义数据以及动态创建其他控件</li>
+<li>5、viewWillAppear         视图将出现在屏幕之前，马上这个视图就会被展现在屏幕上了</li>
+<li>6、viewDidAppear          视图已在屏幕上渲染完成</li>
+</ul>
+</li>
+<li>当一个视图被移除屏幕并且销毁的时候的执行顺序，这个顺序差不多和上面的相反<ul>
+<li>1、viewWillDisappear      视图将被从屏幕上移除之前执行</li>
+<li>2、viewDidDisappear       视图已经被从屏幕上移除，用户看不到这个视图了</li>
+<li>3、dealloc                视图被销毁，此处需要对你在init和viewDidLoad中创建的对象进行释放</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag">#iOS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/20/a静态库制作/" rel="next" title=".a静态库制作">
+                <i class="fa fa-chevron-left"></i> .a静态库制作
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/AliPay.png"
+               alt="chuandong ding" />
+          <p class="site-author-name" itemprop="name">chuandong ding</p>
+          <p class="site-description motion-element" itemprop="description">iOS</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/dingchuandong" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="twitter" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2725322503" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://slarker.me/" title="slarker" target="_blank">slarker</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://opsnotes.net/about/" title="大神" target="_blank">大神</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#UIViewController各方法的调用顺序及功能"><span class="nav-number">1.</span> <span class="nav-text">UIViewController各方法的调用顺序及功能</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-instancetype-initWithNibName：bundle："><span class="nav-number">1.1.</span> <span class="nav-text">1.(instancetype)initWithNibName：bundle：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-void-loadView"><span class="nav-number">1.2.</span> <span class="nav-text">2. -(void)loadView</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-void-viewDidLoad"><span class="nav-number">1.3.</span> <span class="nav-text">3. -(void)viewDidLoad</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-void-viewWillAppear-BOOL-animated"><span class="nav-number">1.4.</span> <span class="nav-text">4. -(void)viewWillAppear:(BOOL)animated</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-void-viewWillLayoutSubviews"><span class="nav-number">1.5.</span> <span class="nav-text">5. -(void)viewWillLayoutSubviews</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-void-viewDidLayoutSubviews"><span class="nav-number">1.6.</span> <span class="nav-text">6. -(void)viewDidLayoutSubviews</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-void-viewDidAppear-BOOL-animated"><span class="nav-number">1.7.</span> <span class="nav-text">7. -(void)viewDidAppear:(BOOL)animated</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#释放过程"><span class="nav-number">2.</span> <span class="nav-text">释放过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#8-void-viewWillDisappear-BOOL-animated"><span class="nav-number">2.1.</span> <span class="nav-text">8. -(void)viewWillDisappear:(BOOL)animated</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-void-viewDidDisappear-BOOL-animated"><span class="nav-number">2.2.</span> <span class="nav-text">9. -(void)viewDidDisappear:(BOOL)animated</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-void-didReceiveMemoryWarning"><span class="nav-number">2.3.</span> <span class="nav-text">10. -(void)didReceiveMemoryWarning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-void-dealloc"><span class="nav-number">2.4.</span> <span class="nav-text">11. - (void)dealloc</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chuandong ding</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

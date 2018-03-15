@@ -264,6 +264,147 @@
   
   
 
+  <article class="post post-type-其他 " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/08/12/ViewController各方法执行顺序/" itemprop="url">
+                  UIViewController各方法的调用顺序及功能
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-08-12T17:25:19+08:00" content="Aug 12 2017">
+              Aug 12 2017
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="UIViewController各方法的调用顺序及功能"><a href="#UIViewController各方法的调用顺序及功能" class="headerlink" title="UIViewController各方法的调用顺序及功能"></a>UIViewController各方法的调用顺序及功能</h1><h2 id="1-instancetype-initWithNibName：bundle："><a href="#1-instancetype-initWithNibName：bundle：" class="headerlink" title="1.(instancetype)initWithNibName：bundle："></a>1.(instancetype)initWithNibName：bundle：</h2><p>//这个方法是在controller的类在IB中创建，但是是通过Xcode实例化controller的时候调用的.<br>//一般情况下调用 init 方法或者调用 initWithNibName 方法的实例化UIViewController，不管调用哪个方法都会调用initWithNibName。<br>/<em><br>如果是通过调用initWithNibName:bundle指定nib文件名初始化的话，ViewController会根据此nib来创建View。如果name参数为nil，则ViewController会通过以下两个步骤找到与其关联的nib：<br>1）找跟ViewController类名一样的文件，例如MyViewController，则查找是否存在MyViewController.nib<br>2）如果ViewController的类名以“Controller”结尾，例如ViewController的类名是MyViewController，则查找是否存在MyView.nib；    
+</em>/</p>
+<pre><code>-(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+</code></pre><h2 id="2-void-loadView"><a href="#2-void-loadView" class="headerlink" title="2. -(void)loadView"></a>2. -(void)loadView</h2><p>当访问 UIViewController 的 view 属性时，view 如果此时是 nil，那么 VC 会自动调用 loadView 方法来初始化一个 UIView 并赋值给 view 属性。如果没有重载 loadView 方法，则 UIViewController 会从 nib 或 StoryBoard 中查找默认的 loadView ，默认的 loadView 会返回一个空白的 UIView 对象。</p>
+<p>此方法在控制器的 view 为 nil 的时候被调用。 此方法用于以编程的方式创建 view 的时候用到。loadView 是使用代码生成视图的时候，当视图第一次载入的时候调用的方法。用于使用（写）代码来实现控件。用于使用代码生成控件的函数</p>
+<p>需要注意的是，在view初始化之前，不能先调用view的getter方法，否则将导致死循环（除非先调用了[supper loadView]）;</p>
+<h2 id="3-void-viewDidLoad"><a href="#3-void-viewDidLoad" class="headerlink" title="3. -(void)viewDidLoad"></a>3. -(void)viewDidLoad</h2><p>如果 loadView 不能生成 UIViewController.view, 系统将会反复调用 loadView 及 viewDidLoad 方法, 并且最终调用 [super loadView] 方法返回 UIViewController.view。</p>
+<p>当VC的view对象载入内存后调用，用于对view进行额外的初始化操作 。</p>
+<h2 id="4-void-viewWillAppear-BOOL-animated"><a href="#4-void-viewWillAppear-BOOL-animated" class="headerlink" title="4. -(void)viewWillAppear:(BOOL)animated"></a>4. -(void)viewWillAppear:(BOOL)animated</h2><p>视图即将可见时调用(这个时候 supperView 还是 nil，即显示动画切换之前调用 )。默认情况下不执行任何操作。</p>
+<p>这个方法中完成任何与视图显示相关的任务，例如改变视图方向、状态栏方向、视图显示样式等。</p>
+<h2 id="5-void-viewWillLayoutSubviews"><a href="#5-void-viewWillLayoutSubviews" class="headerlink" title="5. -(void)viewWillLayoutSubviews"></a>5. -(void)viewWillLayoutSubviews</h2><p>view 即将布局其 Subviews。比如 view 的 bounds 改变了(例如状态栏从不显示到显示，视图方向变化)，要调整 Subviews 的位置，在调整之前要做的一些工作就可以在该方法中实现。</p>
+<h2 id="6-void-viewDidLayoutSubviews"><a href="#6-void-viewDidLayoutSubviews" class="headerlink" title="6. -(void)viewDidLayoutSubviews"></a>6. -(void)viewDidLayoutSubviews</h2><p>view 已经布局其 Subviews。比如 view 的 bounds 改变了(例如状态栏从不显示到显示，视图方向变化)，已经调整 Subviews 的位置，在调整完成之后要做的一些工作就可以在该方法中实现。</p>
+<h2 id="7-void-viewDidAppear-BOOL-animated"><a href="#7-void-viewDidAppear-BOOL-animated" class="headerlink" title="7. -(void)viewDidAppear:(BOOL)animated"></a>7. -(void)viewDidAppear:(BOOL)animated</h2><p>视图已完全过渡到屏幕上时调用。在这个方法中执行视图显示相关附件任务，如果重载了这个方法，必须在方法中调用 [supper<br>viewDidAppear]。</p>
+<h1 id="释放过程"><a href="#释放过程" class="headerlink" title="释放过程"></a>释放过程</h1><h2 id="8-void-viewWillDisappear-BOOL-animated"><a href="#8-void-viewWillDisappear-BOOL-animated" class="headerlink" title="8. -(void)viewWillDisappear:(BOOL)animated"></a>8. -(void)viewWillDisappear:(BOOL)animated</h2><p>view 即将从 superView 中移除且移除动画切换之前，此时还没有调用 removeFromSuperview。</p>
+<h2 id="9-void-viewDidDisappear-BOOL-animated"><a href="#9-void-viewDidDisappear-BOOL-animated" class="headerlink" title="9. -(void)viewDidDisappear:(BOOL)animated"></a>9. -(void)viewDidDisappear:(BOOL)animated</h2><p>view从superView中移除，移除动画切换之后调用，此时已调用removeFromSuperview。</p>
+<h2 id="10-void-didReceiveMemoryWarning"><a href="#10-void-didReceiveMemoryWarning" class="headerlink" title="10. -(void)didReceiveMemoryWarning"></a>10. -(void)didReceiveMemoryWarning</h2><p>当系统的内存不足时，该方法会被调用，我们可以在该方法里释放掉部分暂时不用的资源。</p>
+<h2 id="11-void-dealloc"><a href="#11-void-dealloc" class="headerlink" title="11. - (void)dealloc"></a>11. - (void)dealloc</h2><p>viewController 最后的清理工作，释放视图对象的引用和 viewController 所需数据结构。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li>loadView (当访问UIViewController的view属性时)</li>
+<li>viewDidLoad (加载视图时调用)</li>
+<li>viewWillAppear (视图即将可见时调用)</li>
+<li>viewDidAppear (视图即将加入窗口时调用)</li>
+<li>viewWillLayoutSubviews (视图布局改变时调用，如：屏幕旋转）</li>
+<li>viewDidLayoutSubviews 在以下情况下会被调用：<ul>
+<li>1、init初始化不会触发layoutSubviews</li>
+<li>2、addSubview会触发layoutSubviews</li>
+<li>3、设置view的Frame会触发layoutSubviews，当然前提是frame的值设置前后发生了变化</li>
+<li>4、滚动一个UIScrollView会触发layoutSubviews</li>
+<li>5、旋转Screen会触发父UIView上的layoutSubviews事件</li>
+<li>6、改变一个UIView大小的时候也会触发父UIView上的layoutSubviews事件<br>viewWillDisappear（视图将被从屏幕上移除之前调用）<br>viewDidDisappear ( 视图已经被从屏幕上移除，用户看不到这个视图了调用)</li>
+</ul>
+</li>
+<li>当一个视图控制器被创建，并在屏幕上显示的时候。 代码的执行顺序<ul>
+<li>1、alloc                  创建对象，分配空间</li>
+<li>2、init (initWithNibName) 初始化对象，初始化数据</li>
+<li>3、loadView               从nib载入视图 ，通常这一步不需要去干涉。除非你没有使用xib文件创建视图</li>
+<li>4、viewDidLoad            载入完成，可以进行自定义数据以及动态创建其他控件</li>
+<li>5、viewWillAppear         视图将出现在屏幕之前，马上这个视图就会被展现在屏幕上了</li>
+<li>6、viewDidAppear          视图已在屏幕上渲染完成</li>
+</ul>
+</li>
+<li>当一个视图被移除屏幕并且销毁的时候的执行顺序，这个顺序差不多和上面的相反<ul>
+<li>1、viewWillDisappear      视图将被从屏幕上移除之前执行</li>
+<li>2、viewDidDisappear       视图已经被从屏幕上移除，用户看不到这个视图了</li>
+<li>3、dealloc                视图被销毁，此处需要对你在init和viewDidLoad中创建的对象进行释放</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
@@ -640,7 +781,7 @@
 <h1 id="9-创建链接"><a href="#9-创建链接" class="headerlink" title="9.创建链接"></a>9.创建链接</h1><p>Markdown语法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;test@test.com&gt;</div></pre></td></tr></table></figure>
 <p>预览效果：</p>
-<p><a href="&#109;&#97;&#105;&#108;&#x74;&#111;&#x3a;&#116;&#x65;&#x73;&#116;&#x40;&#x74;&#101;&#x73;&#116;&#46;&#x63;&#111;&#x6d;">&#116;&#x65;&#x73;&#116;&#x40;&#x74;&#101;&#x73;&#116;&#46;&#x63;&#111;&#x6d;</a></p>
+<p><a href="&#109;&#x61;&#105;&#108;&#116;&#111;&#58;&#116;&#101;&#115;&#x74;&#x40;&#116;&#101;&#x73;&#116;&#46;&#x63;&#111;&#109;">&#116;&#101;&#115;&#x74;&#x40;&#116;&#101;&#x73;&#116;&#46;&#x63;&#111;&#109;</a></p>
 <h1 id="10-转义字符"><a href="#10-转义字符" class="headerlink" title="10.转义字符"></a>10.转义字符</h1><p>Markdown语法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">\\</div><div class="line">\`</div><div class="line">\*</div><div class="line">\_</div><div class="line">\&#123;\&#125;</div><div class="line">\[\]</div><div class="line">\(\)</div><div class="line">\#</div><div class="line">\+</div><div class="line">\-</div><div class="line">\.</div><div class="line">\!</div></pre></td></tr></table></figure>
 <p>预览效果：</p>
@@ -1004,7 +1145,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1098,7 +1239,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
