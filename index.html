@@ -512,6 +512,117 @@
             
               
                 
+                <a class="post-title-link" href="/2017/06/12/Xcode调试技巧/" itemprop="url">
+                  Xcode调试
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-06-12T16:58:13+08:00" content="Jun 12 2017">
+              Jun 12 2017
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Xcode调试技巧"><a href="#Xcode调试技巧" class="headerlink" title="Xcode调试技巧"></a>Xcode调试技巧</h2><h2 id="日志输出-amp-LLDB"><a href="#日志输出-amp-LLDB" class="headerlink" title="日志输出&amp;LLDB"></a>日志输出&amp;LLDB</h2><p>什么是<strong>LLDB</strong>呢：它是一个有着 REPL 的特性和 C++ ,Python 插件的开源调试器。LLDB 绑定在 Xcode 内部，存在于主窗口底部的控制台中。调试器允许你在程序运行的特定时暂停它，你可以查看变量的值，执行自定的指令，并且按照你所认为合适的步骤来操作程序的进展。我们可以简单的理解成它是一个<strong>调试器</strong></p>
+<h3 id="1-命令行LLDB的出现"><a href="#1-命令行LLDB的出现" class="headerlink" title="1 命令行LLDB的出现"></a>1 命令行LLDB的出现</h3><p>  如下图，调试过程中程序运行到断点处时，控制台的右边会出    现“lldb”。</p>
+<h3 id="2-常用的命令"><a href="#2-常用的命令" class="headerlink" title="2 常用的命令"></a>2 常用的命令</h3><p>1 help<br>断点时，控制台输入”help“，回车，就能看到lldb命令及介绍<br><img src="http://oc1jw3mv7.bkt.clouddn.com/help.jpg" alt="help"><br>2 print<br>打印 常用p 代替<br><img src="http://oc1jw3mv7.bkt.clouddn.com/p.jpg" alt="p"><br>3 prin object<br>打印对象的详细信息 常用 po 代替<br><img src="http://oc1jw3mv7.bkt.clouddn.com/po.jpg" alt="po"><br>4 expression<br>可以在当前位置改变程序实际参数的值（不用重新运行项目） 使用过程中我们可以直接用 expr来代替expression。<br><img src="http://oc1jw3mv7.bkt.clouddn.com/express.jpg" alt="expression"><br>5 call<br><img src="http://oc1jw3mv7.bkt.clouddn.com/call.jpg" alt="call"><br>一般调用没有返回值的方法时使用call 例如 在viewDidLoad中断点，然后输入<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">call  [self.view setBackgroundColor:[UIColor redColor]]</div></pre></td></tr></table></figure></p>
+<pre><code>继续运行，view的背景就变成红色呢，很方便
+</code></pre><p>6 image </p>
+<p>mage list 查看工程中使用的库</p>
+<p>image lookup –address  0x000000010e0979ac  程序崩溃的时候定位，查看具体报错位置 （不太好用）</p>
+<h2 id="断点"><a href="#断点" class="headerlink" title="断点"></a>断点</h2><p>断点里面根据作用和功能也有很多种类：普通断点、条件断点、异常断点、符号断点等</p>
+<h3 id="普通断点"><a href="#普通断点" class="headerlink" title="普通断点"></a>普通断点</h3><h3 id="条件断点"><a href="#条件断点" class="headerlink" title="条件断点"></a>条件断点</h3><p>打上断点之后，对断点进行编辑，设置相应过滤条件。单击右键会弹出选项框：</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/%E7%BC%96%E8%BE%91%E6%96%AD%E7%82%B9.jpg" alt="编辑断点"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Edit BreakPoint... ：编辑断点。</div><div class="line"></div><div class="line">Disable  BreakPoint ：断点失效。（相当于上边说到的单击断点变成浅蓝色，断点失效）</div><div class="line"></div><div class="line">Delete BreakPoint ：删除断点。</div><div class="line"></div><div class="line">Reveal in BreakPoint Navigator :在左边的断点树状结构表明该断点。</div></pre></td></tr></table></figure>
+<p>Edit BreakPoint。这里面设置断点的筛选条件（双击断点也可以快速进入编辑断点的对话框）。</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/%E8%AE%BE%E7%BD%AE%E6%96%AD%E7%82%B9.jpg" alt="设置断点"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">【1】Condition：返回一个布尔值，当布尔值为真触发断点，一般里面我们可以写一个表达式。</div><div class="line"></div><div class="line">【2】Ignore：      忽略前N次断点，到N+1次再触发断点。</div><div class="line"></div><div class="line">【3】Action：      断点触发事件，分为六种：</div><div class="line"></div><div class="line">           &lt;1&gt;  AppleScript：执行脚本。</div><div class="line"></div><div class="line">           &lt;2&gt;  Capture GPU Frame：用于OpenGL ES调试，捕获断点处GPU当前绘制帧。 </div><div class="line"></div><div class="line">           &lt;3&gt;  Debugger Command：和控制台中输入LLDB调试命令一致。</div><div class="line"></div><div class="line">           &lt;4&gt;  Log Message：输出自定义格式信息至控制台。</div><div class="line"></div><div class="line">           &lt;5&gt;  Shell Command：接收命令文件及相应参数列表，Shell Command是异步执行的，只有勾选“Wait until done”才会等待Shell命令执行完在执行调试。</div><div class="line"></div><div class="line">            &lt;6&gt;  Sound：断点触发时播放声音。</div><div class="line"></div><div class="line">【4】Options(Automatically continue after evaluating actions选项)：选中后，表示断点不会终止程序的运行。</div></pre></td></tr></table></figure>
+<h3 id="异常断点-Exception-Breakpoint（全局断点）"><a href="#异常断点-Exception-Breakpoint（全局断点）" class="headerlink" title="异常断点 Exception Breakpoint（全局断点）"></a>异常断点 Exception Breakpoint（全局断点）</h3><p><img src="http://oc1jw3mv7.bkt.clouddn.com/%E8%AE%BE%E7%BD%AE%E6%96%AD%E7%82%B9.jpg" alt="全局断点"><br>同样的，全局断点也是可以编辑的，单击右键或者双击断点就会弹出编辑框，编辑的项目和上述是一样的。</p>
+<h3 id="符号断点-Symbolic-Breakpoint"><a href="#符号断点-Symbolic-Breakpoint" class="headerlink" title="符号断点 Symbolic Breakpoint"></a>符号断点 Symbolic Breakpoint</h3><p><img src="http://oc1jw3mv7.bkt.clouddn.com/%E6%9D%A1%E4%BB%B6%E6%96%AD%E7%82%B9.jpg" alt="条件断点"></p>
+<h3 id="4、监控断点"><a href="#4、监控断点" class="headerlink" title="4、监控断点"></a>4、监控断点</h3><p><img src="http://oc1jw3mv7.bkt.clouddn.com/%E7%9B%91%E6%8E%A7%E6%96%AD%E7%82%B9.jpg" alt="监控断点"><br>我们调试程序的大部分时候都是为了监控某个变量的变化，在代码中变量出现的地方添加断点不仅累而且还可能漏掉，事后还得一个一个删掉，实在很累。<br>我们可以通过为变量添加监控断点来简单地做到这一点。找到变量第一次出现的地方，添加一个普通断点，进入 debug 模式后在 Variables View 中右键变量，选择 Watch 变量名。这样，每一次该变量被改变都会触发断点告知我们</p>
+<p><a href="https://www.jianshu.com/p/124699399a45" target="_blank" rel="external">更详细</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/20/a静态库制作/" itemprop="url">
                   .a静态库制作
                 </a>
@@ -876,7 +987,7 @@
 <h1 id="9-创建链接"><a href="#9-创建链接" class="headerlink" title="9.创建链接"></a>9.创建链接</h1><p>Markdown语法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;test@test.com&gt;</div></pre></td></tr></table></figure>
 <p>预览效果：</p>
-<p><a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#111;&#x3a;&#x74;&#x65;&#x73;&#116;&#64;&#x74;&#x65;&#115;&#x74;&#46;&#99;&#x6f;&#109;">&#x74;&#x65;&#x73;&#116;&#64;&#x74;&#x65;&#115;&#x74;&#46;&#99;&#x6f;&#109;</a></p>
+<p><a href="&#109;&#x61;&#105;&#108;&#x74;&#x6f;&#58;&#x74;&#x65;&#115;&#x74;&#x40;&#116;&#x65;&#115;&#116;&#x2e;&#x63;&#111;&#x6d;">&#x74;&#x65;&#115;&#x74;&#x40;&#116;&#x65;&#115;&#116;&#x2e;&#x63;&#111;&#x6d;</a></p>
 <h1 id="10-转义字符"><a href="#10-转义字符" class="headerlink" title="10.转义字符"></a>10.转义字符</h1><p>Markdown语法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">\\</div><div class="line">\`</div><div class="line">\*</div><div class="line">\_</div><div class="line">\&#123;\&#125;</div><div class="line">\[\]</div><div class="line">\(\)</div><div class="line">\#</div><div class="line">\+</div><div class="line">\-</div><div class="line">\.</div><div class="line">\!</div></pre></td></tr></table></figure>
 <p>预览效果：</p>
@@ -1018,117 +1129,6 @@
             <p>为什么写博客</p>
 <h2 id="一-我心中的博客"><a href="#一-我心中的博客" class="headerlink" title="一 我心中的博客"></a>一 我心中的博客</h2><h3 id="写博客是一个学习理解提升的过程。"><a href="#写博客是一个学习理解提升的过程。" class="headerlink" title="写博客是一个学习理解提升的过程。"></a>写博客是一个学习理解提升的过程。</h3><h3 id="1-自己了解学习，文章所涉及到的知识点，及知识点衍生出来的知识点。"><a href="#1-自己了解学习，文章所涉及到的知识点，及知识点衍生出来的知识点。" class="headerlink" title="1 自己了解学习，文章所涉及到的知识点，及知识点衍生出来的知识点。"></a>1 自己了解学习，文章所涉及到的知识点，及知识点衍生出来的知识点。</h3><h3 id="2-对学习的知识点进行验证，以确保理论值与实践值保持一致"><a href="#2-对学习的知识点进行验证，以确保理论值与实践值保持一致" class="headerlink" title="2 对学习的知识点进行验证，以确保理论值与实践值保持一致"></a>2 对学习的知识点进行验证，以确保理论值与实践值保持一致</h3><h3 id="3-构思文章的大纲，哪些部分需要重点写，需要配合实例代码，图片等信息"><a href="#3-构思文章的大纲，哪些部分需要重点写，需要配合实例代码，图片等信息" class="headerlink" title="3 构思文章的大纲，哪些部分需要重点写，需要配合实例代码，图片等信息"></a>3 构思文章的大纲，哪些部分需要重点写，需要配合实例代码，图片等信息</h3><h3 id="4-动手写，写完后再次检查校正并排版，然后发表"><a href="#4-动手写，写完后再次检查校正并排版，然后发表" class="headerlink" title="4 动手写，写完后再次检查校正并排版，然后发表"></a>4 动手写，写完后再次检查校正并排版，然后发表</h3><h3 id="5-针对网友的评论中提出的问题进行回复"><a href="#5-针对网友的评论中提出的问题进行回复" class="headerlink" title="5 针对网友的评论中提出的问题进行回复"></a>5 针对网友的评论中提出的问题进行回复</h3><h2 id="二-为什么要写博客"><a href="#二-为什么要写博客" class="headerlink" title="二 为什么要写博客"></a>二 为什么要写博客</h2><h3 id="2-1-为自己"><a href="#2-1-为自己" class="headerlink" title="2.1 为自己"></a>2.1 为自己</h3><p>写博客对自己的提升是很大的，可能写一篇体现不出来，但是只要你坚持写效果就很明显，好处人个认为有以下几点</p>
 <h4 id="2-1-1-强化知识点：在写一篇文章前，你必定是要把以文章中心为主的知识点及衍生的知识点都详细了解一-篇，在这一过程中必须会涉及到自己以前所了解过的知识，人的记忆是存在记忆曲线的需要不断的重复记忆才能长久的记住某一事物，而每写一篇文章时都会查阅资-料，在这一过程中必然会遇到以前记住了而现在渐渐淡忘的知识点，当你再次看到时瞬间就会回想起，此时以前的知识点就得到了强化。"><a href="#2-1-1-强化知识点：在写一篇文章前，你必定是要把以文章中心为主的知识点及衍生的知识点都详细了解一-篇，在这一过程中必须会涉及到自己以前所了解过的知识，人的记忆是存在记忆曲线的需要不断的重复记忆才能长久的记住某一事物，而每写一篇文章时都会查阅资-料，在这一过程中必然会遇到以前记住了而现在渐渐淡忘的知识点，当你再次看到时瞬间就会回想起，此时以前的知识点就得到了强化。" class="headerlink" title="2.1.1 强化知识点：在写一篇文章前，你必定是要把以文章中心为主的知识点及衍生的知识点都详细了解一 篇，在这一过程中必须会涉及到自己以前所了解过的知识，人的记忆是存在记忆曲线的需要不断的重复记忆才能长久的记住某一事物，而每写一篇文章时都会查阅资 料，在这一过程中必然会遇到以前记住了而现在渐渐淡忘的知识点，当你再次看到时瞬间就会回想起，此时以前的知识点就得到了强化。"></a>2.1.1 强化知识点：在写一篇文章前，你必定是要把以文章中心为主的知识点及衍生的知识点都详细了解一 篇，在这一过程中必须会涉及到自己以前所了解过的知识，人的记忆是存在记忆曲线的需要不断的重复记忆才能长久的记住某一事物，而每写一篇文章时都会查阅资 料，在这一过程中必然会遇到以前记住了而现在渐渐淡忘的知识点，当你再次看到时瞬间就会回想起，此时以前的知识点就得到了强化。</h4><h4 id="2-1-2-提升学习能力：同一样的人，了解同一知识点，用不同的方-法，产生的结果必然会不一样，找到最佳的学习方法，这也是一种能力，这种能力是经过多次实践探索之后总结出来的，以前我每次需了解某一种技术时都会先百度-看各种搜索结果，发现没有想要的之后，再Google因为Google的结果与百度的会有所不同，Google结果中国外的文章相对会多一点，而偶然点了-一个链接进入了博客园，发现就是自己想要的东西，而且把概念，代码，及经验都写上去了，看完之后对我帮助很大。渐渐的我便开始采这种方法了解新知识概念性的直接看百度百科，实质性的直接-上博客园的-找找看-，群里的朋友还推荐了一种方法，比如我要学MVC-园子里很多人都写了-关于MVC的一系列文章，把那一系列的文章都看一遍，对于MVC就基本有了了解了，这便是学习能力的提升-对于某种技术用最短的时间做到了比较全面的了解"><a href="#2-1-2-提升学习能力：同一样的人，了解同一知识点，用不同的方-法，产生的结果必然会不一样，找到最佳的学习方法，这也是一种能力，这种能力是经过多次实践探索之后总结出来的，以前我每次需了解某一种技术时都会先百度-看各种搜索结果，发现没有想要的之后，再Google因为Google的结果与百度的会有所不同，Google结果中国外的文章相对会多一点，而偶然点了-一个链接进入了博客园，发现就是自己想要的东西，而且把概念，代码，及经验都写上去了，看完之后对我帮助很大。渐渐的我便开始采这种方法了解新知识概念性的直接看百度百科，实质性的直接-上博客园的-找找看-，群里的朋友还推荐了一种方法，比如我要学MVC-园子里很多人都写了-关于MVC的一系列文章，把那一系列的文章都看一遍，对于MVC就基本有了了解了，这便是学习能力的提升-对于某种技术用最短的时间做到了比较全面的了解" class="headerlink" title="2.1.2 提升学习能力：同一样的人，了解同一知识点，用不同的方 法，产生的结果必然会不一样，找到最佳的学习方法，这也是一种能力，这种能力是经过多次实践探索之后总结出来的，以前我每次需了解某一种技术时都会先百度 看各种搜索结果，发现没有想要的之后，再Google因为Google的结果与百度的会有所不同，Google结果中国外的文章相对会多一点，而偶然点了 一个链接进入了博客园，发现就是自己想要的东西，而且把概念，代码，及经验都写上去了，看完之后对我帮助很大。渐渐的我便开始采这种方法了解新知识概念性的直接看百度百科，实质性的直接 上博客园的 找找看 ，群里的朋友还推荐了一种方法，比如我要学MVC 园子里很多人都写了 关于MVC的一系列文章，把那一系列的文章都看一遍，对于MVC就基本有了了解了，这便是学习能力的提升,对于某种技术用最短的时间做到了比较全面的了解"></a>2.1.2 提升学习能力：同一样的人，了解同一知识点，用不同的方 法，产生的结果必然会不一样，找到最佳的学习方法，这也是一种能力，这种能力是经过多次实践探索之后总结出来的，以前我每次需了解某一种技术时都会先百度 看各种搜索结果，发现没有想要的之后，再Google因为Google的结果与百度的会有所不同，Google结果中国外的文章相对会多一点，而偶然点了 一个链接进入了博客园，发现就是自己想要的东西，而且把概念，代码，及经验都写上去了，看完之后对我帮助很大。渐渐的我便开始采这种方法了解新知识概念性的直接看百度百科，实质性的直接 上博客园的 找找看 ，群里的朋友还推荐了一种方法，比如我要学MVC 园子里很多人都写了 关于MVC的一系列文章，把那一系列的文章都看一遍，对于MVC就基本有了了解了，这便是学习能力的提升,对于某种技术用最短的时间做到了比较全面的了解</h4><h4 id="2-1-3-提升文字组织能力：这个就不用说了，写博客，既然是写，就必然会有大量的文字，而如何组织文字表达出自己想表达的意思，是长期练习的，而写博客正好帮助你提高了你的文字组织能力，"><a href="#2-1-3-提升文字组织能力：这个就不用说了，写博客，既然是写，就必然会有大量的文字，而如何组织文字表达出自己想表达的意思，是长期练习的，而写博客正好帮助你提高了你的文字组织能力，" class="headerlink" title="2.1.3 提升文字组织能力：这个就不用说了，写博客，既然是写，就必然会有大量的文字，而如何组织文字表达出自己想表达的意思，是长期练习的，而写博客正好帮助你提高了你的文字组织能力，"></a>2.1.3 提升文字组织能力：这个就不用说了，写博客，既然是写，就必然会有大量的文字，而如何组织文字表达出自己想表达的意思，是长期练习的，而写博客正好帮助你提高了你的文字组织能力，</h4><h4 id="2-1-4-提升逻辑思维能力：不用说，技术性的东西从来就没的单独存-在的，都一层层技术相结合，那在了解某种技术时，自己的思维也是要顺着这种关系逐渐深入的，比如MVC，你不能只知道-M是什么V是什么-C是什么就行了吧，你得知道-M-V-C-这三者关系是怎样的，又是怎样交互，而你了解之后再把它写出来时，需要清晰逻辑。"><a href="#2-1-4-提升逻辑思维能力：不用说，技术性的东西从来就没的单独存-在的，都一层层技术相结合，那在了解某种技术时，自己的思维也是要顺着这种关系逐渐深入的，比如MVC，你不能只知道-M是什么V是什么-C是什么就行了吧，你得知道-M-V-C-这三者关系是怎样的，又是怎样交互，而你了解之后再把它写出来时，需要清晰逻辑。" class="headerlink" title="2.1.4 提升逻辑思维能力：不用说，技术性的东西从来就没的单独存 在的，都一层层技术相结合，那在了解某种技术时，自己的思维也是要顺着这种关系逐渐深入的，比如MVC，你不能只知道 M是什么V是什么 C是什么就行了吧，你得知道 M V C 这三者关系是怎样的，又是怎样交互，而你了解之后再把它写出来时，需要清晰逻辑。"></a>2.1.4 提升逻辑思维能力：不用说，技术性的东西从来就没的单独存 在的，都一层层技术相结合，那在了解某种技术时，自己的思维也是要顺着这种关系逐渐深入的，比如MVC，你不能只知道 M是什么V是什么 C是什么就行了吧，你得知道 M V C 这三者关系是怎样的，又是怎样交互，而你了解之后再把它写出来时，需要清晰逻辑。</h4><h3 id="2-2-为他人"><a href="#2-2-为他人" class="headerlink" title="2.2 为他人"></a>2.2 为他人</h3><h4 id="2-2-1-有意的：-园子里有很多人都写过关于-MVC-框架-WCF-等等系列文章，目的就在于帮助新人快速上手，这个我深有体会，当初我开始学习MVC时就是看的T2噬菌体的MVC系-列文章，整篇看完后再配合自己动手对于MVC就有了基本的了解了，在次感谢园子里无私献的大牛们。而以上行为就是有意的帮助"><a href="#2-2-1-有意的：-园子里有很多人都写过关于-MVC-框架-WCF-等等系列文章，目的就在于帮助新人快速上手，这个我深有体会，当初我开始学习MVC时就是看的T2噬菌体的MVC系-列文章，整篇看完后再配合自己动手对于MVC就有了基本的了解了，在次感谢园子里无私献的大牛们。而以上行为就是有意的帮助" class="headerlink" title="2.2.1 有意的： 园子里有很多人都写过关于 MVC 框架 WCF 等等系列文章，目的就在于帮助新人快速上手，这个我深有体会，当初我开始学习MVC时就是看的T2噬菌体的MVC系　　列文章，整篇看完后再配合自己动手对于MVC就有了基本的了解了，在次感谢园子里无私献的大牛们。而以上行为就是有意的帮助"></a>2.2.1 有意的： 园子里有很多人都写过关于 MVC 框架 WCF 等等系列文章，目的就在于帮助新人快速上手，这个我深有体会，当初我开始学习MVC时就是看的T2噬菌体的MVC系　　列文章，整篇看完后再配合自己动手对于MVC就有了基本的了解了，在次感谢园子里无私献的大牛们。而以上行为就是有意的帮助</h4><h4 id="2-2-2-无意的：很多时候在开发项目的过程中，遇到了技术问题，花了时间解决后，有人会写博客记录，并附上解决方法旨在当再次遇到问题时直接看下文章就知道如何处理了，而碰巧的是，这种问题不止他一个人遇到了。很多人在开发时也遇到了这个问题，在网上找答案时，就找到了这篇文章，并根据文章提供的解决方法，顺利的解决了问题，这种帮助就是无意的帮助"><a href="#2-2-2-无意的：很多时候在开发项目的过程中，遇到了技术问题，花了时间解决后，有人会写博客记录，并附上解决方法旨在当再次遇到问题时直接看下文章就知道如何处理了，而碰巧的是，这种问题不止他一个人遇到了。很多人在开发时也遇到了这个问题，在网上找答案时，就找到了这篇文章，并根据文章提供的解决方法，顺利的解决了问题，这种帮助就是无意的帮助" class="headerlink" title="2.2.2 无意的：很多时候在开发项目的过程中，遇到了技术问题，花了时间解决后，有人会写博客记录，并附上解决方法旨在当再次遇到问题时直接看下文章就知道如何处理了，而碰巧的是，这种问题不止他一个人遇到了。很多人在开发时也遇到了这个问题，在网上找答案时，就找到了这篇文章，并根据文章提供的解决方法，顺利的解决了问题，这种帮助就是无意的帮助"></a>2.2.2 无意的：很多时候在开发项目的过程中，遇到了技术问题，花了时间解决后，有人会写博客记录，并附上解决方法旨在当再次遇到问题时直接看下文章就知道如何处理了，而碰巧的是，这种问题不止他一个人遇到了。很多人在开发时也遇到了这个问题，在网上找答案时，就找到了这篇文章，并根据文章提供的解决方法，顺利的解决了问题，这种帮助就是无意的帮助</h4><h2 id="三-总结"><a href="#三-总结" class="headerlink" title="三 总结"></a>三 总结</h2><h3 id="我所认的写博客是对自己所了解知识的强化，分享，自身能力的提升。当然-写-博客只是一种方法而以，只要能达到提升自我的效果什么方法都是可以的，有些事情你现在不去做，可能以后都不会有机会了"><a href="#我所认的写博客是对自己所了解知识的强化，分享，自身能力的提升。当然-写-博客只是一种方法而以，只要能达到提升自我的效果什么方法都是可以的，有些事情你现在不去做，可能以后都不会有机会了" class="headerlink" title="我所认的写博客是对自己所了解知识的强化，分享，自身能力的提升。当然 写 博客只是一种方法而以，只要能达到提升自我的效果什么方法都是可以的，有些事情你现在不去做，可能以后都不会有机会了!"></a>我所认的写博客是对自己所了解知识的强化，分享，自身能力的提升。当然 写 博客只是一种方法而以，只要能达到提升自我的效果什么方法都是可以的，有些事情你现在不去做，可能以后都不会有机会了!</h3>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/12/Xcode调试技巧/" itemprop="url">
-                  Xcode调试
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-12T16:58:13+08:00" content="Aug 12 2016">
-              Aug 12 2016
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Xcode调试技巧"><a href="#Xcode调试技巧" class="headerlink" title="Xcode调试技巧"></a>Xcode调试技巧</h2><h2 id="日志输出-amp-LLDB"><a href="#日志输出-amp-LLDB" class="headerlink" title="日志输出&amp;LLDB"></a>日志输出&amp;LLDB</h2><p>什么是<strong>LLDB</strong>呢：它是一个有着 REPL 的特性和 C++ ,Python 插件的开源调试器。LLDB 绑定在 Xcode 内部，存在于主窗口底部的控制台中。调试器允许你在程序运行的特定时暂停它，你可以查看变量的值，执行自定的指令，并且按照你所认为合适的步骤来操作程序的进展。我们可以简单的理解成它是一个<strong>调试器</strong></p>
-<h3 id="1-命令行LLDB的出现"><a href="#1-命令行LLDB的出现" class="headerlink" title="1 命令行LLDB的出现"></a>1 命令行LLDB的出现</h3><p>  如下图，调试过程中程序运行到断点处时，控制台的右边会出    现“lldb”。</p>
-<h3 id="2-常用的命令"><a href="#2-常用的命令" class="headerlink" title="2 常用的命令"></a>2 常用的命令</h3><p>1 help<br>断点时，控制台输入”help“，回车，就能看到lldb命令及介绍<br><img src="http://oc1jw3mv7.bkt.clouddn.com/help.jpg" alt="help"><br>2 print<br>打印 常用p 代替<br><img src="http://oc1jw3mv7.bkt.clouddn.com/p.jpg" alt="p"><br>3 prin object<br>打印对象的详细信息 常用 po 代替<br><img src="http://oc1jw3mv7.bkt.clouddn.com/po.jpg" alt="po"><br>4 expression<br>可以在当前位置改变程序实际参数的值（不用重新运行项目） 使用过程中我们可以直接用 expr来代替expression。<br><img src="http://oc1jw3mv7.bkt.clouddn.com/express.jpg" alt="expression"><br>5 call<br><img src="http://oc1jw3mv7.bkt.clouddn.com/call.jpg" alt="call"><br>一般调用没有返回值的方法时使用call 例如 在viewDidLoad中断点，然后输入<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">call  [self.view setBackgroundColor:[UIColor redColor]]</div></pre></td></tr></table></figure></p>
-<pre><code>继续运行，view的背景就变成红色呢，很方便
-</code></pre><p>6 image </p>
-<p>mage list 查看工程中使用的库</p>
-<p>image lookup –address  0x000000010e0979ac  程序崩溃的时候定位，查看具体报错位置 （不太好用）</p>
-<h2 id="断点"><a href="#断点" class="headerlink" title="断点"></a>断点</h2><p>断点里面根据作用和功能也有很多种类：普通断点、条件断点、异常断点、符号断点等</p>
-<h3 id="普通断点"><a href="#普通断点" class="headerlink" title="普通断点"></a>普通断点</h3><h3 id="条件断点"><a href="#条件断点" class="headerlink" title="条件断点"></a>条件断点</h3><p>打上断点之后，对断点进行编辑，设置相应过滤条件。单击右键会弹出选项框：</p>
-<p><img src="http://oc1jw3mv7.bkt.clouddn.com/%E7%BC%96%E8%BE%91%E6%96%AD%E7%82%B9.jpg" alt="编辑断点"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Edit BreakPoint... ：编辑断点。</div><div class="line"></div><div class="line">Disable  BreakPoint ：断点失效。（相当于上边说到的单击断点变成浅蓝色，断点失效）</div><div class="line"></div><div class="line">Delete BreakPoint ：删除断点。</div><div class="line"></div><div class="line">Reveal in BreakPoint Navigator :在左边的断点树状结构表明该断点。</div></pre></td></tr></table></figure>
-<p>Edit BreakPoint。这里面设置断点的筛选条件（双击断点也可以快速进入编辑断点的对话框）。</p>
-<p><img src="http://oc1jw3mv7.bkt.clouddn.com/%E8%AE%BE%E7%BD%AE%E6%96%AD%E7%82%B9.jpg" alt="设置断点"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">【1】Condition：返回一个布尔值，当布尔值为真触发断点，一般里面我们可以写一个表达式。</div><div class="line"></div><div class="line">【2】Ignore：      忽略前N次断点，到N+1次再触发断点。</div><div class="line"></div><div class="line">【3】Action：      断点触发事件，分为六种：</div><div class="line"></div><div class="line">           &lt;1&gt;  AppleScript：执行脚本。</div><div class="line"></div><div class="line">           &lt;2&gt;  Capture GPU Frame：用于OpenGL ES调试，捕获断点处GPU当前绘制帧。 </div><div class="line"></div><div class="line">           &lt;3&gt;  Debugger Command：和控制台中输入LLDB调试命令一致。</div><div class="line"></div><div class="line">           &lt;4&gt;  Log Message：输出自定义格式信息至控制台。</div><div class="line"></div><div class="line">           &lt;5&gt;  Shell Command：接收命令文件及相应参数列表，Shell Command是异步执行的，只有勾选“Wait until done”才会等待Shell命令执行完在执行调试。</div><div class="line"></div><div class="line">            &lt;6&gt;  Sound：断点触发时播放声音。</div><div class="line"></div><div class="line">【4】Options(Automatically continue after evaluating actions选项)：选中后，表示断点不会终止程序的运行。</div></pre></td></tr></table></figure>
-<h3 id="异常断点-Exception-Breakpoint（全局断点）"><a href="#异常断点-Exception-Breakpoint（全局断点）" class="headerlink" title="异常断点 Exception Breakpoint（全局断点）"></a>异常断点 Exception Breakpoint（全局断点）</h3><p><img src="http://oc1jw3mv7.bkt.clouddn.com/%E8%AE%BE%E7%BD%AE%E6%96%AD%E7%82%B9.jpg" alt="全局断点"><br>同样的，全局断点也是可以编辑的，单击右键或者双击断点就会弹出编辑框，编辑的项目和上述是一样的。</p>
-<h3 id="符号断点-Symbolic-Breakpoint"><a href="#符号断点-Symbolic-Breakpoint" class="headerlink" title="符号断点 Symbolic Breakpoint"></a>符号断点 Symbolic Breakpoint</h3><p><img src="http://oc1jw3mv7.bkt.clouddn.com/%E6%9D%A1%E4%BB%B6%E6%96%AD%E7%82%B9.jpg" alt="条件断点"></p>
-<h3 id="4、监控断点"><a href="#4、监控断点" class="headerlink" title="4、监控断点"></a>4、监控断点</h3><p><img src="http://oc1jw3mv7.bkt.clouddn.com/%E7%9B%91%E6%8E%A7%E6%96%AD%E7%82%B9.jpg" alt="监控断点"><br>我们调试程序的大部分时候都是为了监控某个变量的变化，在代码中变量出现的地方添加断点不仅累而且还可能漏掉，事后还得一个一个删掉，实在很累。<br>我们可以通过为变量添加监控断点来简单地做到这一点。找到变量第一次出现的地方，添加一个普通断点，进入 debug 模式后在 Variables View 中右键变量，选择 Watch 变量名。这样，每一次该变量被改变都会触发断点告知我们</p>
-<p><a href="https://www.jianshu.com/p/124699399a45" target="_blank" rel="external">更详细</a></p>
-
           
         
       
