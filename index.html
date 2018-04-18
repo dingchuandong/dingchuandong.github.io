@@ -417,6 +417,186 @@
             
               
                 
+                <a class="post-title-link" href="/2017/08/12/性能优化小结/" itemprop="url">
+                  性能优化小结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-08-12T16:58:13+08:00" content="Aug 12 2017">
+              Aug 12 2017
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="性能优化小结"><a href="#性能优化小结" class="headerlink" title="性能优化小结"></a>性能优化小结</h2><p>###界面卡顿产生的原因<br><img src="http://cc.cocimg.com/api/uploads//20180309/1520562238557613.png" alt=""></p>
+<p>在VSync信号到来后，系统图形服务会通过CADisplayLink等机制通知App，App主线程开始在CPU中计算显示内容，比如视图的创建、布局计算、图片解码、文本绘制等。随后CPU会将计算好的内容提交到GPU去，由GPU进行变换、合成、渲染。随后GPU会把渲染结果提交到帧缓冲区去，等待下一次VSync信号到来时显示到屏幕上。由于垂直同步的机制，如果在一个VSync时间内，CPU或者GPU没有完成内容提交，则那一帧就会被丢弃，等待下一次机会再显示，而这时显示屏会保留之前的内容不变。这就是界面卡顿的原因。</p>
+<p>在开发中，CPU和GPU中任何一个压力过大，都会导致掉帧现象(FPS&lt; 60)</p>
+<p>###CPU</p>
+<p>加载资源，对象创建，对象调整，对象销毁，布局计算，Autolayout，文本计算，文本渲染，图片的解码， 图像的绘制（Core Graphics）都是在CPU上面进行的。</p>
+<p>###CPU资源消耗原因以及解决办法</p>
+<p>1、对象的创建：</p>
+<p>对象的创建会分配内存、设置属性等，会消耗CPU资源。所以尽量使用轻量对象代替，比如能用CALayer的时候尽量不用UIView，敏感位置能不用IB尽量使用纯代码手写。</p>
+<p>推迟同一时间创建对象，推荐使用懒加载在需要使用时候创建对象。</p>
+<p>2、对象调整</p>
+<p>对 UIView 的这些属性进行调整时，消耗的资源要远大于一般的属性。对此你在应用中，应该尽量减少不必要的属性修改。</p>
+<p>当视图层次调整时，UIView、CALayer 之间会出现很多方法调用与通知，所以在优化性能时，应该尽量避免调整视图层次、添加和移除视图。</p>
+<p>3、对象销毁</p>
+<p>当前类持有大量对象时候，其销毁时候的资源消耗就非常明显。建议创建销毁的异步队列，将需要销毁的对象放到队列中销毁。</p>
+<p>4、布局计算</p>
+<p>布局计算在UITableView使用中是最常见的消耗资源的地方。建议取到数据之后，异步进行计算布局并缓存下来，当复用Cell时候直接调用缓存数据。</p>
+<p>5、AutoLayout</p>
+<p>Autolayout 对于复杂视图来说常常会产生严重的性能问题，AutoLayout相对低效的原因是隐藏在底层的命名为”Cassowary“的约束求解系统，随着视图数量的增长，Autolayout 带来的 CPU 消耗会呈指数级上升，当Cell内约束超过25个的时候，会降低滑动的帧率。</p>
+<p>具体：<a href="http://pilky.me/36/" target="_blank" rel="external">http://pilky.me/36/</a></p>
+<p>6、文本的计算以及渲染</p>
+<p>UI中存在大量的对于文本高度的适配，可以参考：用 [NSAttributedString boundingRectWithSize:options:context:] 来计算文本宽高，用 -[NSAttributedString drawWithRect:options:context:] 来绘制文本。尽管这两个方法性能不错，但仍旧需要放到后台线程进行以避免阻塞主线程。</p>
+<p>常见的文本控件 （UILabel、UITextView 等），其排版和绘制都是在主线程进行的，当显示大量文本时，CPU 的压力会非常大。解决办法是利用TextKit或者是CoreText自定义文本控件。详见：<a href="https://github.com/ibireme/YYText" target="_blank" rel="external">YYText</a>。</p>
+<p>7、图片解码以及图像的绘制</p>
+<p>当你用 UIImage 或 CGImageSource 的那几个方法创建图片时，图片数据并不会立刻解码。图片设置到 UIImageView 或者 CALayer.contents 中去，并且 CALayer 被提交到 GPU 前，CGImage 中的数据才会得到解码。这一步是发生在主线程的，并且不可避免。如果想要绕开这个机制，常见的做法是在后台线程先把图片绘制到 CGBitmapContext 中，然后从 Bitmap 直接创建图片。目前常见的网络图片库都自带这个功能。</p>
+<p>个最常见的地方就是 [UIView drawRect:] 里面了。由于 CoreGraphic 方法通常都是线程安全的，所以图像的绘制可以很容易的放到后台线程进行。</p>
+<p>8、文件系统的调用</p>
+<p>NSFileManager获取一个目录获取文件信息，进行多次递归计算，stat几乎瞬间完成，NSFileManager耗时较长且消耗CPU。</p>
+<p>###GPU</p>
+<p>GPU是一个专门为图形高并发计算而量身定做的处理单元，比CPU使用更少的电来完成工作并且GPU的浮点计算能力要超出CPU很多。</p>
+<p>GPU的渲染性能要比CPU高效很多，同时对系统的负载和消耗也更低一些，所以在开发中，<strong>我们应该尽量让CPU负责主线程的UI调动，把图形显示相关的工作交给GPU来处理</strong>，当涉及到光栅化等一些工作时，CPU也会参与进来，这点在后面再详细描述。</p>
+<p>相对于CPU来说，GPU能干的事情比较单一：接收提交的纹理（Texture）和顶点描述（三角形），应用变换（transform）、混合（合成）并渲染，然后输出到屏幕上。通常你所能看到的内容，主要也就是纹理（图片）和形状（三角模拟的矢量图形）两类。</p>
+<p>###GPU资源消耗原因以及解决办法：</p>
+<p>1、纹理的渲染</p>
+<p>当在较短时间显示大量图片时（比如 TableView 存在非常多的图片并且快速滑动时），CPU 占用率很低，GPU 占用非常高，界面仍然会掉帧。避免这种情况的方法只能是尽量减少在短时间内大量图片的显示，尽可能将多张图片合成为一张进行显示。</p>
+<p>2、视图的混合（Blended）</p>
+<p>视图结构过于复杂，混合的过程、会消耗很多 GPU 资源。为了减轻这种情况的 GPU 消耗，应用应当尽量减少视图数量和层次，并在不透明的视图里标明 opaque 属性以避免无用的 Alpha 通道合成。当然，这也可以用上面的方法，把多个视图预先渲染为一张图片来显示。</p>
+<p>Blended Layers（视图混合）：在同一个区域内，存在着多个有透明度的图层，那么GPU需要更多的计算，混合上下多个图层才能得出最终像素的RGB值。</p>
+<p>Misaligned Images（像素对齐）：逻辑像素（point）和 物理像素（pixel)无法相匹配；图片的size和显示图片的imageView的size（逻辑像素（point））不相等。</p>
+<p>3、图形的生成</p>
+<p>CALayer 的 border、圆角、阴影、遮罩（mask），CASharpLayer 的矢量图形显示，通常会触发离屏渲染（offscreen rendering），而离屏渲染通常发生在 GPU 中。可以尝试开启 CALayer.shouldRasterize 属性，但这会把原本离屏渲染的操作转嫁到 CPU 上去。</p>
+<p>好的方法是使用图片遮罩等方法，避免使用圆角和隐形等。<a href="http://www.imlifengfeng.com/blog/?p=593" target="_blank" rel="external">详细：iOS的离屏渲染</a></p>
+<p>解决方案：</p>
+<p>1、预先计算UI布局</p>
+<p>获取数据之后，异步计算Cell高度以及各控件高度和位置，并储存在CellLayouModel中，当每次Cell需要高度以及内部布局的时候就可以直接调用，不需要进行重复计算。</p>
+<p>2、使用自动缓存高度</p>
+<p>iOS 8之后出现了UITableView通过约束自动计算高度，但是因为iOS对于约束的算法问题，会导致流畅性降低，<a href="http://blog.sunnyxx.com/2015/05/17/cell-height-calculation/" target="_blank" rel="external">FDTemplateLayoutCell</a>很好的优化了这个问题。</p>
+<p>3、异步绘制</p>
+<p>Facebook的开源项目<a href="https://github.com/TextureGroup/Texture" target="_blank" rel="external">Texture</a>（原AsyncDisplayKit），通过利用ASDisplayNode封装了CALayer，实现了异步绘制。</p>
+<p>第三方微博客户端墨客的是现实，当滑动时，松开手指后，立刻计算出滑动停止时 Cell 的位置，并预先绘制那个位置附近的几个 Cell，而忽略当前滑动中的 Cell。但也有缺点，快速滑动的时候有可能会出现大量空白。</p>
+<p>3、高效图片加载</p>
+<p><a href="https://github.com/rs/SDWebImage" target="_blank" rel="external">SDWebImage-github</a></p>
+<p><a href="https://github.com/ibireme" target="_blank" rel="external">YYImage-github</a></p>
+<p>4、预加载</p>
+<p>列表当中，当滑动到一个可以设定的位置的时候，提前获取下载下一页的数据，并绘制UI。详见：<a href="https://zhuanlan.zhihu.com/p/23418800" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/23418800</a>。</p>
+<p>5、针对Blended Layers以及Misaligned Images</p>
+<p>Blended Layers：</p>
+<p>尽量少的使用具有透明色的图片</p>
+<p>尽量多的将UI部件增加背景色</p>
+<p>减少同一像素点进行过多的颜色计算</p>
+<p>Misaligned Images：</p>
+<p>现象：</p>
+<p>洋红色：UIView的frame像素不对齐，即不能换算成整数像素值。</p>
+<p>黄色：UIImageView的图片像素大小与其frame.size不对齐，图片发生了缩放造成。</p>
+<p>解决：</p>
+<p>尽量使用ceil()，保证没有小数的UI绘制</p>
+<p>尽量不实用0.01f标记UITableView或者UICollectionView的header以及footer</p>
+<p>网络上获取的图片没有@2x和@3x的区别，需要我们缩放图片到与UIImageView对应的尺寸，且缩放后的图片的scale和[UIScreen mainScreen].scale相等，再显示出来。</p>
+<p>其他：</p>
+<p>下面的情况或操作会引发离屏渲染：</p>
+<ul>
+<li><p>为图层设置遮罩（layer.mask）</p>
+</li>
+<li><p>将图层的layer.masksToBounds / view.clipsToBounds属性设置为true</p>
+</li>
+<li><p>将图层layer.allowsGroupOpacity属性设置为YES和layer.opacity小于1.0</p>
+</li>
+<li><p>为图层设置阴影（layer.shadow *）。</p>
+</li>
+<li><p>为图层设置layer.shouldRasterize=true</p>
+</li>
+<li><p>具有layer.cornerRadius，layer.edgeAntialiasingMask，layer.allowsEdgeAntialiasing的图层</p>
+</li>
+<li><p>文本（任何种类，包括UILabel，CATextLayer，Core Text等）。</p>
+</li>
+<li><p>使用CGContext在drawRect :方法中绘制大部分情况下会导致离屏渲染，甚至仅仅是一个空的实现。</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/08/12/导航栏的正常隐藏方式/" itemprop="url">
                   顶部导航栏
                 </a>
@@ -464,6 +644,116 @@
             <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><h3 id="项目中经常会碰到顶部导航栏需要隐藏的情况，这里给出三种方法。"><a href="#项目中经常会碰到顶部导航栏需要隐藏的情况，这里给出三种方法。" class="headerlink" title="项目中经常会碰到顶部导航栏需要隐藏的情况，这里给出三种方法。"></a>项目中经常会碰到顶部导航栏需要隐藏的情况，这里给出三种方法。</h3><h2 id="第一种"><a href="#第一种" class="headerlink" title="第一种"></a>第一种</h2><h3 id="简单粗暴直接上来就隐藏掉导航栏，在基类中自己定义view充当导航栏的作用"><a href="#简单粗暴直接上来就隐藏掉导航栏，在基类中自己定义view充当导航栏的作用" class="headerlink" title="简单粗暴直接上来就隐藏掉导航栏，在基类中自己定义view充当导航栏的作用"></a>简单粗暴直接上来就隐藏掉导航栏，在基类中自己定义view充当导航栏的作用</h3><h2 id="第二种"><a href="#第二种" class="headerlink" title="第二种"></a>第二种</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">- (void)viewWillAppear:(BOOL)animated &#123;</div><div class="line">    [super viewWillAppear:animated];</div><div class="line">    </div><div class="line">    [self.navigationController setNavigationBarHidden:YES animated:animated];</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)viewWillDisappear:(BOOL)animated &#123;</div><div class="line">    [super viewWillDisappear:animated];</div><div class="line">    </div><div class="line">    [self.navigationController setNavigationBarHidden:NO animated:animated];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="这里一定要用动画的方式隐藏导航栏-这样在使用滑动返回手势的时候效果最好-和上面动图一致-这样做有一个缺点就是在切换tabBar的时候有一个导航栏向上消失的动画。"><a href="#这里一定要用动画的方式隐藏导航栏-这样在使用滑动返回手势的时候效果最好-和上面动图一致-这样做有一个缺点就是在切换tabBar的时候有一个导航栏向上消失的动画。" class="headerlink" title="这里一定要用动画的方式隐藏导航栏,这样在使用滑动返回手势的时候效果最好,和上面动图一致.这样做有一个缺点就是在切换tabBar的时候有一个导航栏向上消失的动画。"></a>这里一定要用动画的方式隐藏导航栏,这样在使用滑动返回手势的时候效果最好,和上面动图一致.这样做有一个缺点就是在切换tabBar的时候有一个导航栏向上消失的动画。</h3><h2 id="第三种做法（推荐）"><a href="#第三种做法（推荐）" class="headerlink" title="第三种做法（推荐）"></a>第三种做法（推荐）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">@interface HomePageController () &lt;UINavigationControllerDelegate&gt;</div><div class="line"></div><div class="line">@end</div><div class="line"></div><div class="line">@implementation HomePageController </div><div class="line"></div><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line">    </div><div class="line">    // 设置导航控制器的代理为self</div><div class="line">    self.navigationController.delegate = self;</div><div class="line">&#125;</div><div class="line"></div><div class="line">#pragma mark - UINavigationControllerDelegate</div><div class="line">// 将要显示控制器</div><div class="line">- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated &#123;</div><div class="line">    // 判断要显示的控制器是否是自己</div><div class="line">    BOOL isShowHomePage = [viewController isKindOfClass:[self class]];</div><div class="line">    </div><div class="line">    [self.navigationController setNavigationBarHidden:isShowHomePage animated:YES];</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)dealloc &#123;</div><div class="line">    self.navigationController.delegate = nil;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="注意-最后要记得在控制器销毁的时候把导航栏的代理设置为nil"><a href="#注意-最后要记得在控制器销毁的时候把导航栏的代理设置为nil" class="headerlink" title="注意(最后要记得在控制器销毁的时候把导航栏的代理设置为nil)"></a>注意(最后要记得在控制器销毁的时候把导航栏的代理设置为nil)</h3>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/07/12/NSProcessInfo 获取进程信息/" itemprop="url">
+                  NSProcessInfo 获取进程信息
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-07-12T16:58:13+08:00" content="Jul 12 2017">
+              Jul 12 2017
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="NSProcessInfo-获取进程信息"><a href="#NSProcessInfo-获取进程信息" class="headerlink" title="NSProcessInfo 获取进程信息"></a>NSProcessInfo 获取进程信息</h2><p>###//返回当前进程的信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+(NSProcessInfo*)processInfo</div></pre></td></tr></table></figure></p>
+<p>###//以NSString对象数组的形式返回当前进程的参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(NSArray*)arguments</div></pre></td></tr></table></figure></p>
+<p>　</p>
+<p>###//返回变量/值对词典，以描述当前的环境变量（比如PATH和HOME）及其值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(NSDictionary *)environment</div></pre></td></tr></table></figure></p>
+<p>　</p>
+<p>###//返回进程标识符，它是操作系统赋予进程的唯一数字，用于识别每个正在运行的进程<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(int)processIdentifier</div></pre></td></tr></table></figure></p>
+<p>　</p>
+<p>###//返回当前正在执行的进程名称<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(NSString*)processName</div></pre></td></tr></table></figure></p>
+<p>###//每次调用这个方法时，都返回不同的单值字符串，可以用这个字符串生成单值临时文件名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(NSString *)globallyUniqueString</div></pre></td></tr></table></figure></p>
+<p>###//返回主机系统的名称</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(NSString *)hostname</div></pre></td></tr></table></figure>
+<p>###//返回表示操作系统的数字</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(NSUInteger)operatingSystem</div></pre></td></tr></table></figure>
+<p>###//返回操作系统的名称（可能返回的值定义在NSProgressInfo.h文件中）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(NSString *)operatingSystemName</div></pre></td></tr></table></figure></p>
+<p>###//返回操作系统的当前版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(NSString *)operatingSystemVersionString</div></pre></td></tr></table></figure>
+<p>###//将当前进程名称设置为name。应该谨慎地使用这个方法，应为关于进程名称存在一些假设（比如用户默认的设置）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(void)setProcessName:(NSString *)name</div></pre></td></tr></table></figure></p>
+
           
         
       
@@ -987,7 +1277,7 @@
 <h1 id="9-创建链接"><a href="#9-创建链接" class="headerlink" title="9.创建链接"></a>9.创建链接</h1><p>Markdown语法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;test@test.com&gt;</div></pre></td></tr></table></figure>
 <p>预览效果：</p>
-<p><a href="&#109;&#x61;&#105;&#108;&#x74;&#x6f;&#58;&#x74;&#x65;&#115;&#x74;&#x40;&#116;&#x65;&#115;&#116;&#x2e;&#x63;&#111;&#x6d;">&#x74;&#x65;&#115;&#x74;&#x40;&#116;&#x65;&#115;&#116;&#x2e;&#x63;&#111;&#x6d;</a></p>
+<p><a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#111;&#58;&#116;&#101;&#x73;&#116;&#64;&#x74;&#x65;&#x73;&#116;&#x2e;&#99;&#x6f;&#x6d;">&#116;&#101;&#x73;&#116;&#64;&#x74;&#x65;&#x73;&#116;&#x2e;&#99;&#x6f;&#x6d;</a></p>
 <h1 id="10-转义字符"><a href="#10-转义字符" class="headerlink" title="10.转义字符"></a>10.转义字符</h1><p>Markdown语法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">\\</div><div class="line">\`</div><div class="line">\*</div><div class="line">\_</div><div class="line">\&#123;\&#125;</div><div class="line">\[\]</div><div class="line">\(\)</div><div class="line">\#</div><div class="line">\+</div><div class="line">\-</div><div class="line">\.</div><div class="line">\!</div></pre></td></tr></table></figure>
 <p>预览效果：</p>
@@ -1249,111 +1539,13 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/12/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-12T11:12:06+08:00" content="Aug 12 2016">
-              Aug 12 2016
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1392,7 +1584,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
