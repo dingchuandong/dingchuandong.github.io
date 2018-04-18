@@ -1,0 +1,738 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="性能优化小结###界面卡顿产生的原因
+在VSync信号到来后，系统图形服务会通过CADisplayLink等机制通知App，App主线程开始在CPU中计算显示内容，比如视图的创建、布局计算、图片解码、文本绘制等。随后CPU会将计算好的内容提交到GPU去，由GPU进行变换、合成、渲染。随后GPU会把渲染结果提交到帧缓冲区去，等待下一次VSync信号到来时显示到屏幕上。由于垂直同步的机制，如果在一个V">
+<meta property="og:type" content="article">
+<meta property="og:title" content="性能优化小结">
+<meta property="og:url" content="http://yoursite.com/2017/09/03/性能优化小结/index.html">
+<meta property="og:site_name" content="Snow Memory">
+<meta property="og:description" content="性能优化小结###界面卡顿产生的原因
+在VSync信号到来后，系统图形服务会通过CADisplayLink等机制通知App，App主线程开始在CPU中计算显示内容，比如视图的创建、布局计算、图片解码、文本绘制等。随后CPU会将计算好的内容提交到GPU去，由GPU进行变换、合成、渲染。随后GPU会把渲染结果提交到帧缓冲区去，等待下一次VSync信号到来时显示到屏幕上。由于垂直同步的机制，如果在一个V">
+<meta property="og:image" content="http://cc.cocimg.com/api/uploads//20180309/1520562238557613.png">
+<meta property="og:updated_time" content="2018-04-18T01:46:29.806Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="性能优化小结">
+<meta name="twitter:description" content="性能优化小结###界面卡顿产生的原因
+在VSync信号到来后，系统图形服务会通过CADisplayLink等机制通知App，App主线程开始在CPU中计算显示内容，比如视图的创建、布局计算、图片解码、文本绘制等。随后CPU会将计算好的内容提交到GPU去，由GPU进行变换、合成、渲染。随后GPU会把渲染结果提交到帧缓冲区去，等待下一次VSync信号到来时显示到屏幕上。由于垂直同步的机制，如果在一个V">
+<meta name="twitter:image" content="http://cc.cocimg.com/api/uploads//20180309/1520562238557613.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/09/03/性能优化小结/"/>
+
+  <title> 性能优化小结 | Snow Memory </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta custom-logo">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Snow Memory</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">雪忆, 如雪般单纯, 冷静思考.</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                性能优化小结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-09-03T16:58:13+08:00" content="Sep 3 2017">
+              Sep 3 2017
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="性能优化小结"><a href="#性能优化小结" class="headerlink" title="性能优化小结"></a>性能优化小结</h2><p>###界面卡顿产生的原因<br><img src="http://cc.cocimg.com/api/uploads//20180309/1520562238557613.png" alt=""></p>
+<p>在VSync信号到来后，系统图形服务会通过CADisplayLink等机制通知App，App主线程开始在CPU中计算显示内容，比如视图的创建、布局计算、图片解码、文本绘制等。随后CPU会将计算好的内容提交到GPU去，由GPU进行变换、合成、渲染。随后GPU会把渲染结果提交到帧缓冲区去，等待下一次VSync信号到来时显示到屏幕上。由于垂直同步的机制，如果在一个VSync时间内，CPU或者GPU没有完成内容提交，则那一帧就会被丢弃，等待下一次机会再显示，而这时显示屏会保留之前的内容不变。这就是界面卡顿的原因。</p>
+<p>在开发中，CPU和GPU中任何一个压力过大，都会导致掉帧现象(FPS&lt; 60)</p>
+<p>###CPU</p>
+<p>加载资源，对象创建，对象调整，对象销毁，布局计算，Autolayout，文本计算，文本渲染，图片的解码， 图像的绘制（Core Graphics）都是在CPU上面进行的。</p>
+<p>###CPU资源消耗原因以及解决办法</p>
+<p>1、对象的创建：</p>
+<p>对象的创建会分配内存、设置属性等，会消耗CPU资源。所以尽量使用轻量对象代替，比如能用CALayer的时候尽量不用UIView，敏感位置能不用IB尽量使用纯代码手写。</p>
+<p>推迟同一时间创建对象，推荐使用懒加载在需要使用时候创建对象。</p>
+<p>2、对象调整</p>
+<p>对 UIView 的这些属性进行调整时，消耗的资源要远大于一般的属性。对此你在应用中，应该尽量减少不必要的属性修改。</p>
+<p>当视图层次调整时，UIView、CALayer 之间会出现很多方法调用与通知，所以在优化性能时，应该尽量避免调整视图层次、添加和移除视图。</p>
+<p>3、对象销毁</p>
+<p>当前类持有大量对象时候，其销毁时候的资源消耗就非常明显。建议创建销毁的异步队列，将需要销毁的对象放到队列中销毁。</p>
+<p>4、布局计算</p>
+<p>布局计算在UITableView使用中是最常见的消耗资源的地方。建议取到数据之后，异步进行计算布局并缓存下来，当复用Cell时候直接调用缓存数据。</p>
+<p>5、AutoLayout</p>
+<p>Autolayout 对于复杂视图来说常常会产生严重的性能问题，AutoLayout相对低效的原因是隐藏在底层的命名为”Cassowary“的约束求解系统，随着视图数量的增长，Autolayout 带来的 CPU 消耗会呈指数级上升，当Cell内约束超过25个的时候，会降低滑动的帧率。</p>
+<p>具体：<a href="http://pilky.me/36/" target="_blank" rel="external">http://pilky.me/36/</a></p>
+<p>6、文本的计算以及渲染</p>
+<p>UI中存在大量的对于文本高度的适配，可以参考：用 [NSAttributedString boundingRectWithSize:options:context:] 来计算文本宽高，用 -[NSAttributedString drawWithRect:options:context:] 来绘制文本。尽管这两个方法性能不错，但仍旧需要放到后台线程进行以避免阻塞主线程。</p>
+<p>常见的文本控件 （UILabel、UITextView 等），其排版和绘制都是在主线程进行的，当显示大量文本时，CPU 的压力会非常大。解决办法是利用TextKit或者是CoreText自定义文本控件。详见：<a href="https://github.com/ibireme/YYText" target="_blank" rel="external">YYText</a>。</p>
+<p>7、图片解码以及图像的绘制</p>
+<p>当你用 UIImage 或 CGImageSource 的那几个方法创建图片时，图片数据并不会立刻解码。图片设置到 UIImageView 或者 CALayer.contents 中去，并且 CALayer 被提交到 GPU 前，CGImage 中的数据才会得到解码。这一步是发生在主线程的，并且不可避免。如果想要绕开这个机制，常见的做法是在后台线程先把图片绘制到 CGBitmapContext 中，然后从 Bitmap 直接创建图片。目前常见的网络图片库都自带这个功能。</p>
+<p>个最常见的地方就是 [UIView drawRect:] 里面了。由于 CoreGraphic 方法通常都是线程安全的，所以图像的绘制可以很容易的放到后台线程进行。</p>
+<p>8、文件系统的调用</p>
+<p>NSFileManager获取一个目录获取文件信息，进行多次递归计算，stat几乎瞬间完成，NSFileManager耗时较长且消耗CPU。</p>
+<p>###GPU</p>
+<p>GPU是一个专门为图形高并发计算而量身定做的处理单元，比CPU使用更少的电来完成工作并且GPU的浮点计算能力要超出CPU很多。</p>
+<p>GPU的渲染性能要比CPU高效很多，同时对系统的负载和消耗也更低一些，所以在开发中，<strong>我们应该尽量让CPU负责主线程的UI调动，把图形显示相关的工作交给GPU来处理</strong>，当涉及到光栅化等一些工作时，CPU也会参与进来，这点在后面再详细描述。</p>
+<p>相对于CPU来说，GPU能干的事情比较单一：接收提交的纹理（Texture）和顶点描述（三角形），应用变换（transform）、混合（合成）并渲染，然后输出到屏幕上。通常你所能看到的内容，主要也就是纹理（图片）和形状（三角模拟的矢量图形）两类。</p>
+<p>###GPU资源消耗原因以及解决办法：</p>
+<p>1、纹理的渲染</p>
+<p>当在较短时间显示大量图片时（比如 TableView 存在非常多的图片并且快速滑动时），CPU 占用率很低，GPU 占用非常高，界面仍然会掉帧。避免这种情况的方法只能是尽量减少在短时间内大量图片的显示，尽可能将多张图片合成为一张进行显示。</p>
+<p>2、视图的混合（Blended）</p>
+<p>视图结构过于复杂，混合的过程、会消耗很多 GPU 资源。为了减轻这种情况的 GPU 消耗，应用应当尽量减少视图数量和层次，并在不透明的视图里标明 opaque 属性以避免无用的 Alpha 通道合成。当然，这也可以用上面的方法，把多个视图预先渲染为一张图片来显示。</p>
+<p>Blended Layers（视图混合）：在同一个区域内，存在着多个有透明度的图层，那么GPU需要更多的计算，混合上下多个图层才能得出最终像素的RGB值。</p>
+<p>Misaligned Images（像素对齐）：逻辑像素（point）和 物理像素（pixel)无法相匹配；图片的size和显示图片的imageView的size（逻辑像素（point））不相等。</p>
+<p>3、图形的生成</p>
+<p>CALayer 的 border、圆角、阴影、遮罩（mask），CASharpLayer 的矢量图形显示，通常会触发离屏渲染（offscreen rendering），而离屏渲染通常发生在 GPU 中。可以尝试开启 CALayer.shouldRasterize 属性，但这会把原本离屏渲染的操作转嫁到 CPU 上去。</p>
+<p>好的方法是使用图片遮罩等方法，避免使用圆角和隐形等。<a href="http://www.imlifengfeng.com/blog/?p=593" target="_blank" rel="external">详细：iOS的离屏渲染</a></p>
+<p>解决方案：</p>
+<p>1、预先计算UI布局</p>
+<p>获取数据之后，异步计算Cell高度以及各控件高度和位置，并储存在CellLayouModel中，当每次Cell需要高度以及内部布局的时候就可以直接调用，不需要进行重复计算。</p>
+<p>2、使用自动缓存高度</p>
+<p>iOS 8之后出现了UITableView通过约束自动计算高度，但是因为iOS对于约束的算法问题，会导致流畅性降低，<a href="http://blog.sunnyxx.com/2015/05/17/cell-height-calculation/" target="_blank" rel="external">FDTemplateLayoutCell</a>很好的优化了这个问题。</p>
+<p>3、异步绘制</p>
+<p>Facebook的开源项目<a href="https://github.com/TextureGroup/Texture" target="_blank" rel="external">Texture</a>（原AsyncDisplayKit），通过利用ASDisplayNode封装了CALayer，实现了异步绘制。</p>
+<p>第三方微博客户端墨客的是现实，当滑动时，松开手指后，立刻计算出滑动停止时 Cell 的位置，并预先绘制那个位置附近的几个 Cell，而忽略当前滑动中的 Cell。但也有缺点，快速滑动的时候有可能会出现大量空白。</p>
+<p>3、高效图片加载</p>
+<p><a href="https://github.com/rs/SDWebImage" target="_blank" rel="external">SDWebImage-github</a></p>
+<p><a href="https://github.com/ibireme" target="_blank" rel="external">YYImage-github</a></p>
+<p>4、预加载</p>
+<p>列表当中，当滑动到一个可以设定的位置的时候，提前获取下载下一页的数据，并绘制UI。详见：<a href="https://zhuanlan.zhihu.com/p/23418800" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/23418800</a>。</p>
+<p>5、针对Blended Layers以及Misaligned Images</p>
+<p>Blended Layers：</p>
+<p>尽量少的使用具有透明色的图片</p>
+<p>尽量多的将UI部件增加背景色</p>
+<p>减少同一像素点进行过多的颜色计算</p>
+<p>Misaligned Images：</p>
+<p>现象：</p>
+<p>洋红色：UIView的frame像素不对齐，即不能换算成整数像素值。</p>
+<p>黄色：UIImageView的图片像素大小与其frame.size不对齐，图片发生了缩放造成。</p>
+<p>解决：</p>
+<p>尽量使用ceil()，保证没有小数的UI绘制</p>
+<p>尽量不实用0.01f标记UITableView或者UICollectionView的header以及footer</p>
+<p>网络上获取的图片没有@2x和@3x的区别，需要我们缩放图片到与UIImageView对应的尺寸，且缩放后的图片的scale和[UIScreen mainScreen].scale相等，再显示出来。</p>
+<p>其他：</p>
+<p>下面的情况或操作会引发离屏渲染：</p>
+<ul>
+<li><p>为图层设置遮罩（layer.mask）</p>
+</li>
+<li><p>将图层的layer.masksToBounds / view.clipsToBounds属性设置为true</p>
+</li>
+<li><p>将图层layer.allowsGroupOpacity属性设置为YES和layer.opacity小于1.0</p>
+</li>
+<li><p>为图层设置阴影（layer.shadow *）。</p>
+</li>
+<li><p>为图层设置layer.shouldRasterize=true</p>
+</li>
+<li><p>具有layer.cornerRadius，layer.edgeAntialiasingMask，layer.allowsEdgeAntialiasing的图层</p>
+</li>
+<li><p>文本（任何种类，包括UILabel，CATextLayer，Core Text等）。</p>
+</li>
+<li><p>使用CGContext在drawRect :方法中绘制大部分情况下会导致离屏渲染，甚至仅仅是一个空的实现。</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag">#iOS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/12/ViewController各方法执行顺序/" rel="next" title="UIViewController各方法的调用顺序及功能">
+                <i class="fa fa-chevron-left"></i> UIViewController各方法的调用顺序及功能
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/AliPay.png"
+               alt="chuandong ding" />
+          <p class="site-author-name" itemprop="name">chuandong ding</p>
+          <p class="site-description motion-element" itemprop="description">iOS</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/dingchuandong" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="twitter" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2725322503" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://slarker.me/" title="slarker" target="_blank">slarker</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://opsnotes.net/about/" title="大神" target="_blank">大神</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#性能优化小结"><span class="nav-number">1.</span> <span class="nav-text">性能优化小结</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chuandong ding</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
