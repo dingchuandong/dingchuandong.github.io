@@ -1,0 +1,677 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="前两天加了一个actionSheet，忘记针对iPad适配，导致悲剧了😭，今天顺便就在复习一下。自iOS 8开始，UIAlertController就取代了UIAlertView和UIAlertSheet。
+创建一个demo看看1 简单的对话框12345678910111213141516171819- (void)showAlertView&amp;#123;    UIAlertController">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UIAlterController使用">
+<meta property="og:url" content="http://yoursite.com/2017/10/23/UIAlterController使用/index.html">
+<meta property="og:site_name" content="Snow Memory">
+<meta property="og:description" content="前两天加了一个actionSheet，忘记针对iPad适配，导致悲剧了😭，今天顺便就在复习一下。自iOS 8开始，UIAlertController就取代了UIAlertView和UIAlertSheet。
+创建一个demo看看1 简单的对话框12345678910111213141516171819- (void)showAlertView&amp;#123;    UIAlertController">
+<meta property="og:image" content="http://oc1jw3mv7.bkt.clouddn.com/alert.jpg">
+<meta property="og:image" content="http://oc1jw3mv7.bkt.clouddn.com/actionSheet.jpg">
+<meta property="og:updated_time" content="2018-07-05T02:54:44.090Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="UIAlterController使用">
+<meta name="twitter:description" content="前两天加了一个actionSheet，忘记针对iPad适配，导致悲剧了😭，今天顺便就在复习一下。自iOS 8开始，UIAlertController就取代了UIAlertView和UIAlertSheet。
+创建一个demo看看1 简单的对话框12345678910111213141516171819- (void)showAlertView&amp;#123;    UIAlertController">
+<meta name="twitter:image" content="http://oc1jw3mv7.bkt.clouddn.com/alert.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/10/23/UIAlterController使用/"/>
+
+  <title> UIAlterController使用 | Snow Memory </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta custom-logo">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Snow Memory</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">雪忆, 如雪般单纯, 冷静思考.</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                UIAlterController使用
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-10-23T14:58:13+08:00" content="Oct 23 2017">
+              Oct 23 2017
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前两天加了一个actionSheet，忘记针对iPad适配，导致悲剧了😭，今天顺便就在复习一下。"><a href="#前两天加了一个actionSheet，忘记针对iPad适配，导致悲剧了😭，今天顺便就在复习一下。" class="headerlink" title="前两天加了一个actionSheet，忘记针对iPad适配，导致悲剧了😭，今天顺便就在复习一下。"></a>前两天加了一个actionSheet，忘记针对iPad适配，导致悲剧了😭，今天顺便就在复习一下。</h2><p>自iOS 8开始，UIAlertController就取代了UIAlertView和UIAlertSheet。</p>
+<h2 id="创建一个demo看看"><a href="#创建一个demo看看" class="headerlink" title="创建一个demo看看"></a>创建一个demo看看</h2><h3 id="1-简单的对话框"><a href="#1-简单的对话框" class="headerlink" title="1 简单的对话框"></a>1 简单的对话框</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">- (void)showAlertView</div><div class="line">&#123;</div><div class="line">    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@&quot;demo&quot; message:nil preferredStyle:UIAlertControllerStyleAlert];</div><div class="line"></div><div class="line">    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@&quot;OK&quot; style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) &#123;</div><div class="line">        NSLog(@&quot;OK Action&quot;);</div><div class="line">    &#125;];</div><div class="line">    UIAlertAction *warningAction = [UIAlertAction actionWithTitle:@&quot;warning&quot; style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) &#123;</div><div class="line">        NSLog(@&quot;warning Action&quot;);</div><div class="line">    &#125;];</div><div class="line">    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@&quot;Cancel&quot; style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) &#123;</div><div class="line">        NSLog(@&quot;Cancel Action&quot;);</div><div class="line">    &#125;];</div><div class="line"></div><div class="line">    [alertController addAction:okAction];</div><div class="line">    [alertController addAction:warningAction];</div><div class="line">    [alertController addAction:cancelAction];</div><div class="line">    [self presentViewController:alertController animated:YES completion:nil];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/alert.jpg" alt="alert.png"></p>
+<h3 id="2-ActionSheet"><a href="#2-ActionSheet" class="headerlink" title="2 ActionSheet"></a>2 ActionSheet</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">- (void)showAlertView</div><div class="line">&#123;</div><div class="line">    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@&quot;demo&quot; message:nil preferredStyle:UIAlertControllerStyleActionSheet];</div><div class="line"></div><div class="line">    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@&quot;OK&quot; style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) &#123;</div><div class="line">        NSLog(@&quot;OK Action&quot;);</div><div class="line">    &#125;];</div><div class="line">    UIAlertAction *warningAction = [UIAlertAction actionWithTitle:@&quot;warning&quot; style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) &#123;</div><div class="line">        NSLog(@&quot;warning Action&quot;);</div><div class="line">    &#125;];</div><div class="line">    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@&quot;Cancel&quot; style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) &#123;</div><div class="line">        NSLog(@&quot;Cancel Action&quot;);</div><div class="line">    &#125;];</div><div class="line"></div><div class="line">    [alertController addAction:okAction];</div><div class="line">    [alertController addAction:warningAction];</div><div class="line">    [alertController addAction:cancelAction];</div><div class="line">    [self presentViewController:alertController animated:YES completion:nil];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/actionSheet.jpg" alt="actionSheet.png"></p>
+<h3 id="这里的preferredStyle-参数是UIAlertControllerStyleActionSheet，如果Action-Sheet中有取消按钮，取消按钮每次都会在底部显示，其他按钮会按照添加的顺序显示。在Action-Sheet内不能添加文本框。如果你添加了文本框，在运行时会抛出下面的异常提醒："><a href="#这里的preferredStyle-参数是UIAlertControllerStyleActionSheet，如果Action-Sheet中有取消按钮，取消按钮每次都会在底部显示，其他按钮会按照添加的顺序显示。在Action-Sheet内不能添加文本框。如果你添加了文本框，在运行时会抛出下面的异常提醒：" class="headerlink" title="这里的preferredStyle:参数是UIAlertControllerStyleActionSheet，如果Action Sheet中有取消按钮，取消按钮每次都会在底部显示，其他按钮会按照添加的顺序显示。在Action Sheet内不能添加文本框。如果你添加了文本框，在运行时会抛出下面的异常提醒："></a>这里的preferredStyle:参数是UIAlertControllerStyleActionSheet，如果Action Sheet中有取消按钮，取消按钮每次都会在底部显示，其他按钮会按照添加的顺序显示。在Action Sheet内不能添加文本框。如果你添加了文本框，在运行时会抛出下面的异常提醒：</h3><blockquote>
+<p><em>*</em> Terminating app due to uncaught exception<br>‘NSInternalInconsistencyException’, reason: ‘Text fields can only be added to an alert controller of style UIAlertControllerStyleAlert’</p>
+</blockquote>
+<p>##如上面说到的，在iPad中ActionSheet以弹出框的形式呈现，如果还是按照上面写就会崩溃。iPad弹出弹出框总是需要一个锚点，锚点可以是源视图，也可以是按钮。需要添加一下代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">alertController.popoverPresentationController.sourceView = self.view;</div><div class="line">alertController.popoverPresentationController.sourceRect = self.view.bounds;</div></pre></td></tr></table></figure></p>
+<h2 id="3-退出警告控制器"><a href="#3-退出警告控制器" class="headerlink" title="3 退出警告控制器"></a>3 退出警告控制器</h2><h3 id="警报控制器会在用户点击按钮后自动消失，但在app进入后台时，警告框和选择表并不会自动退出。此时，我们需要通过代码实现退出警报控制器。"><a href="#警报控制器会在用户点击按钮后自动消失，但在app进入后台时，警告框和选择表并不会自动退出。此时，我们需要通过代码实现退出警报控制器。" class="headerlink" title="警报控制器会在用户点击按钮后自动消失，但在app进入后台时，警告框和选择表并不会自动退出。此时，我们需要通过代码实现退出警报控制器。"></a>警报控制器会在用户点击按钮后自动消失，但在app进入后台时，警告框和选择表并不会自动退出。此时，我们需要通过代码实现退出警报控制器。</h3><h3 id="在通知中心进行注册，当接收到app进入后台的通知时退出警报控制器。更新后的viewDidLoad如下"><a href="#在通知中心进行注册，当接收到app进入后台的通知时退出警报控制器。更新后的viewDidLoad如下" class="headerlink" title="在通知中心进行注册，当接收到app进入后台的通知时退出警报控制器。更新后的viewDidLoad如下"></a>在通知中心进行注册，当接收到app进入后台的通知时退出警报控制器。更新后的viewDidLoad如下</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">- (void)viewDidLoad</div><div class="line">&#123;</div><div class="line">    [super viewDidLoad];</div><div class="line">    // app 进入后台后隐藏警报控制器</div><div class="line">    [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidEnterBackgroundNotification object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) &#123;</div><div class="line">        [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];</div><div class="line">    &#125;];</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)dealloc</div><div class="line">&#123;</div><div class="line">    // 移除观察者</div><div class="line">    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="最后一定记得移除观察者，否则会引起崩溃。"><a href="#最后一定记得移除观察者，否则会引起崩溃。" class="headerlink" title="最后一定记得移除观察者，否则会引起崩溃。"></a>最后一定记得移除观察者，否则会引起崩溃。</h2><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li>AlertView<ul>
+<li>一般显示在当前视图控制器的中心，点击警告框以外区域不能隐藏警告控制器。</li>
+<li>可以添加任意数量文本框。</li>
+<li>有一个或两个按钮时，横向排布，如果有Cancel按钮，则Cancel按钮显示在左侧；有两个以上按钮时，竖列排布，如果有Cancel按钮，则Cancel按钮显示在最底部。其他按钮按照添加顺序排布。</li>
+</ul>
+</li>
+<li>ActionSheet<ul>
+<li>在iPhone中自下而上滑出显示在当前控制器的底部，点击action sheet以外区域可以隐藏UIAlertController。</li>
+<li>在iPad中以popover方式、以源视图为锚点显示，点击选择表以外的区域可以隐藏警告控制器。</li>
+<li>不能添加文本框。</li>
+<li>按钮竖列排布，在iPhone中，Cancel按钮默认在底部显示；在iPad中，Cancel按钮默认不显示</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag">#iOS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/03/Button图文/" rel="next" title="button图文">
+                <i class="fa fa-chevron-left"></i> button图文
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/AliPay.png"
+               alt="chuandong ding" />
+          <p class="site-author-name" itemprop="name">chuandong ding</p>
+          <p class="site-description motion-element" itemprop="description">iOS</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/dingchuandong" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="twitter" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2725322503" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://slarker.me/" title="slarker" target="_blank">slarker</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://opsnotes.net/about/" title="大神" target="_blank">大神</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前两天加了一个actionSheet，忘记针对iPad适配，导致悲剧了😭，今天顺便就在复习一下。"><span class="nav-number">1.</span> <span class="nav-text">前两天加了一个actionSheet，忘记针对iPad适配，导致悲剧了😭，今天顺便就在复习一下。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建一个demo看看"><span class="nav-number">2.</span> <span class="nav-text">创建一个demo看看</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-简单的对话框"><span class="nav-number">2.1.</span> <span class="nav-text">1 简单的对话框</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-ActionSheet"><span class="nav-number">2.2.</span> <span class="nav-text">2 ActionSheet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#这里的preferredStyle-参数是UIAlertControllerStyleActionSheet，如果Action-Sheet中有取消按钮，取消按钮每次都会在底部显示，其他按钮会按照添加的顺序显示。在Action-Sheet内不能添加文本框。如果你添加了文本框，在运行时会抛出下面的异常提醒："><span class="nav-number">2.3.</span> <span class="nav-text">这里的preferredStyle:参数是UIAlertControllerStyleActionSheet，如果Action Sheet中有取消按钮，取消按钮每次都会在底部显示，其他按钮会按照添加的顺序显示。在Action Sheet内不能添加文本框。如果你添加了文本框，在运行时会抛出下面的异常提醒：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-退出警告控制器"><span class="nav-number">3.</span> <span class="nav-text">3 退出警告控制器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#警报控制器会在用户点击按钮后自动消失，但在app进入后台时，警告框和选择表并不会自动退出。此时，我们需要通过代码实现退出警报控制器。"><span class="nav-number">3.1.</span> <span class="nav-text">警报控制器会在用户点击按钮后自动消失，但在app进入后台时，警告框和选择表并不会自动退出。此时，我们需要通过代码实现退出警报控制器。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在通知中心进行注册，当接收到app进入后台的通知时退出警报控制器。更新后的viewDidLoad如下"><span class="nav-number">3.2.</span> <span class="nav-text">在通知中心进行注册，当接收到app进入后台的通知时退出警报控制器。更新后的viewDidLoad如下</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后一定记得移除观察者，否则会引起崩溃。"><span class="nav-number">4.</span> <span class="nav-text">最后一定记得移除观察者，否则会引起崩溃。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number"></span> <span class="nav-text">总结</span></a></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chuandong ding</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
