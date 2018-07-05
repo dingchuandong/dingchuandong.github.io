@@ -535,13 +535,11 @@
       
         
           
-            <h2 id="性能优化小结"><a href="#性能优化小结" class="headerlink" title="性能优化小结"></a>性能优化小结</h2><p>###界面卡顿产生的原因<br><img src="http://cc.cocimg.com/api/uploads//20180309/1520562238557613.png" alt=""></p>
+            <h2 id="性能优化小结"><a href="#性能优化小结" class="headerlink" title="性能优化小结"></a>性能优化小结</h2><h3 id="界面卡顿产生的原因"><a href="#界面卡顿产生的原因" class="headerlink" title="界面卡顿产生的原因"></a>界面卡顿产生的原因</h3><p><img src="http://cc.cocimg.com/api/uploads//20180309/1520562238557613.png" alt=""></p>
 <p>在VSync信号到来后，系统图形服务会通过CADisplayLink等机制通知App，App主线程开始在CPU中计算显示内容，比如视图的创建、布局计算、图片解码、文本绘制等。随后CPU会将计算好的内容提交到GPU去，由GPU进行变换、合成、渲染。随后GPU会把渲染结果提交到帧缓冲区去，等待下一次VSync信号到来时显示到屏幕上。由于垂直同步的机制，如果在一个VSync时间内，CPU或者GPU没有完成内容提交，则那一帧就会被丢弃，等待下一次机会再显示，而这时显示屏会保留之前的内容不变。这就是界面卡顿的原因。</p>
 <p>在开发中，CPU和GPU中任何一个压力过大，都会导致掉帧现象(FPS&lt; 60)</p>
-<p>###CPU</p>
-<p>加载资源，对象创建，对象调整，对象销毁，布局计算，Autolayout，文本计算，文本渲染，图片的解码， 图像的绘制（Core Graphics）都是在CPU上面进行的。</p>
-<p>###CPU资源消耗原因以及解决办法</p>
-<p>1、对象的创建：</p>
+<h3 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h3><p>加载资源，对象创建，对象调整，对象销毁，布局计算，Autolayout，文本计算，文本渲染，图片的解码， 图像的绘制（Core Graphics）都是在CPU上面进行的。</p>
+<h3 id="CPU资源消耗原因以及解决办法"><a href="#CPU资源消耗原因以及解决办法" class="headerlink" title="CPU资源消耗原因以及解决办法"></a>CPU资源消耗原因以及解决办法</h3><p>1、对象的创建：</p>
 <p>对象的创建会分配内存、设置属性等，会消耗CPU资源。所以尽量使用轻量对象代替，比如能用CALayer的时候尽量不用UIView，敏感位置能不用IB尽量使用纯代码手写。</p>
 <p>推迟同一时间创建对象，推荐使用懒加载在需要使用时候创建对象。</p>
 <p>2、对象调整</p>
@@ -562,12 +560,10 @@
 <p>个最常见的地方就是 [UIView drawRect:] 里面了。由于 CoreGraphic 方法通常都是线程安全的，所以图像的绘制可以很容易的放到后台线程进行。</p>
 <p>8、文件系统的调用</p>
 <p>NSFileManager获取一个目录获取文件信息，进行多次递归计算，stat几乎瞬间完成，NSFileManager耗时较长且消耗CPU。</p>
-<p>###GPU</p>
-<p>GPU是一个专门为图形高并发计算而量身定做的处理单元，比CPU使用更少的电来完成工作并且GPU的浮点计算能力要超出CPU很多。</p>
+<h3 id="GPU"><a href="#GPU" class="headerlink" title="GPU"></a>GPU</h3><p>GPU是一个专门为图形高并发计算而量身定做的处理单元，比CPU使用更少的电来完成工作并且GPU的浮点计算能力要超出CPU很多。</p>
 <p>GPU的渲染性能要比CPU高效很多，同时对系统的负载和消耗也更低一些，所以在开发中，<strong>我们应该尽量让CPU负责主线程的UI调动，把图形显示相关的工作交给GPU来处理</strong>，当涉及到光栅化等一些工作时，CPU也会参与进来，这点在后面再详细描述。</p>
 <p>相对于CPU来说，GPU能干的事情比较单一：接收提交的纹理（Texture）和顶点描述（三角形），应用变换（transform）、混合（合成）并渲染，然后输出到屏幕上。通常你所能看到的内容，主要也就是纹理（图片）和形状（三角模拟的矢量图形）两类。</p>
-<p>###GPU资源消耗原因以及解决办法：</p>
-<p>1、纹理的渲染</p>
+<h3 id="GPU资源消耗原因以及解决办法："><a href="#GPU资源消耗原因以及解决办法：" class="headerlink" title="GPU资源消耗原因以及解决办法："></a>GPU资源消耗原因以及解决办法：</h3><p>1、纹理的渲染</p>
 <p>当在较短时间显示大量图片时（比如 TableView 存在非常多的图片并且快速滑动时），CPU 占用率很低，GPU 占用非常高，界面仍然会掉帧。避免这种情况的方法只能是尽量减少在短时间内大量图片的显示，尽可能将多张图片合成为一张进行显示。</p>
 <p>2、视图的混合（Blended）</p>
 <p>视图结构过于复杂，混合的过程、会消耗很多 GPU 资源。为了减轻这种情况的 GPU 消耗，应用应当尽量减少视图数量和层次，并在不透明的视图里标明 opaque 属性以避免无用的 Alpha 通道合成。当然，这也可以用上面的方法，把多个视图预先渲染为一张图片来显示。</p>
@@ -1492,7 +1488,7 @@
 <h1 id="9-创建链接"><a href="#9-创建链接" class="headerlink" title="9.创建链接"></a>9.创建链接</h1><p>Markdown语法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;test@test.com&gt;</div></pre></td></tr></table></figure>
 <p>预览效果：</p>
-<p><a href="&#109;&#x61;&#105;&#x6c;&#x74;&#x6f;&#58;&#x74;&#101;&#115;&#x74;&#64;&#x74;&#x65;&#115;&#116;&#x2e;&#99;&#x6f;&#x6d;">&#x74;&#101;&#115;&#x74;&#64;&#x74;&#x65;&#115;&#116;&#x2e;&#99;&#x6f;&#x6d;</a></p>
+<p><a href="&#109;&#97;&#x69;&#x6c;&#116;&#x6f;&#x3a;&#116;&#101;&#x73;&#x74;&#x40;&#x74;&#101;&#115;&#116;&#46;&#99;&#111;&#x6d;">&#116;&#101;&#x73;&#x74;&#x40;&#x74;&#101;&#115;&#116;&#46;&#99;&#111;&#x6d;</a></p>
 <h1 id="10-转义字符"><a href="#10-转义字符" class="headerlink" title="10.转义字符"></a>10.转义字符</h1><p>Markdown语法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">\\</div><div class="line">\`</div><div class="line">\*</div><div class="line">\_</div><div class="line">\&#123;\&#125;</div><div class="line">\[\]</div><div class="line">\(\)</div><div class="line">\#</div><div class="line">\+</div><div class="line">\-</div><div class="line">\.</div><div class="line">\!</div></pre></td></tr></table></figure>
 <p>预览效果：</p>
