@@ -1,0 +1,764 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="NSInvocation一、概念在 iOS中可以直接调用某个对象的消息方式有两种：
+performSelector:withObject（两个以上参数使用比较麻烦）
+NSInvocation（参数个数没有限制）二、使用1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NSInvocation">
+<meta property="og:url" content="http://yoursite.com/2018/03/12/NSInvocation/index.html">
+<meta property="og:site_name" content="Snow Memory">
+<meta property="og:description" content="NSInvocation一、概念在 iOS中可以直接调用某个对象的消息方式有两种：
+performSelector:withObject（两个以上参数使用比较麻烦）
+NSInvocation（参数个数没有限制）二、使用1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950">
+<meta property="og:updated_time" content="2018-12-04T09:11:36.062Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NSInvocation">
+<meta name="twitter:description" content="NSInvocation一、概念在 iOS中可以直接调用某个对象的消息方式有两种：
+performSelector:withObject（两个以上参数使用比较麻烦）
+NSInvocation（参数个数没有限制）二、使用1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/12/NSInvocation/"/>
+
+  <title> NSInvocation | Snow Memory </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta custom-logo">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Snow Memory</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">雪忆, 如雪般单纯, 冷静思考.</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-积累 " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                NSInvocation
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-03-12T17:25:19+08:00" content="Mar 12 2018">
+              Mar 12 2018
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="NSInvocation"><a href="#NSInvocation" class="headerlink" title="NSInvocation"></a>NSInvocation</h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><h3 id="在-iOS中可以直接调用某个对象的消息方式有两种："><a href="#在-iOS中可以直接调用某个对象的消息方式有两种：" class="headerlink" title="在 iOS中可以直接调用某个对象的消息方式有两种："></a>在 iOS中可以直接调用某个对象的消息方式有两种：</h3><ul>
+<li>performSelector:withObject（两个以上参数使用比较麻烦）</li>
+<li>NSInvocation（参数个数没有限制）<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div></pre></td><td class="code"><pre><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line">    </div><div class="line">    [self performSelector:@selector(sendMessage:) withObject:@&quot;performSelector&quot;];</div><div class="line">    </div><div class="line">    //没有返回值</div><div class="line">    [self createInvocation];</div><div class="line">    </div><div class="line">    //有返回值</div><div class="line">    [self returnValueInvocation];</div><div class="line">&#125;</div><div class="line">- (void)createInvocation</div><div class="line">&#123;</div><div class="line">    //NSInvocation;用来包装方法和对应的对象，它可以存储方法的名称，对应的对象，对应的参数,</div><div class="line">    /*</div><div class="line">     NSMethodSignature：签名：再创建NSMethodSignature的时候，必须传递一个签名对象，签名对象的作用：用于获取参数的个数和方法的返回值</div><div class="line">     */</div><div class="line">    //创建签名对象的时候不是使用NSMethodSignature这个类创建，而是方法属于谁就用谁来创建</div><div class="line">    NSMethodSignature *signature = [ViewController instanceMethodSignatureForSelector:@selector(sendMessage:)];</div><div class="line">    //1、创建NSInvocation对象</div><div class="line">    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];</div><div class="line">    invocation.target = self;</div><div class="line">    //invocation中的方法必须和签名中的方法一致。</div><div class="line">    invocation.selector = @selector(sendMessage:);</div><div class="line">    /*第一个参数：需要给指定方法传递的值</div><div class="line">     第一个参数需要接收一个指针，也就是传递值的时候需要传递地址*/</div><div class="line">    //第二个参数：需要给指定方法的第几个参数传值</div><div class="line">    NSString *number = @&quot;NSInvocation&quot;;</div><div class="line">    //注意：设置参数的索引时不能从0开始，因为0已经被self占用，1已经被_cmd占用</div><div class="line">    [invocation setArgument:&amp;number atIndex:2];</div><div class="line">    //2、调用NSInvocation对象的invoke方法</div><div class="line">    //只要调用invocation的invoke方法，就代表需要执行NSInvocation对象中制定对象的指定方法，并且传递指定的参数</div><div class="line">    [invocation invoke];</div><div class="line">&#125;</div><div class="line">- (void)returnValueInvocation</div><div class="line">&#123;</div><div class="line">    SEL myMethod = @selector(returnMessage:parm:parm:);</div><div class="line">    NSMethodSignature *sig  = [[self class] instanceMethodSignatureForSelector:myMethod];</div><div class="line">    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:sig];</div><div class="line">    [invocation setTarget:self];</div><div class="line">    [invocation setSelector:myMethod];</div><div class="line">    int a=1;</div><div class="line">    int b=2;</div><div class="line">    int c=3;</div><div class="line">    [invocation setArgument:&amp;a atIndex:2];</div><div class="line">    [invocation setArgument:&amp;b atIndex:3];</div><div class="line">    [invocation setArgument:&amp;c atIndex:4];</div><div class="line">    </div><div class="line">    [invocation invoke];</div><div class="line">    //获取返回值类型</div><div class="line">    const char * returnValueType = sig.methodReturnType;</div><div class="line">    //声明一个返回值变量 (arc模式下，getReturnValue：仅仅是从invocation的返回值拷贝到指定的内存地址，如果返回值是一个NSObject对象的话，是没有处理起内存管理的。而我们在定义resultSet时使用的是__strong类型的指针对象，arc就会假设该内存块已被retain（实际没有），当resultSet出了定义域释放时，导致该crash。假如在定义之前有赋值的话，还会造成内存泄露的问题。)</div><div class="line">     __unsafe_unretained NSObject *returnValue = nil;</div><div class="line">    </div><div class="line">    //如果没有返回值，也就是消息声明为void，那么returnValue ＝ nil</div><div class="line">    if (!strcmp(returnValueType, @encode(void))) &#123;</div><div class="line">        NSLog(@&quot;没有返回值，即返回值类型为void&quot;);</div><div class="line">        returnValue = nil;</div><div class="line">    &#125;else if (!strcmp(returnValueType, @encode(id)))&#123;</div><div class="line">        //如果返回值为对象，那么为变量赋值</div><div class="line">        NSLog(@&quot;返回值类型为对象&quot;);</div><div class="line">        [invocation getReturnValue:&amp;returnValueType];</div><div class="line">    &#125;else &#123;</div><div class="line">        //如果返回值为普通类型，如NSInteger， NSUInteger ，BOOL等</div><div class="line">        NSLog(@&quot;返回类型为普通类型&quot;);</div><div class="line">        //首先获取返回值长度</div><div class="line">        NSUInteger returnValueLenth = sig.methodReturnLength;</div><div class="line">        //根据长度申请内存</div><div class="line">        void *retValue = (void *)malloc(returnValueLenth);</div><div class="line">        //为retValue赋值</div><div class="line">        [invocation getReturnValue:retValue];</div><div class="line">        </div><div class="line">        if (!strcmp(returnValueType, @encode(BOOL))) &#123;</div><div class="line">            returnValue = [NSNumber numberWithBool:*((BOOL *)retValue)];</div><div class="line">        &#125;else if (!strcmp(returnValueType, @encode(NSInteger)))&#123;</div><div class="line">            returnValue = [NSNumber numberWithInteger:*((NSInteger *) retValue)];</div><div class="line">        &#125;else if (!strcmp(returnValueType, @encode(int)))&#123;</div><div class="line">            returnValue = [NSNumber numberWithInt:*((int *) retValue)];</div><div class="line">        &#125;</div><div class="line">        // 、、、其他类型</div><div class="line">    &#125;</div><div class="line">    NSLog(@&quot;返回值是：%@&quot;, returnValue);</div><div class="line">&#125;</div><div class="line">- (void)sendMessage:(NSString*)message&#123;</div><div class="line">    NSLog(@&quot;%@调用了方法&quot;,message);</div><div class="line">&#125;</div><div class="line">- (int)returnMessage:(int)a parm:(int)b parm:(int)c&#123;</div><div class="line">    NSLog(@&quot;MyLog%d:%d:%d&quot;,a,b,c);</div><div class="line">    return a+b+c;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">CTMediator[12211:1876597] performSelector调用了方法</div><div class="line">CTMediator[12211:1876597] NSInvocation调用了方法</div><div class="line">CTMediator[12211:1876597] MyLog1:2:3</div><div class="line">CTMediator[12211:1876597] 返回类型为普通类型</div><div class="line">CTMediator[12211:1876597] 返回值是：6</div></pre></td></tr></table></figure>
+<h3 id="Objective-C类型编码对应表为："><a href="#Objective-C类型编码对应表为：" class="headerlink" title="Objective-C类型编码对应表为："></a>Objective-C类型编码对应表为：</h3><table>
+<thead>
+<tr>
+<th>编码</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>c</td>
+<td>char</td>
+</tr>
+<tr>
+<td>i</td>
+<td>int</td>
+</tr>
+<tr>
+<td>s</td>
+<td>short</td>
+</tr>
+<tr>
+<td>l</td>
+<td>long在64位程序中，l为32位</td>
+</tr>
+<tr>
+<td>q</td>
+<td>long long</td>
+</tr>
+<tr>
+<td>C</td>
+<td>unsigned char</td>
+</tr>
+<tr>
+<td>I</td>
+<td>unsigned int</td>
+</tr>
+<tr>
+<td>S</td>
+<td>unsigned short</td>
+</tr>
+<tr>
+<td>L</td>
+<td>unsigned long</td>
+</tr>
+<tr>
+<td>Q</td>
+<td>unsigned long long</td>
+</tr>
+<tr>
+<td>f</td>
+<td>float</td>
+</tr>
+<tr>
+<td>d</td>
+<td>double</td>
+</tr>
+<tr>
+<td>B</td>
+<td>C++标准的bool或者C99标准的_Bool</td>
+</tr>
+<tr>
+<td>v</td>
+<td>void</td>
+</tr>
+<tr>
+<td>*</td>
+<td>字符串（char *）</td>
+</tr>
+<tr>
+<td>@</td>
+<td>对象（无论是静态指定的还是通过id引用的）</td>
+</tr>
+<tr>
+<td>#</td>
+<td>类（class）</td>
+</tr>
+<tr>
+<td>:</td>
+<td>方法选标（SEL）</td>
+</tr>
+<tr>
+<td>[array type]</td>
+<td>数组</td>
+</tr>
+<tr>
+<td>{name=type…}</td>
+<td>结构体</td>
+</tr>
+<tr>
+<td>(name=type…)</td>
+<td>联合体</td>
+</tr>
+<tr>
+<td>bnum</td>
+<td>num个bit的位域</td>
+</tr>
+<tr>
+<td>^type</td>
+<td>type类型的指针</td>
+</tr>
+<tr>
+<td>?</td>
+<td>未知类型（其他的情况，一般用来指函数指针</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag">#iOS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/11/UIViewContentMode小记/" rel="next" title="UIViewContentMode小记">
+                <i class="fa fa-chevron-left"></i> UIViewContentMode小记
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/AliPay.png"
+               alt="chuandong ding" />
+          <p class="site-author-name" itemprop="name">chuandong ding</p>
+          <p class="site-description motion-element" itemprop="description">iOS</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/dingchuandong" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="twitter" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2725322503" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://slarker.me/" title="slarker" target="_blank">slarker</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://opsnotes.net/about/" title="大神" target="_blank">大神</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#NSInvocation"><span class="nav-number">1.</span> <span class="nav-text">NSInvocation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、概念"><span class="nav-number">1.1.</span> <span class="nav-text">一、概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在-iOS中可以直接调用某个对象的消息方式有两种："><span class="nav-number">1.1.1.</span> <span class="nav-text">在 iOS中可以直接调用某个对象的消息方式有两种：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、使用"><span class="nav-number">1.2.</span> <span class="nav-text">二、使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#输出"><span class="nav-number">1.2.1.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Objective-C类型编码对应表为："><span class="nav-number">1.2.2.</span> <span class="nav-text">Objective-C类型编码对应表为：</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chuandong ding</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

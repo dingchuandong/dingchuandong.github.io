@@ -86,7 +86,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="iOS," />
 
 
 
@@ -102,16 +102,16 @@
 
 
 
-<meta name="description" content="iOS">
+<meta name="description" content="在iOS开发中，经常遇到货币金额的表示与计算，你可能会使用 double 或 float 这样的浮点数，也可能使用 NSString 。无论用哪个，都需要再编写繁琐的精度控制、小数位数控制等代码。其实，苹果为我们提供了一个标准类 NSDecimalNumber 来处理这样的需求。NSDecimalNumber 是 NSNumber 的子类，它提供了完善的初始化方法。对于令人头疼的金额计算，它还提供">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第一篇测试">
-<meta property="og:url" content="http://yoursite.com/2016/08/12/第一篇测试/index.html">
+<meta property="og:title" content="货币金额处理">
+<meta property="og:url" content="http://yoursite.com/2018/01/03/NSDecimalNumber 货币单位/index.html">
 <meta property="og:site_name" content="Snow Memory">
-<meta property="og:description" content="iOS">
-<meta property="og:updated_time" content="2016-08-12T08:58:13.000Z">
+<meta property="og:description" content="在iOS开发中，经常遇到货币金额的表示与计算，你可能会使用 double 或 float 这样的浮点数，也可能使用 NSString 。无论用哪个，都需要再编写繁琐的精度控制、小数位数控制等代码。其实，苹果为我们提供了一个标准类 NSDecimalNumber 来处理这样的需求。NSDecimalNumber 是 NSNumber 的子类，它提供了完善的初始化方法。对于令人头疼的金额计算，它还提供">
+<meta property="og:updated_time" content="2018-07-30T08:03:42.486Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="第一篇测试">
-<meta name="twitter:description" content="iOS">
+<meta name="twitter:title" content="货币金额处理">
+<meta name="twitter:description" content="在iOS开发中，经常遇到货币金额的表示与计算，你可能会使用 double 或 float 这样的浮点数，也可能使用 NSString 。无论用哪个，都需要再编写繁琐的精度控制、小数位数控制等代码。其实，苹果为我们提供了一个标准类 NSDecimalNumber 来处理这样的需求。NSDecimalNumber 是 NSNumber 的子类，它提供了完善的初始化方法。对于令人头疼的金额计算，它还提供">
 
 
 
@@ -132,9 +132,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/08/12/第一篇测试/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/01/03/NSDecimalNumber 货币单位/"/>
 
-  <title> 第一篇测试 | Snow Memory </title>
+  <title> 货币金额处理 | Snow Memory </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -274,7 +274,7 @@
             
             
               
-                第一篇测试
+                货币金额处理
               
             
           </h1>
@@ -286,8 +286,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-12T16:58:13+08:00" content="Aug 12 2016">
-              Aug 12 2016
+            <time itemprop="dateCreated" datetime="2018-01-03T16:58:13+08:00" content="Jan 3 2018">
+              Jan 3 2018
             </time>
           </span>
 
@@ -314,7 +314,9 @@
       
 
       
-        
+        <h2 id="在iOS开发中，经常遇到货币金额的表示与计算，你可能会使用-double-或-float-这样的浮点数，也可能使用-NSString-。无论用哪个，都需要再编写繁琐的精度控制、小数位数控制等代码。其实，苹果为我们提供了一个标准类-NSDecimalNumber-来处理这样的需求。"><a href="#在iOS开发中，经常遇到货币金额的表示与计算，你可能会使用-double-或-float-这样的浮点数，也可能使用-NSString-。无论用哪个，都需要再编写繁琐的精度控制、小数位数控制等代码。其实，苹果为我们提供了一个标准类-NSDecimalNumber-来处理这样的需求。" class="headerlink" title="在iOS开发中，经常遇到货币金额的表示与计算，你可能会使用 double 或 float 这样的浮点数，也可能使用 NSString 。无论用哪个，都需要再编写繁琐的精度控制、小数位数控制等代码。其实，苹果为我们提供了一个标准类 NSDecimalNumber 来处理这样的需求。"></a>在iOS开发中，经常遇到货币金额的表示与计算，你可能会使用 double 或 float 这样的浮点数，也可能使用 NSString 。无论用哪个，都需要再编写繁琐的精度控制、小数位数控制等代码。其实，苹果为我们提供了一个标准类 <strong>NSDecimalNumber</strong> 来处理这样的需求。</h2><h2 id="NSDecimalNumber-是-NSNumber-的子类，它提供了完善的初始化方法。对于令人头疼的金额计算，它还提供了贴心的加、减、乘、除运算方法。在进行这些运算的时候，你还可以通过-NSDecimalNumberHandler-对象来对运算的处理策略进行设置，比如舍入模式的选择，数据溢出、除零等异常情况的处理等。"><a href="#NSDecimalNumber-是-NSNumber-的子类，它提供了完善的初始化方法。对于令人头疼的金额计算，它还提供了贴心的加、减、乘、除运算方法。在进行这些运算的时候，你还可以通过-NSDecimalNumberHandler-对象来对运算的处理策略进行设置，比如舍入模式的选择，数据溢出、除零等异常情况的处理等。" class="headerlink" title="NSDecimalNumber 是 NSNumber 的子类，它提供了完善的初始化方法。对于令人头疼的金额计算，它还提供了贴心的加、减、乘、除运算方法。在进行这些运算的时候，你还可以通过 NSDecimalNumberHandler 对象来对运算的处理策略进行设置，比如舍入模式的选择，数据溢出、除零等异常情况的处理等。"></a>NSDecimalNumber 是 NSNumber 的子类，它提供了完善的初始化方法。对于令人头疼的金额计算，它还提供了贴心的加、减、乘、除运算方法。在进行这些运算的时候，你还可以通过 NSDecimalNumberHandler 对象来对运算的处理策略进行设置，比如舍入模式的选择，数据溢出、除零等异常情况的处理等。</h2><p>参考：</p>
+<p><a href="https://www.jianshu.com/p/ea4da259a062" target="_blank" rel="external">iOS 数字精准计算之NSDecimalNumber</a><br><a href="https://www.jianshu.com/p/25d24a184016" target="_blank" rel="external">NSDecimalNumber数字精确</a></p>
+
       
     </div>
 
@@ -334,21 +336,27 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag">#iOS</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/12/hexo/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2017/11/12/layoutSubviews调用/" rel="next" title="layoutSubviews调用">
+                <i class="fa fa-chevron-left"></i> layoutSubviews调用
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/08/12/为什么要写博客/" rel="prev" title="为什么要写博客">
-                为什么要写博客 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/01/11/UIViewContentMode小记/" rel="prev" title="UIViewContentMode小记">
+                UIViewContentMode小记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -503,7 +511,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#在iOS开发中，经常遇到货币金额的表示与计算，你可能会使用-double-或-float-这样的浮点数，也可能使用-NSString-。无论用哪个，都需要再编写繁琐的精度控制、小数位数控制等代码。其实，苹果为我们提供了一个标准类-NSDecimalNumber-来处理这样的需求。"><span class="nav-number">1.</span> <span class="nav-text">在iOS开发中，经常遇到货币金额的表示与计算，你可能会使用 double 或 float 这样的浮点数，也可能使用 NSString 。无论用哪个，都需要再编写繁琐的精度控制、小数位数控制等代码。其实，苹果为我们提供了一个标准类 NSDecimalNumber 来处理这样的需求。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NSDecimalNumber-是-NSNumber-的子类，它提供了完善的初始化方法。对于令人头疼的金额计算，它还提供了贴心的加、减、乘、除运算方法。在进行这些运算的时候，你还可以通过-NSDecimalNumberHandler-对象来对运算的处理策略进行设置，比如舍入模式的选择，数据溢出、除零等异常情况的处理等。"><span class="nav-number">2.</span> <span class="nav-text">NSDecimalNumber 是 NSNumber 的子类，它提供了完善的初始化方法。对于令人头疼的金额计算，它还提供了贴心的加、减、乘、除运算方法。在进行这些运算的时候，你还可以通过 NSDecimalNumberHandler 对象来对运算的处理策略进行设置，比如舍入模式的选择，数据溢出、除零等异常情况的处理等。</span></a></li></ol></div>
             
           </div>
         </section>

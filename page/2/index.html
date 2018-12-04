@@ -264,6 +264,686 @@
   
   
 
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/07/12/NSProcessInfo 获取进程信息/" itemprop="url">
+                  NSProcessInfo 获取进程信息
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-07-12T16:58:13+08:00" content="Jul 12 2017">
+              Jul 12 2017
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="NSProcessInfo-获取进程信息"><a href="#NSProcessInfo-获取进程信息" class="headerlink" title="NSProcessInfo 获取进程信息"></a>NSProcessInfo 获取进程信息</h2><p>###//返回当前进程的信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+(NSProcessInfo*)processInfo</div></pre></td></tr></table></figure></p>
+<p>###//以NSString对象数组的形式返回当前进程的参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(NSArray*)arguments</div></pre></td></tr></table></figure></p>
+<p>　</p>
+<p>###//返回变量/值对词典，以描述当前的环境变量（比如PATH和HOME）及其值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(NSDictionary *)environment</div></pre></td></tr></table></figure></p>
+<p>　</p>
+<p>###//返回进程标识符，它是操作系统赋予进程的唯一数字，用于识别每个正在运行的进程<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(int)processIdentifier</div></pre></td></tr></table></figure></p>
+<p>　</p>
+<p>###//返回当前正在执行的进程名称<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(NSString*)processName</div></pre></td></tr></table></figure></p>
+<p>###//每次调用这个方法时，都返回不同的单值字符串，可以用这个字符串生成单值临时文件名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(NSString *)globallyUniqueString</div></pre></td></tr></table></figure></p>
+<p>###//返回主机系统的名称</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(NSString *)hostname</div></pre></td></tr></table></figure>
+<p>###//返回表示操作系统的数字</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(NSUInteger)operatingSystem</div></pre></td></tr></table></figure>
+<p>###//返回操作系统的名称（可能返回的值定义在NSProgressInfo.h文件中）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(NSString *)operatingSystemName</div></pre></td></tr></table></figure></p>
+<p>###//返回操作系统的当前版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(NSString *)operatingSystemVersionString</div></pre></td></tr></table></figure>
+<p>###//将当前进程名称设置为name。应该谨慎地使用这个方法，应为关于进程名称存在一些假设（比如用户默认的设置）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(void)setProcessName:(NSString *)name</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/06/12/Xcode调试技巧/" itemprop="url">
+                  Xcode调试
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-06-12T16:58:13+08:00" content="Jun 12 2017">
+              Jun 12 2017
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Xcode调试技巧"><a href="#Xcode调试技巧" class="headerlink" title="Xcode调试技巧"></a>Xcode调试技巧</h2><h2 id="日志输出-amp-LLDB"><a href="#日志输出-amp-LLDB" class="headerlink" title="日志输出&amp;LLDB"></a>日志输出&amp;LLDB</h2><p>什么是<strong>LLDB</strong>呢：它是一个有着 REPL 的特性和 C++ ,Python 插件的开源调试器。LLDB 绑定在 Xcode 内部，存在于主窗口底部的控制台中。调试器允许你在程序运行的特定时暂停它，你可以查看变量的值，执行自定的指令，并且按照你所认为合适的步骤来操作程序的进展。我们可以简单的理解成它是一个<strong>调试器</strong></p>
+<h3 id="1-命令行LLDB的出现"><a href="#1-命令行LLDB的出现" class="headerlink" title="1 命令行LLDB的出现"></a>1 命令行LLDB的出现</h3><p>  如下图，调试过程中程序运行到断点处时，控制台的右边会出    现“lldb”。</p>
+<h3 id="2-常用的命令"><a href="#2-常用的命令" class="headerlink" title="2 常用的命令"></a>2 常用的命令</h3><p>1 help<br>断点时，控制台输入”help“，回车，就能看到lldb命令及介绍<br><img src="http://oc1jw3mv7.bkt.clouddn.com/help.jpg" alt="help"><br>2 print<br>打印 常用p 代替<br><img src="http://oc1jw3mv7.bkt.clouddn.com/p.jpg" alt="p"><br>3 prin object<br>打印对象的详细信息 常用 po 代替<br><img src="http://oc1jw3mv7.bkt.clouddn.com/po.jpg" alt="po"><br>4 expression<br>可以在当前位置改变程序实际参数的值（不用重新运行项目） 使用过程中我们可以直接用 expr来代替expression。<br><img src="http://oc1jw3mv7.bkt.clouddn.com/express.jpg" alt="expression"><br>5 call<br><img src="http://oc1jw3mv7.bkt.clouddn.com/call.jpg" alt="call"><br>一般调用没有返回值的方法时使用call 例如 在viewDidLoad中断点，然后输入<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">call  [self.view setBackgroundColor:[UIColor redColor]]</div></pre></td></tr></table></figure></p>
+<pre><code>继续运行，view的背景就变成红色呢，很方便
+</code></pre><p>6 image </p>
+<p>mage list 查看工程中使用的库</p>
+<p>image lookup –address  0x000000010e0979ac  程序崩溃的时候定位，查看具体报错位置 （不太好用）</p>
+<h2 id="断点"><a href="#断点" class="headerlink" title="断点"></a>断点</h2><p>断点里面根据作用和功能也有很多种类：普通断点、条件断点、异常断点、符号断点等</p>
+<h3 id="普通断点"><a href="#普通断点" class="headerlink" title="普通断点"></a>普通断点</h3><h3 id="条件断点"><a href="#条件断点" class="headerlink" title="条件断点"></a>条件断点</h3><p>打上断点之后，对断点进行编辑，设置相应过滤条件。单击右键会弹出选项框：</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/%E7%BC%96%E8%BE%91%E6%96%AD%E7%82%B9.jpg" alt="编辑断点"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Edit BreakPoint... ：编辑断点。</div><div class="line"></div><div class="line">Disable  BreakPoint ：断点失效。（相当于上边说到的单击断点变成浅蓝色，断点失效）</div><div class="line"></div><div class="line">Delete BreakPoint ：删除断点。</div><div class="line"></div><div class="line">Reveal in BreakPoint Navigator :在左边的断点树状结构表明该断点。</div></pre></td></tr></table></figure>
+<p>Edit BreakPoint。这里面设置断点的筛选条件（双击断点也可以快速进入编辑断点的对话框）。</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/%E8%AE%BE%E7%BD%AE%E6%96%AD%E7%82%B9.jpg" alt="设置断点"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">【1】Condition：返回一个布尔值，当布尔值为真触发断点，一般里面我们可以写一个表达式。</div><div class="line"></div><div class="line">【2】Ignore：      忽略前N次断点，到N+1次再触发断点。</div><div class="line"></div><div class="line">【3】Action：      断点触发事件，分为六种：</div><div class="line"></div><div class="line">           &lt;1&gt;  AppleScript：执行脚本。</div><div class="line"></div><div class="line">           &lt;2&gt;  Capture GPU Frame：用于OpenGL ES调试，捕获断点处GPU当前绘制帧。 </div><div class="line"></div><div class="line">           &lt;3&gt;  Debugger Command：和控制台中输入LLDB调试命令一致。</div><div class="line"></div><div class="line">           &lt;4&gt;  Log Message：输出自定义格式信息至控制台。</div><div class="line"></div><div class="line">           &lt;5&gt;  Shell Command：接收命令文件及相应参数列表，Shell Command是异步执行的，只有勾选“Wait until done”才会等待Shell命令执行完在执行调试。</div><div class="line"></div><div class="line">            &lt;6&gt;  Sound：断点触发时播放声音。</div><div class="line"></div><div class="line">【4】Options(Automatically continue after evaluating actions选项)：选中后，表示断点不会终止程序的运行。</div></pre></td></tr></table></figure>
+<h3 id="异常断点-Exception-Breakpoint（全局断点）"><a href="#异常断点-Exception-Breakpoint（全局断点）" class="headerlink" title="异常断点 Exception Breakpoint（全局断点）"></a>异常断点 Exception Breakpoint（全局断点）</h3><p><img src="http://oc1jw3mv7.bkt.clouddn.com/%E8%AE%BE%E7%BD%AE%E6%96%AD%E7%82%B9.jpg" alt="全局断点"><br>同样的，全局断点也是可以编辑的，单击右键或者双击断点就会弹出编辑框，编辑的项目和上述是一样的。</p>
+<h3 id="符号断点-Symbolic-Breakpoint"><a href="#符号断点-Symbolic-Breakpoint" class="headerlink" title="符号断点 Symbolic Breakpoint"></a>符号断点 Symbolic Breakpoint</h3><p><img src="http://oc1jw3mv7.bkt.clouddn.com/%E6%9D%A1%E4%BB%B6%E6%96%AD%E7%82%B9.jpg" alt="条件断点"></p>
+<h3 id="4、监控断点"><a href="#4、监控断点" class="headerlink" title="4、监控断点"></a>4、监控断点</h3><p><img src="http://oc1jw3mv7.bkt.clouddn.com/%E7%9B%91%E6%8E%A7%E6%96%AD%E7%82%B9.jpg" alt="监控断点"><br>我们调试程序的大部分时候都是为了监控某个变量的变化，在代码中变量出现的地方添加断点不仅累而且还可能漏掉，事后还得一个一个删掉，实在很累。<br>我们可以通过为变量添加监控断点来简单地做到这一点。找到变量第一次出现的地方，添加一个普通断点，进入 debug 模式后在 Variables View 中右键变量，选择 Watch 变量名。这样，每一次该变量被改变都会触发断点告知我们</p>
+<p><a href="https://www.jianshu.com/p/124699399a45" target="_blank" rel="external">更详细</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/20/a静态库制作/" itemprop="url">
+                  .a静态库制作
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-20T15:41:23+08:00" content="Dec 20 2016">
+              Dec 20 2016
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="iOS开发之-a静态库制作"><a href="#iOS开发之-a静态库制作" class="headerlink" title="iOS开发之.a静态库制作"></a>iOS开发之.a静态库制作</h1><h2 id="以Xcode8-2为例，简单封装图片界面等资源文件到-a静态库。"><a href="#以Xcode8-2为例，简单封装图片界面等资源文件到-a静态库。" class="headerlink" title="以Xcode8.2为例，简单封装图片界面等资源文件到.a静态库。"></a>以Xcode8.2为例，简单封装图片界面等资源文件到.a静态库。</h2><h3 id="1-首先将资源文件打包成Bundle的模板"><a href="#1-首先将资源文件打包成Bundle的模板" class="headerlink" title="1.首先将资源文件打包成Bundle的模板"></a>1.首先将资源文件打包成Bundle的模板</h3><p>借助于OS X，因为iOS框架中没有创建Bundle的模板</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/initBundle.png" alt=""></p>
+<p>删除工程中多余的文件</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle1.png" alt=""></p>
+<p>由于删除了plist文件，所以必须在Build Settings中删除对它的引用</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle2.png" alt=""></p>
+<p>我们创建项目时选的是OS X中的框架，所以此处需要修改Base SDK为iOS</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle3.png" alt=""></p>
+<p>设置完后,可以把我们需要的资源拷贝过来</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle4.png" alt=""></p>
+<p>按快捷键”Command + B”编译，编译成功后，Products下面的PictureOCRImage.bundle由红色变成了黑色，表示编译成功</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle5.png" alt=""></p>
+<p>可以通过右击 Show in Finder -&gt; 查看文件夹 -&gt;右击显示包内容,查看里面的内容</p>
+<h3 id="至此-资源打包成bundle完成-如果只是普通的资源-完全可以创建一个文件夹，把需要封装的资源文件拷贝至该目录下，将其改成后缀名为bundle即可，然后就可以使用NSBundle提供的接口访问其内部的资源文件，当然，也可以通过访问普通文件目录的方法访问其内部的资源。这样写主要是考虑到xib文件打包"><a href="#至此-资源打包成bundle完成-如果只是普通的资源-完全可以创建一个文件夹，把需要封装的资源文件拷贝至该目录下，将其改成后缀名为bundle即可，然后就可以使用NSBundle提供的接口访问其内部的资源文件，当然，也可以通过访问普通文件目录的方法访问其内部的资源。这样写主要是考虑到xib文件打包" class="headerlink" title="至此,资源打包成bundle完成.如果只是普通的资源,完全可以创建一个文件夹，把需要封装的资源文件拷贝至该目录下，将其改成后缀名为bundle即可，然后就可以使用NSBundle提供的接口访问其内部的资源文件，当然，也可以通过访问普通文件目录的方法访问其内部的资源。这样写主要是考虑到xib文件打包"></a>至此,资源打包成bundle完成.如果只是普通的资源,完全可以创建一个文件夹，把需要封装的资源文件拷贝至该目录下，将其改成后缀名为bundle即可，然后就可以使用NSBundle提供的接口访问其内部的资源文件，当然，也可以通过访问普通文件目录的方法访问其内部的资源。这样写主要是考虑到xib文件打包</h3><h3 id="2-制作-a文件库"><a href="#2-制作-a文件库" class="headerlink" title="2.制作.a文件库"></a>2.制作.a文件库</h3><p>新建项目，点击iOS—Framework&amp;—Cocoa Touch Static Library。</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle10.png" alt=""></p>
+<p>系统自动生成以工程名命名的.h和.m文件，可自定义的在目录下添加或删除文件，注意目录下Products文件夹有一个.a文件为红色，说明文件并不存在。这里我们将系统生成的.h和.m文件删除。</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle11.png" alt=""></p>
+<p>将需要打包的文件添加到工程中</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle12.png" alt=""></p>
+<p>点击Build Phases—Copy Files，左下角点击+号按钮，添加你需要暴露的接口头文件。</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle13.png" alt=""></p>
+<p>点击左上角，选择Edit Scheme，Build Configuration下选择Release，先注意检查下面Release是否为NO：Yes表示只编译选中模拟器设备对应的架构，No则为编译所有模拟器设备支持的cup架构（Debug版本同理）,选择NO，然后分别在模拟器和真机下Command+B编译一下，会看到Products文件夹下的.a文件变为黑色，这个.a文件就是我们想要得到的静态库。</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle14.png" alt=""><br><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle15.png" alt=""></p>
+<p>可以通过右击 Show in Finder -&gt; 查看文件夹,打开Build—Products文件夹，会看到Release-iphoneos和Release-iphonesimulator文件夹，分别是真机和模拟器的.a文件，为了使用方便我们将两个版本的.a文件合并。<br>合并真机和模拟器.a文件，在终端输入以下命令行：lipo -create  模拟器.a文件的路径 真机.a文件的路径 -output 合并后的保存路径（例：lipo -create /Users/dcd/Library/Developer/Xcode/DerivedData/TestCocoa_Touch-gjlcdmvelybrhdfbqwxscxvvtsqy/Build/Products/Debug-iphonesimulator/libTestCocoa\ Touch.a /Users/dcd/Library/Developer/Xcode/DerivedData/TestCocoa_Touch-gjlcdmvelybrhdfbqwxscxvvtsqy/Build/Products/Release-iphonesimulator/libTestCocoa\ Touch.a -output /Users/dcd/Desktop/TestCocoaTouch.a）最终会在桌面得到一个合并后的TestCocoaTouch.a文件，再将暴露出来的.h头文件一起复制出来</p>
+<p><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle6.png" alt=""><br><img src="http://oc1jw3mv7.bkt.clouddn.com/bundle7.png" alt=""></p>
+<p>查看静态库.a对处理器架构的支持，先cd到.a文件的路径下，命令行输入：<br>lipo -info xxxxx.a</p>
+<p>至此,.a库的制作完成了</p>
+<p>参考文章:<br><a href="http://www.cnblogs.com/richard-youth/p/4856841.html" target="_blank" rel="external">http://www.cnblogs.com/richard-youth/p/4856841.html</a><br><a href="http://www.fx114.net/qa-173-100870.aspx" target="_blank" rel="external">http://www.fx114.net/qa-173-100870.aspx</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-其他 " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/31/知名博主/" itemprop="url">
+                  知名博主
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-31T16:44:02+08:00" content="Aug 31 2016">
+              Aug 31 2016
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="最近空闲时间比较多，逛了写大牛的博客，收获良多"><a href="#最近空闲时间比较多，逛了写大牛的博客，收获良多" class="headerlink" title="最近空闲时间比较多，逛了写大牛的博客，收获良多"></a>最近空闲时间比较多，逛了写大牛的博客，收获良多</h1><p> <a href="http://onevcat.com" target="_blank" rel="external">王巍</a> 目前在日本横滨任职于LINE。工作内容主要进行Unity3D开发，8小时之外经常进行iOS/Mac开发。他的陈列柜中已有多款应用，其中番茄工作法工具非常棒。</p>
+<p> <a href="http://macshuo.com/" target="_blank" rel="external">池建强</a> 70后程序员，Blogger。98年毕业，先后就职于洪恩软件、RocketSofeware和用友软件工程公司（后更名为瑞友科技），现任瑞友科技IT应用研究院副院长。该博客最初每天发送一条Mac技巧，不过目前已经形成了一种技术和人文结合的风格，时而随笔，时而技术。</p>
+<p><a href="http://imallen.com/" target="_blank" rel="external">许小帅</a> 目前任职于腾讯，他还是iOS Feed站点的负责人。博客中对支付宝钱包插件分析的文章，引起了支付宝开发团队的反思，大家可以去感受一下。</p>
+<p><a href="http://iiiyu.com/" target="_blank" rel="external">萧宸宇</a> 目前任职于Sumi Interactive。他出生于西南一个边陲小镇，梦想着能走出家乡，看看祖国的大好河山。他拥有丰富的 iOS 开发经验，在他的博客中发表了许多 iOS 开发的文章。</p>
+<p><a href="http://joeyio.com/" target="_blank" rel="external">乔学士</a> 目前任职于创业公司拓词，他正在为成为“代码手工艺人”而努力，目前主要进行 iOS 开发。最近他做得非常精彩的一件事就是汇总了WWDC 2013 视频英文字幕下载，大家可以前往他的博客感受一下。</p>
+<p><a href="http://beyondvincent.com/" target="_blank" rel="external">破船</a> 在移动领域摸爬滚打多年，经历了Symbian、Windows Mobile、Windows Phone和 iOS 等的洗礼。他希望能充分利用业余时间，努力做一名伪步道师。</p>
+<p><a href="http://luosky.com/" target="_blank" rel="external">骆仕恺</a> 骆仕恺目前任职于爱折客 / 爱美味。他主要从事 iOS 和Java开发。拥有丰富的 iOS 开发经验。</p>
+<p><a href="http://dlog.dismory.com/" target="_blank" rel="external">耿健桓</a> 目前在清华大学攻读硕士，之前他是著名站点知乎的 iOS 技术主管。</p>
+<p><a href="http://cnblogs.com/biosli" target="_blank" rel="external">李择一</a> 目前任职于百度，他在移动开发领域积累了丰富的经验，特别是 iOS 开发。最近他在博客中发表关于OC中block的追究非常有深度，大家一定要去感受一下。</p>
+<p><a href="http://www.iwangke.me/" target="_blank" rel="external">王轲</a> 是一名iOS独立开发者，也是IndieBros Studio创始人。在博客中有几篇关于 iOS 性能优化的文章，值得大家去看看。</p>
+<p><a href="http://lianxu.me/" target="_blank" rel="external">连栩</a> 目前工作在加拿大温哥华，运营着自己的公司 Beyondcow，他是一名 OSX、iOS 程序员同时也是用户体验，交互界面设计师。在开发的软件 Miao 是一款全功能 Mac 微博客户端。他的博客中有许多Cocoa开发的文章，值得大家去品读。</p>
+<p><a href="http://jiajun.org/" target="_blank" rel="external">高嘉峻</a> 目前任职于天猫。是一名资深80后，号称会写代码的猪。最近他的博客中出现了两篇关于iOS中单元测试的文章，非常棒。</p>
+<p><a href="http://webfrogs.me/" target="_blank" rel="external">webfrogs</a> 目前在北京当一枚程序猿，有幸成为80后的尾巴。目前行走在iOS开发的道路上，用博客记载一路上的所见所闻所想。</p>
+<p><a href="http://blog.csdn.net/justinjing0612" target="_blank" rel="external">景总</a> 目前任职于天猫国际移动开发CTO，曾就职于平安科技项目经理，对IM和APP性能优化有深刻间接。</p>
+<p><a href="http://tanhao.me/" target="_blank" rel="external">谭灏</a> 目前就职于腾讯mac管家部门，他是一名 OSX、iOS 程序员，他的博客中有许多mac，ios开发的文章，值得大家去品读。</p>
+<p><a href="http://casatwy.com" target="_blank" rel="external">田伟宇</a> 目前任职于天猫，全能人才。最近他的博客中出现了篇关于iOS应用架构详谈的文章，非常棒。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-Markdown " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/17/macdown简单语法/" itemprop="url">
+                  Markdown入门学习小结(常用语法)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-17T12:39:04+08:00" content="Aug 17 2016">
+              Aug 17 2016
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1-标题"><a href="#1-标题" class="headerlink" title="1.标题"></a>1.标题</h1><p>Markdown语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># 一级标题</div><div class="line">## 二级标题</div><div class="line">### 三级标题</div><div class="line">#### 四级标题</div><div class="line">##### 五级标题</div></pre></td></tr></table></figure>
+<p>预览效果：</p>
+<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h1 id="2-粗体·斜体"><a href="#2-粗体·斜体" class="headerlink" title="2.粗体·斜体"></a>2.粗体·斜体</h1><p>Markdown语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">**粗体**</div><div class="line">__粗体__</div><div class="line">*斜体*</div><div class="line">_斜体_</div></pre></td></tr></table></figure>
+<p>预览效果：</p>
+<p><strong>粗体</strong><br><strong>粗体</strong><br><em>斜体</em><br><em>斜体</em></p>
+<h1 id="3-分割线"><a href="#3-分割线" class="headerlink" title="3.分割线"></a>3.分割线</h1><p>Markdown语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">***</div><div class="line">~~文字删除线~~</div></pre></td></tr></table></figure>
+<p>预览效果：</p>
+<hr>
+<hr>
+<p><del>文字删除线</del></p>
+<h1 id="4-列表"><a href="#4-列表" class="headerlink" title="4.列表"></a>4.列表</h1><p>Markdown语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">- 无序列表项目</div><div class="line">- 无序列表项目</div><div class="line">- 无序列表项目</div><div class="line"></div><div class="line">* 无序列表项目</div><div class="line">* 无序列表项目</div><div class="line">* 无序列表项目</div><div class="line"></div><div class="line">1. 有序列表项目</div><div class="line">2. 有序列表项目</div><div class="line">3. 有序列表项目</div><div class="line"></div><div class="line">- 外层列表项目</div><div class="line"> + 内层列表项目</div><div class="line"> + 内层列表项目</div><div class="line"> + 内层列表项目</div><div class="line">- 外层列表项目</div></pre></td></tr></table></figure>
+<p>预览效果：</p>
+<ul>
+<li>无序列表项目</li>
+<li>无序列表项目</li>
+<li>无序列表项目</li>
+</ul>
+<ul>
+<li>无序列表项目</li>
+<li>无序列表项目</li>
+<li>无序列表项目</li>
+</ul>
+<ol>
+<li>有序列表项目</li>
+<li>有序列表项目</li>
+<li>有序列表项目</li>
+</ol>
+<ul>
+<li>外层列表项目<ul>
+<li>内层列表项目</li>
+<li>内层列表项目</li>
+<li>内层列表项目</li>
+</ul>
+</li>
+<li>外层列表项目</li>
+</ul>
+<h1 id="5-添加超链接，图片"><a href="#5-添加超链接，图片" class="headerlink" title="5.添加超链接，图片"></a>5.添加超链接，图片</h1><p>Markdown语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[百度](http://www.baidu.com)</div><div class="line">![简书slogan](http://upload-images.jianshu.io/upload_images/103055-1854e79fc97374d1.png?imageView2/2/w/1240/q/100)</div></pre></td></tr></table></figure>
+<p>预览效果：</p>
+<p><a href="http://www.baidu.com" target="_blank" rel="external">百度</a><br><img src="http://upload-images.jianshu.io/upload_images/103055-1854e79fc97374d1.png?imageView2/2/w/1240/q/100" alt="简书slogan"></p>
+<h1 id="6-添加表格"><a href="#6-添加表格" class="headerlink" title="6.添加表格"></a>6.添加表格</h1><p>Markdown语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ABCD | EFGH | IGKL</div><div class="line">-----|------|----</div><div class="line">a    | b    | c</div><div class="line">d    | e    | f</div><div class="line">g    | h    | i</div></pre></td></tr></table></figure>
+<p>预览效果：</p>
+<table>
+<thead>
+<tr>
+<th>ABCD</th>
+<th>EFGH</th>
+<th>IGKL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a</td>
+<td>b</td>
+<td>c</td>
+</tr>
+<tr>
+<td>d</td>
+<td>e</td>
+<td>f</td>
+</tr>
+<tr>
+<td>g</td>
+<td>h</td>
+<td>i</td>
+</tr>
+</tbody>
+</table>
+<h1 id="7-引用"><a href="#7-引用" class="headerlink" title="7.引用"></a>7.引用</h1><p>Markdown语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; 引用的文字引用的文字引用的文字引用的文字引用的文字</div><div class="line"></div><div class="line"> &gt;&gt; 引言内的引言引言内的引言引言内的引言</div><div class="line"></div><div class="line">&gt; 引用的文字引用的文字引用的文字引用的文字引用的文字</div></pre></td></tr></table></figure>
+<p>预览效果：</p>
+<blockquote>
+<p>引用的文字引用的文字引用的文字引用的文字引用的文字</p>
+<blockquote>
+<p>引言内的引言引言内的引言引言内的引言</p>
+</blockquote>
+<p>引用的文字引用的文字引用的文字引用的文字引用的文字</p>
+</blockquote>
+<h1 id="8-添加脚注"><a href="#8-添加脚注" class="headerlink" title="8.添加脚注"></a>8.添加脚注</h1><p>Markdown语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">A[^A]</div><div class="line">[^A]: 注释的内容</div></pre></td></tr></table></figure>
+<p>预览效果：</p>
+<p>A<a href="注释的内容">^A</a></p>
+<h1 id="9-创建链接"><a href="#9-创建链接" class="headerlink" title="9.创建链接"></a>9.创建链接</h1><p>Markdown语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;test@test.com&gt;</div></pre></td></tr></table></figure>
+<p>预览效果：</p>
+<p><a href="&#109;&#97;&#x69;&#108;&#116;&#111;&#58;&#116;&#101;&#x73;&#116;&#x40;&#x74;&#101;&#x73;&#116;&#46;&#x63;&#111;&#109;">&#116;&#101;&#x73;&#116;&#x40;&#x74;&#101;&#x73;&#116;&#46;&#x63;&#111;&#109;</a></p>
+<h1 id="10-转义字符"><a href="#10-转义字符" class="headerlink" title="10.转义字符"></a>10.转义字符</h1><p>Markdown语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">\\</div><div class="line">\`</div><div class="line">\*</div><div class="line">\_</div><div class="line">\&#123;\&#125;</div><div class="line">\[\]</div><div class="line">\(\)</div><div class="line">\#</div><div class="line">\+</div><div class="line">\-</div><div class="line">\.</div><div class="line">\!</div></pre></td></tr></table></figure>
+<p>预览效果：</p>
+<p>\<br>`<br>*<br>_<br>{}<br>[]<br>()<br>#<br>+<br>-<br>.<br>!</p>
+<h1 id="11-引用"><a href="#11-引用" class="headerlink" title="11.引用"></a>11.引用</h1><h2 id="单行试"><a href="#单行试" class="headerlink" title="单行试"></a>单行试</h2><pre><code>&gt; hello world
+</code></pre><p>   预览效果</p>
+<blockquote>
+<p>hellow world</p>
+</blockquote>
+<h2 id="多行式"><a href="#多行式" class="headerlink" title="多行式"></a>多行式</h2><pre><code>&gt; hello world
+&gt; hello world
+&gt; hello world
+或者
+&gt; hello world
+  hello world
+  hello world
+</code></pre><p>   预览效果</p>
+<blockquote>
+<p>hello world<br>hello world<br>hello world      </p>
+<p>hello world<br>    hello world<br>    hello world</p>
+<h2 id="多层嵌套"><a href="#多层嵌套" class="headerlink" title="多层嵌套"></a>多层嵌套</h2><p>aaaaaaaaa</p>
+<blockquote>
+<p>bbbbbbbbb</p>
+<blockquote>
+<p>cccccccccc<br>   预览效果<br>aaaaaaaaa<br>bbbbbbbbb<br>cccccccccc</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h1 id="12-行内标记"><a href="#12-行内标记" class="headerlink" title="12.行内标记"></a>12.行内标记</h1><pre><code>标记之外`hello world`标记之外
+</code></pre><p>  标记之外<code>hello world</code>标记之外</p>
+<h1 id="13-代码块"><a href="#13-代码块" class="headerlink" title="13.代码块"></a>13.代码块</h1><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;div&gt;   </div><div class="line">  &lt;div&gt;&lt;/div&gt;</div><div class="line">  &lt;div&gt;&lt;/div&gt;</div><div class="line">  &lt;div&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+</code></pre> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;div&gt;   </div><div class="line">    &lt;div&gt;&lt;/div&gt;</div><div class="line">    &lt;div&gt;&lt;/div&gt;</div><div class="line">    &lt;div&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p> 自定义语法</p>
+<pre><code><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num = <span class="number">0</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</div><div class="line">  num+=i;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+</code></pre>  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num = <span class="number">0</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</div><div class="line">  num+=i;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<h1 id="14-任务列表"><a href="#14-任务列表" class="headerlink" title="14.任务列表"></a>14.任务列表</h1><p>注：兼容性一般 要隔开一行</p>
+<pre><code> 这是文字……
+- [x] 选项一
+- [ ] 选项二  
+- [ ]  [选项3]
+</code></pre><ul>
+<li>[x] 选项一</li>
+<li>[ ] 选项二  </li>
+<li>[ ]  [选项3]</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
   <article class="post post-type-其他 " itemscope itemtype="http://schema.org/Article">
 
     
@@ -464,7 +1144,7 @@
             
               
                 
-                <a class="post-title-link" href="/2016/08/12/hello-world/" itemprop="url">
+                <a class="post-title-link" href="/2016/08/12/hexo/" itemprop="url">
                   Hello World
                 </a>
               
@@ -590,7 +1270,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
