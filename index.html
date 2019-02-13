@@ -276,6 +276,465 @@
             
               
                 
+                <a class="post-title-link" href="/2018/06/11/小知识/" itemprop="url">
+                  小知识
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-06-11T18:25:19+08:00" content="Jun 11 2018">
+              Jun 11 2018
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="小知识"><a href="#小知识" class="headerlink" title="小知识"></a>小知识</h1><h1 id="pragma-mark-获取当前view的viewcontroller"><a href="#pragma-mark-获取当前view的viewcontroller" class="headerlink" title="pragma mark - 获取当前view的viewcontroller"></a>pragma mark - 获取当前view的viewcontroller</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">+ (UIViewController *)getCurrentViewController:(UIView *) currentView</div><div class="line">&#123;</div><div class="line">for (UIView* next = [currentView superview]; next; next = next.superview)</div><div class="line">&#123;</div><div class="line">UIResponder *nextResponder = [next nextResponder];</div><div class="line">if ([nextResponder isKindOfClass:[UIViewController class]])</div><div class="line">&#123;</div><div class="line">return (UIViewController *)nextResponder;</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">return nil;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-积累 " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/05/12/item2常用快捷键/" itemprop="url">
+                  item2常用快捷键
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-05-12T17:25:19+08:00" content="May 12 2018">
+              May 12 2018
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="item2常用快捷键"><a href="#item2常用快捷键" class="headerlink" title="item2常用快捷键"></a>item2常用快捷键</h2><h1 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">新建标签：command + t</div><div class="line">关闭标签：command + w</div><div class="line">切换标签：command + 数字 command + 左右方向键</div><div class="line">切换全屏：command + enter</div><div class="line">查找：command + f</div></pre></td></tr></table></figure>
+<h1 id="分屏"><a href="#分屏" class="headerlink" title="分屏"></a>分屏</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">垂直分屏：command + d</div><div class="line">水平分屏：command + shift + d</div><div class="line">切换屏幕：command + option + 方向键 command + [ 或 command + ]</div><div class="line">查看历史命令：command + ;</div><div class="line">查看剪贴板历史：command + shift + h</div></pre></td></tr></table></figure>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">清除当前行：ctrl + u</div><div class="line">到行首：ctrl + a</div><div class="line">到行尾：ctrl + e</div><div class="line">前进后退：ctrl + f/b (相当于左右方向键)</div><div class="line">上一条命令：ctrl + p</div><div class="line">搜索命令历史：ctrl + r</div><div class="line">删除当前光标的字符：ctrl + d</div><div class="line">删除光标之前的字符：ctrl + h</div><div class="line">删除光标之前的单词：ctrl + w</div><div class="line">删除到文本末尾：ctrl + k</div><div class="line">交换光标处文本：ctrl + t</div><div class="line">清屏1：command + r</div><div class="line">清屏2：ctrl + l</div><div class="line">自带有哪些很实用的功能/快捷键</div><div class="line">⌘ + 数字在各 tab 标签直接来回切换</div><div class="line">选择即复制 + 鼠标中键粘贴，这个很实用</div><div class="line">⌘ + f 所查找的内容会被自动复制</div><div class="line">⌘ + d 横着分屏 / ⌘ + shift + d 竖着分屏</div><div class="line">⌘ + r = clear，而且只是换到新一屏，不会想 clear 一样创建一个空屏</div><div class="line">ctrl + u 清空当前行，无论光标在什么位置</div><div class="line">输入开头命令后 按 ⌘ + ; 会自动列出输入过的命令</div><div class="line">⌘ + shift + h 会列出剪切板历史</div><div class="line">可以在 Preferences &gt; keys 设置全局快捷键调出 iterm，这个也可以用过 Alfred 实现</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-积累 " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/04/17/RAC常见用法/" itemprop="url">
+                  RAC常见用法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-04-17T17:29:19+08:00" content="Apr 17 2018">
+              Apr 17 2018
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="RAC常见用法"><a href="#RAC常见用法" class="headerlink" title="RAC常见用法"></a>RAC常见用法</h1><h2 id="代替代理"><a href="#代替代理" class="headerlink" title="代替代理"></a>代替代理</h2><ul>
+<li>使用RAC代替代理时,rac_signalForSelecto:fromProtocol:这个代替代理的方法使用时,切记要将self设为代理这句话放在订阅代理信号的后面写,否则会无法执行<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">//这里订阅收到的是一个x,当一个页面存在多个tableview时,我们可以对x进行判断看是哪个tableview</div><div class="line">[[self rac_signalForSelector:@selector(tableView:didSelectRowAtIndexPath:) fromProtocol:@protocol(UITableViewDelegate) ] subscribeNext:^(RACTuple * x) &#123;</div><div class="line">NSLog(@&quot;点击了&quot;);</div><div class="line">NSLog(@&quot;%@,%@&quot;,x.first,x.second);</div><div class="line">&#125;];</div><div class="line"></div><div class="line">//这样子不带协议是无法代替代理的,虽然能达到效果,这个方法表示某个selector被调用时执行一段代码.带有协议参数的表示该selector实现了某个协议，所以可以用它来实现Delegate。</div><div class="line">//    [[self rac_signalForSelector:@selector(tableView:didSelectRowAtIndexPath:)] subscribeNext:^(RACTuple* x) &#123;</div><div class="line">//        NSLog(@&quot;%@&quot;,[x class]);</div><div class="line">//        NSLog(@&quot;%@&quot;,x);</div><div class="line">//    &#125;];</div><div class="line"></div><div class="line">//这里是个坑,必须将代理最后设置,否则信号是无法订阅到的</div><div class="line">//雷纯峰大大是这样子解释的:在设置代理的时候，系统会缓存这个代理对象实现了哪些代码方法</div><div class="line">//如果将代理放在订阅信号前设置,那么当控制器成为代理时是无法缓存这个代理对象实现了哪些代码方法的</div><div class="line">tableview.delegate = self;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="KVO"><a href="#KVO" class="headerlink" title="KVO"></a>KVO</h2><ul>
+<li>使用RAC代替KVO很简单,一句话就可以搞定,而且相比传统的KVO,不仅代码不用放在一起写美观了很多,同时还能达到高聚合低耦合的目标。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//代替KVO</div><div class="line">[RACObserve(scrollView, contentOffset) subscribeNext:^(id x) &#123;</div><div class="line">NSLog(@&quot;%@&quot;,x);</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="监听事件"><a href="#监听事件" class="headerlink" title="监听事件"></a>监听事件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[[btn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) &#123;</div><div class="line">NSLog(@&quot;点击了按钮&quot;);</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<h2 id="通知"><a href="#通知" class="headerlink" title="通知"></a>通知</h2><ul>
+<li>这里是有个坑的,单纯的写完订阅通知的信号会发现每次都会执行,而且叠加次数会增加,效果如图所示,所以我们要想办法把通知订阅的信号给释放掉,所以用到了takeUntil这个方法。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//takeUntil会接收一个signal,当signal触发后会把之前的信号释放掉</div><div class="line">[[[[NSNotificationCenter defaultCenter] rac_addObserverForName:UIKeyboardDidShowNotification object:nil] takeUntil:self.rac_willDeallocSignal] subscribeNext:^(id x) &#123;</div><div class="line">NSLog(@&quot;键盘弹出&quot;);</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h2><ul>
+<li><p>延时执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//五秒后执行一次</div><div class="line">[[RACScheduler mainThreadScheduler]afterDelay:5 schedule:^&#123;</div><div class="line">NSLog(@&quot;五秒后执行一次&quot;);</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+</li>
+<li><p>定时执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//每隔两秒执行一次</div><div class="line">//这里要加takeUntil条件限制一下否则当控制器pop后依旧会执行</div><div class="line">[[[RACSignal interval:2 onScheduler:[RACScheduler mainThreadScheduler]] takeUntil:self.rac_willDeallocSignal ] subscribeNext:^(id x) &#123;</div><div class="line">NSLog(@&quot;每两秒执行一次&quot;);</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="监听文本框的文字改变"><a href="#监听文本框的文字改变" class="headerlink" title="监听文本框的文字改变"></a>监听文本框的文字改变</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[_textField.rac_textSignal subscribeNext:^(id x) &#123;</div><div class="line">NSLog(@&quot;文字改变了%@&quot;,x);</div><div class="line">&#125;]</div></pre></td></tr></table></figure>
+<h2 id="处理多个请求，都返回结果的时候，统一做处理"><a href="#处理多个请求，都返回结果的时候，统一做处理" class="headerlink" title="处理多个请求，都返回结果的时候，统一做处理"></a>处理多个请求，都返回结果的时候，统一做处理</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">RACSignal *request1 = [RACSignal createSignal:^RACDisposable *(id&lt;RACSubscriber&gt; subscriber) &#123;</div><div class="line">// 发送请求1</div><div class="line">[subscriber sendNext:@&quot;发送请求1&quot;];</div><div class="line">return nil;</div><div class="line">&#125;];</div><div class="line"></div><div class="line">RACSignal *request2 = [RACSignal createSignal:^RACDisposable *(id&lt;RACSubscriber&gt; subscriber) &#123;</div><div class="line">// 发送请求2</div><div class="line">[subscriber sendNext:@&quot;发送请求2&quot;];</div><div class="line">return nil;</div><div class="line">&#125;];</div><div class="line"></div><div class="line">// 使用注意：几个信号，参数一的方法就几个参数，每个参数对应信号发出的数据。</div><div class="line">[self rac_liftSelector:@selector(updateUIWithR1:r2:) withSignalsFromArray:@[request1,request2]];</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-积累 " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/04/07/RAC 使用小结/" itemprop="url">
+                  RAC常见用法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-04-07T12:25:19+08:00" content="Apr 7 2018">
+              Apr 7 2018
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="RAC常见用法"><a href="#RAC常见用法" class="headerlink" title="RAC常见用法"></a>RAC常见用法</h1><h2 id="RACSignal"><a href="#RACSignal" class="headerlink" title="- RACSignal"></a>- RACSignal</h2><h2 id="RACSubject"><a href="#RACSubject" class="headerlink" title="- RACSubject"></a>- RACSubject</h2><h2 id="RACSequence"><a href="#RACSequence" class="headerlink" title="- RACSequence"></a>- RACSequence</h2><h2 id="RACMulticastConnection"><a href="#RACMulticastConnection" class="headerlink" title="- RACMulticastConnection"></a>- RACMulticastConnection</h2><h2 id="RACCommand"><a href="#RACCommand" class="headerlink" title="- RACCommand"></a>- RACCommand</h2><h2 id="RAC常用宏"><a href="#RAC常用宏" class="headerlink" title="- RAC常用宏"></a>- RAC常用宏</h2><h2 id="RAC-bind"><a href="#RAC-bind" class="headerlink" title="- RAC-bind"></a>- RAC-bind</h2><h2 id="RAC-过滤"><a href="#RAC-过滤" class="headerlink" title="- RAC-过滤"></a>- RAC-过滤</h2><h2 id="RAC-映射"><a href="#RAC-映射" class="headerlink" title="- RAC-映射"></a>- RAC-映射</h2><h2 id="RAC-组合"><a href="#RAC-组合" class="headerlink" title="- RAC-组合"></a>- RAC-组合</h2><h1 id="RACSignal-1"><a href="#RACSignal-1" class="headerlink" title="- RACSignal"></a>- RACSignal</h1><h1 id="一-核心"><a href="#一-核心" class="headerlink" title="一.核心"></a>一.核心</h1><h2 id="1-信号类"><a href="#1-信号类" class="headerlink" title="1.信号类"></a>1.信号类</h2><h2 id="2-作用：只要有数据改变就会把数据包装成信号传递出去"><a href="#2-作用：只要有数据改变就会把数据包装成信号传递出去" class="headerlink" title="2.作用：只要有数据改变就会把数据包装成信号传递出去"></a>2.作用：只要有数据改变就会把数据包装成信号传递出去</h2><h2 id="3-只要有数据改变就会有信号发出"><a href="#3-只要有数据改变就会有信号发出" class="headerlink" title="3.只要有数据改变就会有信号发出"></a>3.只要有数据改变就会有信号发出</h2><h2 id="4-数据发出，并不是信号类发出，信号类不能发送数据"><a href="#4-数据发出，并不是信号类发出，信号类不能发送数据" class="headerlink" title="4.数据发出，并不是信号类发出，信号类不能发送数据"></a>4.数据发出，并不是信号类发出，信号类不能发送数据</h2><h1 id="二-使用"><a href="#二-使用" class="headerlink" title="二.使用"></a>二.使用</h1><h2 id="1-创建信号"><a href="#1-创建信号" class="headerlink" title="1.创建信号"></a>1.创建信号</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// 1.创建信号</div><div class="line">RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id&lt;RACSubscriber&gt; subscriber) &#123;</div><div class="line">// 3.发送信号</div><div class="line">[subscriber sendNext:@&quot;ws&quot;];</div><div class="line">// 4.取消信号，如果信号想要被取消，就必须返回一个RACDisposable</div><div class="line">// 信号什么时候被取消：1.自动取消，当一个信号的订阅者被销毁的时候机会自动取消订阅，2.手动取消，</div><div class="line">//block什么时候调用：一旦一个信号被取消订阅就会调用</div><div class="line">//block作用：当信号被取消时用于清空一些资源</div><div class="line">return [RACDisposable disposableWithBlock:^&#123;</div><div class="line">NSLog(@&quot;取消订阅&quot;);</div><div class="line">&#125;];</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<h2 id="2-订阅信号-才能激活信号"><a href="#2-订阅信号-才能激活信号" class="headerlink" title="2.订阅信号(才能激活信号)"></a>2.订阅信号(才能激活信号)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">// 2. 订阅信号</div><div class="line">//subscribeNext</div><div class="line">// 把nextBlock保存到订阅者里面</div><div class="line">// 只要订阅信号就会返回一个取消订阅信号的类</div><div class="line">RACDisposable *disposable = [signal subscribeNext:^(id x) &#123;</div><div class="line">// block的调用时刻：只要信号内部发出数据就会调用这个block</div><div class="line">NSLog(@&quot;======%@&quot;, x);</div><div class="line">&#125;];</div><div class="line">// 取消订阅</div><div class="line">[disposable dispose]</div></pre></td></tr></table></figure>
+<h3 id="RACSignal底层实现"><a href="#RACSignal底层实现" class="headerlink" title="RACSignal底层实现 :"></a>RACSignal底层实现 :</h3><h4 id="1、创建信号，首先把didSubscribe保存到信号中，还不会触发"><a href="#1、创建信号，首先把didSubscribe保存到信号中，还不会触发" class="headerlink" title="1、创建信号，首先把didSubscribe保存到信号中，还不会触发."></a>1、创建信号，首先把didSubscribe保存到信号中，还不会触发.</h4><h4 id="2、当信号被订阅，也就是调用signal的subscribrNext：nextBlock，-subscribeNext内部会创建订阅者subscriber，并把nextBlock保存到subscriber中，subscribNext内部会调用signal的didSubscribe"><a href="#2、当信号被订阅，也就是调用signal的subscribrNext：nextBlock，-subscribeNext内部会创建订阅者subscriber，并把nextBlock保存到subscriber中，subscribNext内部会调用signal的didSubscribe" class="headerlink" title="2、当信号被订阅，也就是调用signal的subscribrNext：nextBlock， subscribeNext内部会创建订阅者subscriber，并把nextBlock保存到subscriber中，subscribNext内部会调用signal的didSubscribe"></a>2、当信号被订阅，也就是调用signal的subscribrNext：nextBlock， subscribeNext内部会创建订阅者subscriber，并把nextBlock保存到subscriber中，subscribNext内部会调用signal的didSubscribe</h4><h4 id="3、signal的didsubcribe中调用【subscriber-sendNext：-”发送数据”】，sendNext底层其实就是执行subscriber的nextBlock。"><a href="#3、signal的didsubcribe中调用【subscriber-sendNext：-”发送数据”】，sendNext底层其实就是执行subscriber的nextBlock。" class="headerlink" title="3、signal的didsubcribe中调用【subscriber sendNext：@”发送数据”】，sendNext底层其实就是执行subscriber的nextBlock。"></a>3、signal的didsubcribe中调用【subscriber sendNext：@”发送数据”】，sendNext底层其实就是执行subscriber的nextBlock。</h4><h1 id="RACSubject（热信号）"><a href="#RACSubject（热信号）" class="headerlink" title="- RACSubject（热信号）"></a>- RACSubject（热信号）</h1><h2 id="RACSubject继承于RACSignal遵守了RACSubscriber协议可以完全用RACSubject代替代理-通知-与-RACSignal-以及-RACSequence-有着众多的类簇不同，RACSubject-在整个工程中并没有多少子类；不过，在大多数情况下，我们也只会使用-RACSubject-自己或者-RACReplaySubject-是一个可以『手动』控制的信号"><a href="#RACSubject继承于RACSignal遵守了RACSubscriber协议可以完全用RACSubject代替代理-通知-与-RACSignal-以及-RACSequence-有着众多的类簇不同，RACSubject-在整个工程中并没有多少子类；不过，在大多数情况下，我们也只会使用-RACSubject-自己或者-RACReplaySubject-是一个可以『手动』控制的信号" class="headerlink" title="RACSubject继承于RACSignal遵守了RACSubscriber协议可以完全用RACSubject代替代理 /通知,与 RACSignal 以及 RACSequence 有着众多的类簇不同，RACSubject 在整个工程中并没有多少子类；不过，在大多数情况下，我们也只会使用 RACSubject 自己或者 RACReplaySubject,是一个可以『手动』控制的信号"></a>RACSubject继承于RACSignal遵守了RACSubscriber协议可以完全用RACSubject代替代理 /通知,与 RACSignal 以及 RACSequence 有着众多的类簇不同，RACSubject 在整个工程中并没有多少子类；不过，在大多数情况下，我们也只会使用 RACSubject 自己或者 RACReplaySubject,是一个可以『手动』控制的信号</h2><h3 id="相比于-RACSignal-丰富的头文件-，RACSubject对外的接口并没有提供太多的方法："><a href="#相比于-RACSignal-丰富的头文件-，RACSubject对外的接口并没有提供太多的方法：" class="headerlink" title="相比于 RACSignal 丰富的头文件 ，RACSubject对外的接口并没有提供太多的方法："></a>相比于 RACSignal 丰富的头文件 ，RACSubject对外的接口并没有提供太多的方法：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@interface RACSubject : RACSignal &lt;RACSubscriber&gt;</div><div class="line">+ (instancetype)subject;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<h3 id="唯一提供的接口就是用于返回一个新实例的-subject-方法；除此之外，在笔者看来它与-RACSignal-最大的不同就是：RACSubject-实现了-RACSubscriber-协议，也就是下面的这些方法："><a href="#唯一提供的接口就是用于返回一个新实例的-subject-方法；除此之外，在笔者看来它与-RACSignal-最大的不同就是：RACSubject-实现了-RACSubscriber-协议，也就是下面的这些方法：" class="headerlink" title="唯一提供的接口就是用于返回一个新实例的 +subject 方法；除此之外，在笔者看来它与 RACSignal 最大的不同就是：RACSubject 实现了 RACSubscriber 协议，也就是下面的这些方法："></a>唯一提供的接口就是用于返回一个新实例的 +subject 方法；除此之外，在笔者看来它与 RACSignal 最大的不同就是：RACSubject 实现了 RACSubscriber 协议，也就是下面的这些方法：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@protocol RACSubscriber &lt;NSObject&gt;</div><div class="line">@required</div><div class="line">- (void)sendNext:(nullable id)value;</div><div class="line">- (void)sendError:(nullable NSError *)error;</div><div class="line">- (void)sendCompleted;</div><div class="line">- (void)didSubscribeWithDisposable:(RACCompoundDisposable *)disposable;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<h3 id="我们并不能在一个-RACSignal-对象上执行这些方法，只能在创建信号的-block-里面向遵循-RACSubscriber-协议的对象发送新的值或者错误，这也是-RACSubject-和父类最大的不同：在-RACSubject-实例初始化之后，也可以通过这个实例向所有的订阅者发送消息。"><a href="#我们并不能在一个-RACSignal-对象上执行这些方法，只能在创建信号的-block-里面向遵循-RACSubscriber-协议的对象发送新的值或者错误，这也是-RACSubject-和父类最大的不同：在-RACSubject-实例初始化之后，也可以通过这个实例向所有的订阅者发送消息。" class="headerlink" title="我们并不能在一个 RACSignal 对象上执行这些方法，只能在创建信号的 block 里面向遵循 RACSubscriber 协议的对象发送新的值或者错误，这也是 RACSubject 和父类最大的不同：在 RACSubject 实例初始化之后，也可以通过这个实例向所有的订阅者发送消息。"></a>我们并不能在一个 RACSignal 对象上执行这些方法，只能在创建信号的 block 里面向遵循 RACSubscriber 协议的对象发送新的值或者错误，这也是 RACSubject 和父类最大的不同：在 RACSubject 实例初始化之后，也可以通过这个实例向所有的订阅者发送消息。</h3><h2 id="1-创建信号-跟RACSignal不一样，创建信号时没有block。"><a href="#1-创建信号-跟RACSignal不一样，创建信号时没有block。" class="headerlink" title="1.创建信号 跟RACSignal不一样，创建信号时没有block。"></a>1.创建信号 跟RACSignal不一样，创建信号时没有block。</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">RACSubject *subject = [RACSubject subject];</div></pre></td></tr></table></figure>
+<h2 id="2-订阅信号-调用subscribeNext订阅信号，只是把订阅者保存起来，并且订阅者的nextBlock已经赋值了"><a href="#2-订阅信号-调用subscribeNext订阅信号，只是把订阅者保存起来，并且订阅者的nextBlock已经赋值了" class="headerlink" title="2.订阅信号(调用subscribeNext订阅信号，只是把订阅者保存起来，并且订阅者的nextBlock已经赋值了)"></a>2.订阅信号(调用subscribeNext订阅信号，只是把订阅者保存起来，并且订阅者的nextBlock已经赋值了)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[subject subscribeNext:^(id x) &#123;</div><div class="line">// block:当有数据发出的时候就会调用</div><div class="line">// block:处理数据</div><div class="line">NSLog(@&quot;%@&quot;,x);</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<h2 id="3-发送信号-调用subscribeNext订阅信号，只是把订阅者保存起来，并且订阅者的nextBlock已经赋值了"><a href="#3-发送信号-调用subscribeNext订阅信号，只是把订阅者保存起来，并且订阅者的nextBlock已经赋值了" class="headerlink" title="3.发送信号(调用subscribeNext订阅信号，只是把订阅者保存起来，并且订阅者的nextBlock已经赋值了)"></a>3.发送信号(调用subscribeNext订阅信号，只是把订阅者保存起来，并且订阅者的nextBlock已经赋值了)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[subject sendNext:value];</div></pre></td></tr></table></figure>
+<h2 id="注意-RACSubject-在-RACSignal-对象之上进行了简单的修改，将原有的冷信号改造成了热信号，将不可变变成了可变。"><a href="#注意-RACSubject-在-RACSignal-对象之上进行了简单的修改，将原有的冷信号改造成了热信号，将不可变变成了可变。" class="headerlink" title="注意 RACSubject 在 RACSignal 对象之上进行了简单的修改，将原有的冷信号改造成了热信号，将不可变变成了可变。"></a>注意 RACSubject 在 RACSignal 对象之上进行了简单的修改，将原有的冷信号改造成了热信号，将不可变变成了可变。</h2><h2 id="RACBehaviorSubject与RACReplaySubject"><a href="#RACBehaviorSubject与RACReplaySubject" class="headerlink" title="RACBehaviorSubject与RACReplaySubject"></a>RACBehaviorSubject与RACReplaySubject</h2><h3 id="RACBehaviorSubject和RACReplaySubject是RACSubject的两个子类，前者在订阅时会向订阅者发送最新的消息，后者在订阅之后可以重新发送之前的所有消息序列。"><a href="#RACBehaviorSubject和RACReplaySubject是RACSubject的两个子类，前者在订阅时会向订阅者发送最新的消息，后者在订阅之后可以重新发送之前的所有消息序列。" class="headerlink" title="RACBehaviorSubject和RACReplaySubject是RACSubject的两个子类，前者在订阅时会向订阅者发送最新的消息，后者在订阅之后可以重新发送之前的所有消息序列。"></a>RACBehaviorSubject和RACReplaySubject是RACSubject的两个子类，前者在订阅时会向订阅者发送最新的消息，后者在订阅之后可以重新发送之前的所有消息序列。</h3><h3 id="先来介绍两者中实现较简单的RACBehaviorSubject，它在内部会保存一个currentValue-对象，也就是最后一次发送的消息："><a href="#先来介绍两者中实现较简单的RACBehaviorSubject，它在内部会保存一个currentValue-对象，也就是最后一次发送的消息：" class="headerlink" title="先来介绍两者中实现较简单的RACBehaviorSubject，它在内部会保存一个currentValue 对象，也就是最后一次发送的消息："></a>先来介绍两者中实现较简单的RACBehaviorSubject，它在内部会保存一个currentValue 对象，也就是最后一次发送的消息：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@interface RACBehaviorSubject ()</div><div class="line">@property (nonatomic, strong) id currentValue;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<h4 id="在每次执行-sendNext-时，都会对-RACBehaviorSubject-中保存的-currentValue进行更新，并使用父类的-sendNext-方法，向所有的订阅者发送最新的消息："><a href="#在每次执行-sendNext-时，都会对-RACBehaviorSubject-中保存的-currentValue进行更新，并使用父类的-sendNext-方法，向所有的订阅者发送最新的消息：" class="headerlink" title="在每次执行-sendNext:时，都会对 RACBehaviorSubject 中保存的 currentValue进行更新，并使用父类的 -sendNext:方法，向所有的订阅者发送最新的消息："></a>在每次执行<code>-sendNext:</code>时，都会对 <code>RACBehaviorSubject</code> 中保存的 <code>currentValue</code>进行更新，并使用父类的 <code>-sendNext:</code>方法，向所有的订阅者发送最新的消息：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- (void)sendNext:(id)value &#123;</div><div class="line">@synchronized (self) &#123;</div><div class="line">self.currentValue = value;</div><div class="line">[super sendNext:value];</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="RACBehaviorSubject最重要的特性就是在订阅时，向最新的订阅者发送之前的消息，这是通过覆写-subscribe-方法实现的。在调用子类的-subscribe-方法之后，会在subscriber对象上执行-sendNext-方法："><a href="#RACBehaviorSubject最重要的特性就是在订阅时，向最新的订阅者发送之前的消息，这是通过覆写-subscribe-方法实现的。在调用子类的-subscribe-方法之后，会在subscriber对象上执行-sendNext-方法：" class="headerlink" title="RACBehaviorSubject最重要的特性就是在订阅时，向最新的订阅者发送之前的消息，这是通过覆写-subscribe:方法实现的。在调用子类的-subscribe:方法之后，会在subscriber对象上执行-sendNext: 方法："></a><code>RACBehaviorSubject</code>最重要的特性就是在订阅时，向最新的订阅者发送之前的消息，这是通过覆写<code>-subscribe:</code>方法实现的。在调用子类的<code>-subscribe:</code>方法之后，会在<code>subscriber</code>对象上执行<code>-sendNext:</code> 方法：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">- (RACDisposable *)subscribe:(id&lt;RACSubscriber&gt;)subscriber &#123;</div><div class="line">RACDisposable *subscriptionDisposable = [super subscribe:subscriber];</div><div class="line"></div><div class="line">RACDisposable *schedulingDisposable = [RACScheduler.subscriptionScheduler schedule:^&#123;</div><div class="line">@synchronized (self) &#123;</div><div class="line">[subscriber sendNext:self.currentValue];</div><div class="line">&#125;</div><div class="line">&#125;];</div><div class="line"></div><div class="line">return [RACDisposable disposableWithBlock:^&#123;</div><div class="line">[subscriptionDisposable dispose];</div><div class="line">[schedulingDisposable dispose];</div><div class="line">&#125;];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="RACReplaySubject相当于一个自带buffer-的RACBehaviorSubject，它可以在每次有新的订阅者订阅之后发送之前的全部消息。"><a href="#RACReplaySubject相当于一个自带buffer-的RACBehaviorSubject，它可以在每次有新的订阅者订阅之后发送之前的全部消息。" class="headerlink" title="RACReplaySubject相当于一个自带buffer 的RACBehaviorSubject，它可以在每次有新的订阅者订阅之后发送之前的全部消息。"></a>RACReplaySubject相当于一个自带buffer 的RACBehaviorSubject，它可以在每次有新的订阅者订阅之后发送之前的全部消息。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@interface RACReplaySubject ()</div><div class="line">@property (nonatomic,assign,readonly)NSUInteger capacity;</div><div class="line">@property (nonatomic, strong,readonly) NSMutableArray*valuesReceived;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<h2 id="RACSequence-1"><a href="#RACSequence-1" class="headerlink" title="RACSequence"></a>RACSequence</h2><h3 id="高效的遍历数组和字典"><a href="#高效的遍历数组和字典" class="headerlink" title="高效的遍历数组和字典"></a>高效的遍历数组和字典</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">NSArray *dictArr = [[NSArray alloc] initWithObjects:@&quot;1&quot;,@&quot;2&quot;,@&quot;3&quot;,@&quot;4&quot;,@&quot;5&quot;,@&quot;6&quot;, nil];</div><div class="line">[dictArr.rac_sequence.signal subscribeNext:^(id x) &#123;</div><div class="line">NSLog(@&quot;%@&quot;, x);</div><div class="line">&#125; error:^(NSError *error) &#123;</div><div class="line">NSLog(@&quot;===error===&quot;);</div><div class="line">&#125; completed:^&#123;</div><div class="line">NSLog(@&quot;ok---完毕&quot;);</div><div class="line">&#125;];</div><div class="line"></div><div class="line">//也可以使用宏</div><div class="line">NSDictionary *dict = @&#123;@&quot;key&quot;:@1, @&quot;key2&quot;:@2&#125;;</div><div class="line">[dict.rac_sequence.signal subscribeNext:^(id x) &#123;</div><div class="line">NSLog(@&quot;%@&quot;, x);</div><div class="line">NSString *key = x[0];</div><div class="line">NSString *value = x[1];</div><div class="line">// RACTupleUnpack宏：专门用来解析元组</div><div class="line">// RACTupleUnpack 等会右边：需要解析的元组 宏的参数，填解析的什么样数据</div><div class="line">// 元组里面有几个值，宏的参数就必须填几个</div><div class="line">// RACTupleUnpack(NSString *key, NSString *value) = x;</div><div class="line">NSLog(@&quot;%@ %@&quot;, key, value);</div><div class="line">&#125; error:^(NSError *error) &#123;</div><div class="line">NSLog(@&quot;===error&quot;);</div><div class="line">&#125; completed:^&#123;</div><div class="line">NSLog(@&quot;-----ok---完毕&quot;);</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<h2 id="RACMulticastConnection-1"><a href="#RACMulticastConnection-1" class="headerlink" title="RACMulticastConnection"></a>RACMulticastConnection</h2><h3 id="当有多个订阅者，但是我们只想发送一个信号的时候怎么办？这时我们就可以用RACMulticastConnection，来实现。代码示例如下"><a href="#当有多个订阅者，但是我们只想发送一个信号的时候怎么办？这时我们就可以用RACMulticastConnection，来实现。代码示例如下" class="headerlink" title="当有多个订阅者，但是我们只想发送一个信号的时候怎么办？这时我们就可以用RACMulticastConnection，来实现。代码示例如下:"></a>当有多个订阅者，但是我们只想发送一个信号的时候怎么办？这时我们就可以用RACMulticastConnection，来实现。代码示例如下:</h3><h4 id="1-普通写法"><a href="#1-普通写法" class="headerlink" title="1.普通写法:"></a>1.普通写法:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">// 这样的缺点是：每订阅一次信号就得重新创建并发送请求，这样很不友好</div><div class="line">RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id&lt;RACSubscriber&gt; subscriber) &#123;</div><div class="line">// didSubscribeblock中的代码都统称为副作用。</div><div class="line">// 发送请求---比如afn</div><div class="line">NSLog(@&quot;发送请求啦&quot;);</div><div class="line">// 发送信号</div><div class="line">[subscriber sendNext:@&quot;ws&quot;];</div><div class="line">return nil;</div><div class="line">&#125;];</div><div class="line">[signal subscribeNext:^(id x) &#123;</div><div class="line">NSLog(@&quot;%@&quot;, x);</div><div class="line">&#125;];</div><div class="line">[signal subscribeNext:^(id x) &#123;</div><div class="line">NSLog(@&quot;%@&quot;, x);</div><div class="line">&#125;];</div><div class="line">[signal subscribeNext:^(id x) &#123;</div><div class="line">NSLog(@&quot;%@&quot;, x);</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<h4 id="比较好的写法"><a href="#比较好的写法" class="headerlink" title="比较好的写法:"></a>比较好的写法:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">// 使用RACMulticastConnection，无论有多少个订阅者，无论订阅多少次，我只发送一个。</div><div class="line">// 1.发送请求，用一个信号内包装，不管有多少个订阅者，只想发一次请求</div><div class="line">RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id&lt;RACSubscriber&gt; subscriber) &#123;</div><div class="line">// 发送请求</div><div class="line">NSLog(@&quot;发送请求啦&quot;);</div><div class="line">// 发送信号</div><div class="line">[subscriber sendNext:@&quot;ws&quot;];</div><div class="line">return nil;</div><div class="line">&#125;];</div><div class="line">//2. 创建连接类</div><div class="line">RACMulticastConnection *connection = [signal publish];</div><div class="line">[connection.signal subscribeNext:^(id x) &#123;</div><div class="line">NSLog(@&quot;%@&quot;, x);</div><div class="line">&#125;];</div><div class="line">[connection.signal subscribeNext:^(id x) &#123;</div><div class="line">NSLog(@&quot;%@&quot;, x);</div><div class="line">&#125;];</div><div class="line">[connection.signal subscribeNext:^(id x) &#123;</div><div class="line">NSLog(@&quot;%@&quot;, x);</div><div class="line">&#125;];</div><div class="line">//3. 连接。只有连接了才会把信号源变为热信号</div><div class="line">[connection connect];</div></pre></td></tr></table></figure>
+<h4 id="大概原理"><a href="#大概原理" class="headerlink" title="大概原理 :"></a>大概原理 :</h4><ul>
+<li>1.创建connect，connect.sourceSignal -&gt; RACSignal(原始信号)  connect.signal -&gt; RACSubject     </li>
+<li>2.订阅connect.signal，会调用RACSubject的subscribeNext，创建订阅者，而且把订阅者保存起来，不会执行block。     </li>
+<li>3.[connect connect]内部会订阅RACSignal(原始信号)，并且订阅者是RACSubject     </li>
+<li>3.1.订阅原始信号，就会调用原始信号中的didSubscribe     </li>
+<li>3.2 didSubscribe，拿到订阅者调用sendNext，其实是调用RACSubject的sendNext     </li>
+<li>4.RACSubject的sendNext,会遍历RACSubject所有订阅者发送信号。    </li>
+<li>4.1 因为刚刚第二步，都是在订阅RACSubject，因此会拿到第二步所有的订阅者，调用他们的nextBlock</li>
+<li><h3 id="RACCommand-1"><a href="#RACCommand-1" class="headerlink" title="RACCommand"></a>RACCommand</h3><h4 id="RACCommand-RAC中用于处理事件的类，可以把事件如何处理，事件中的数据如何传递，包装到这个类中，他可以很方便的监控事件的执行过程，比如看事件有没有执行完毕"><a href="#RACCommand-RAC中用于处理事件的类，可以把事件如何处理，事件中的数据如何传递，包装到这个类中，他可以很方便的监控事件的执行过程，比如看事件有没有执行完毕" class="headerlink" title="RACCommand:RAC中用于处理事件的类，可以把事件如何处理，事件中的数据如何传递，包装到这个类中，他可以很方便的监控事件的执行过程，比如看事件有没有执行完毕"></a>RACCommand:RAC中用于处理事件的类，可以把事件如何处理，事件中的数据如何传递，包装到这个类中，他可以很方便的监控事件的执行过程，比如看事件有没有执行完毕</h4><h4 id="使用场景-监听按钮点击，网络请求"><a href="#使用场景-监听按钮点击，网络请求" class="headerlink" title="使用场景:监听按钮点击，网络请求"></a>使用场景:监听按钮点击，网络请求</h4></li>
+<li><p>普通做法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">// RACCommand: 处理事件</div><div class="line">// 不能返回空的信号</div><div class="line">// 1.创建命令</div><div class="line">RACCommand *command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) &#123;</div><div class="line">//block调用，执行命令的时候就会调用</div><div class="line">NSLog(@&quot;%@&quot;,input);</div><div class="line">// input 为执行命令传进来的参数</div><div class="line">// 这里的返回值不允许为nil</div><div class="line">return [RACSignal createSignal:^RACDisposable *(id&lt;RACSubscriber&gt; subscriber) &#123;</div><div class="line">[subscriber sendNext:@&quot;执行命令产生的数据&quot;];</div><div class="line">return nil;</div><div class="line">&#125;];</div><div class="line">&#125;];</div><div class="line"></div><div class="line">// 如何拿到执行命令中产生的数据呢？</div><div class="line">// 订阅命令内部的信号</div><div class="line">// ** 方式一：直接订阅执行命令返回的信号</div><div class="line">// 2.执行命令</div><div class="line">RACSignal *signal =[command execute:@2];</div><div class="line">// 这里其实用到的是replaySubject 可以先发送命令再订阅</div><div class="line">// 在这里就可以订阅信号了</div><div class="line">[signal subscribeNext:^(id x) &#123;</div><div class="line">NSLog(@&quot;%@&quot;,x);</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+</li>
+<li><p>一般做法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">// 1.创建命令</div><div class="line">RACCommand *command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) &#123;</div><div class="line">//block调用，执行命令的时候就会调用</div><div class="line">NSLog(@&quot;%@&quot;,input); // input 为执行命令传进来的参数</div><div class="line">// 这里的返回值不允许为nil</div><div class="line">return [RACSignal createSignal:^RACDisposable *(id&lt;RACSubscriber&gt; subscriber) &#123;</div><div class="line">[subscriber sendNext:@&quot;执行命令产生的数据&quot;];</div><div class="line">return nil;</div><div class="line">&#125;];</div><div class="line">&#125;];</div><div class="line"></div><div class="line">// 订阅信号</div><div class="line">// 注意：这里必须是先订阅才能发送命令</div><div class="line">// executionSignals：信号源，信号中信号，signalofsignals:信号，发送数据就是信号</div><div class="line">[command.executionSignals subscribeNext:^(RACSignal *x) &#123;</div><div class="line">[x subscribeNext:^(id x) &#123;</div><div class="line">NSLog(@&quot;%@&quot;, x);</div><div class="line">&#125;];</div><div class="line">//        NSLog(@&quot;%@&quot;, x);</div><div class="line">&#125;];</div><div class="line">// 2.执行命令</div><div class="line">[command execute:@2];</div></pre></td></tr></table></figure>
+</li>
+<li><p>高级做法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">// 1.创建命令</div><div class="line">RACCommand *command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) &#123;</div><div class="line">// block调用：执行命令的时候就会调用</div><div class="line">NSLog(@&quot;%@&quot;, input);</div><div class="line">// 这里的返回值不允许为nil</div><div class="line">return [RACSignal createSignal:^RACDisposable *(id&lt;RACSubscriber&gt; subscriber) &#123;</div><div class="line">[subscriber sendNext:@&quot;发送信号&quot;];</div><div class="line">return nil;</div><div class="line">&#125;];</div><div class="line">&#125;];</div><div class="line"></div><div class="line">// 方式三</div><div class="line">// switchToLatest获取最新发送的信号，只能用于信号中信号。</div><div class="line">[command.executionSignals.switchToLatest subscribeNext:^(id x) &#123;</div><div class="line">NSLog(@&quot;%@&quot;, x);</div><div class="line">&#125;];</div><div class="line">// 2.执行命令</div><div class="line">[command execute:@3];</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">// switchToLatest--用于信号中信号</div><div class="line">// 创建信号中信号</div><div class="line">RACSubject *signalofsignals = [RACSubject subject];</div><div class="line">RACSubject *signalA = [RACSubject subject];</div><div class="line">// 订阅信号</div><div class="line">//    [signalofsignals subscribeNext:^(RACSignal *x) &#123;</div><div class="line">//        [x subscribeNext:^(id x) &#123;</div><div class="line">//            NSLog(@&quot;%@&quot;, x);</div><div class="line">//        &#125;];</div><div class="line">//    &#125;];</div><div class="line">// switchToLatest: 获取信号中信号发送的最新信号</div><div class="line">[signalofsignals.switchToLatest subscribeNext:^(id x) &#123;</div><div class="line">NSLog(@&quot;%@&quot;, x);</div><div class="line">&#125;];</div><div class="line">// 发送信号</div><div class="line">[signalofsignals sendNext:signalA];</div><div class="line">[signalA sendNext:@4];</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">// 监听事件有没有完成</div><div class="line">//注意：当前命令内部发送数据完成，一定要主动发送完成</div><div class="line">// 1.创建命令</div><div class="line">RACCommand *command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) &#123;</div><div class="line">// block调用：执行命令的时候就会调用</div><div class="line">NSLog(@&quot;%@&quot;, input);</div><div class="line">// 这里的返回值不允许为nil</div><div class="line">return [RACSignal createSignal:^RACDisposable *(id&lt;RACSubscriber&gt; subscriber) &#123;</div><div class="line">// 发送数据</div><div class="line">[subscriber sendNext:@&quot;执行命令产生的数据&quot;];</div><div class="line"></div><div class="line">// *** 发送完成 **</div><div class="line">[subscriber sendCompleted];</div><div class="line">return nil;</div><div class="line">&#125;];</div><div class="line">&#125;];</div><div class="line">// 监听事件有没有完成</div><div class="line">[command.executing subscribeNext:^(id x) &#123;</div><div class="line">if ([x boolValue] == YES) &#123; // 正在执行</div><div class="line">NSLog(@&quot;当前正在执行%@&quot;, x);</div><div class="line">&#125;else &#123;</div><div class="line">// 执行完成/没有执行</div><div class="line">NSLog(@&quot;执行完成/没有执行&quot;);</div><div class="line">&#125;</div><div class="line">&#125;];</div><div class="line"></div><div class="line">// 2.执行命令</div><div class="line">[command execute:@1];</div></pre></td></tr></table></figure>
+<h2 id="RAC常用宏-1"><a href="#RAC常用宏-1" class="headerlink" title="RAC常用宏"></a>RAC常用宏</h2><h3 id="RAC有许多强大而方便的宏。如下"><a href="#RAC有许多强大而方便的宏。如下" class="headerlink" title="RAC有许多强大而方便的宏。如下:"></a>RAC有许多强大而方便的宏。如下:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// RAC:把一个对象的某个属性绑定一个信号,只要发出信号,就会把信号的内容给对象的属性赋值</div><div class="line">// 给label的text属性绑定了文本框改变的信号</div><div class="line">RAC(self.label, text) = self.textField.rac_textSignal;</div><div class="line">//    [self.textField.rac_textSignal subscribeNext:^(id x) &#123;</div><div class="line">//        self.label.text = x;</div><div class="line">//    &#125;];</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">*  KVO</div><div class="line">*  RACObserveL:快速的监听某个对象的某个属性改变</div><div class="line">*  返回的是一个信号,对象的某个属性改变的信号</div><div class="line">*/</div><div class="line">[RACObserve(self.view, center) subscribeNext:^(id x) &#123;</div><div class="line">NSLog(@&quot;%@&quot;, x);</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//例 textField输入的值赋值给label，监听label文字改变,</div><div class="line">RAC(self.label, text) = self.textField.rac_textSignal;</div><div class="line">[RACObserve(self.label, text) subscribeNext:^(id x) &#123;</div><div class="line">NSLog(@&quot;====label的文字变了&quot;);</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">*  循环引用问题</div><div class="line">*/</div><div class="line">@weakify(self)</div><div class="line">RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id&lt;RACSubscriber&gt; subscriber) &#123;</div><div class="line">@strongify(self)</div><div class="line">NSLog(@&quot;%@&quot;,self.view);</div><div class="line">return nil;</div><div class="line">&#125;];</div><div class="line">_signal = signal;</div><div class="line">使用 @weakify(self)和@strongify(self)来避免循环引用</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">* 元祖</div><div class="line">* 快速包装一个元组</div><div class="line">* 把包装的类型放在宏的参数里面,就会自动包装</div><div class="line">*/</div><div class="line">RACTuple *tuple = RACTuplePack(@1,@2,@4);</div><div class="line">// 宏的参数类型要和元祖中元素类型一致， 右边为要解析的元祖。</div><div class="line">RACTupleUnpack_(NSNumber *num1, NSNumber *num2, NSNumber * num3) = tuple;// 4.元祖</div><div class="line">// 快速包装一个元组</div><div class="line">// 把包装的类型放在宏的参数里面,就会自动包装</div><div class="line">NSLog(@&quot;%@ %@ %@&quot;, num1, num2, num3);</div></pre></td></tr></table></figure>
+<h2 id="RAC-bind-1"><a href="#RAC-bind-1" class="headerlink" title="RAC-bind"></a>RAC-bind</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">// 1.创建信号</div><div class="line">RACSubject *subject = [RACSubject subject];</div><div class="line">// 2.绑定信号</div><div class="line">RACSignal *bindSignal = [subject bind:^RACStreamBindBlock&#123;</div><div class="line">// block调用时刻：只要绑定信号订阅就会调用。不做什么事情，</div><div class="line">return ^RACSignal *(id value, BOOL *stop)&#123;</div><div class="line">// 一般在这个block中做事 ，发数据的时候会来到这个block。</div><div class="line">// 只要源信号（subject）发送数据，就会调用block</div><div class="line">// block作用：处理源信号内容</div><div class="line">// value:源信号发送的内容，</div><div class="line">value = @3; // 如果在这里把value的值改了，那么订阅绑定信号的值即44行的x就变了</div><div class="line">NSLog(@&quot;接受到源信号的内容：%@&quot;, value);</div><div class="line">//返回信号，不能为nil,如果非要返回空---则empty或 alloc init。</div><div class="line">return [RACReturnSignal return:value]; // 把返回的值包装成信号</div><div class="line">&#125;;</div><div class="line">&#125;];</div><div class="line"></div><div class="line">// 3.订阅绑定信号</div><div class="line">[bindSignal subscribeNext:^(id x) &#123;</div><div class="line"></div><div class="line">NSLog(@&quot;接收到绑定信号处理完的信号:%@&quot;, x);</div><div class="line">&#125;];</div><div class="line">// 4.发送信号</div><div class="line">[subject sendNext:@&quot;123&quot;];</div></pre></td></tr></table></figure>
+<ul>
+<li>bind（绑定）的使用思想和Hook的一样—&gt; 都是拦截API从而可以对数据进行操作，而影响返回数据。</li>
+<li>发送信号的时候会来到30行的block。在这个block里我们可以对数据进行一些操作，那么35行打印的value和订阅绑定信号后的value就会变了。<h2 id="RAC-过滤-1"><a href="#RAC-过滤-1" class="headerlink" title="RAC-过滤"></a>RAC-过滤</h2><h3 id="有时候我们想要过滤一些信号，这时候我们便可以用RAC的过滤方法。过滤方法有好多种，如下代码，从不同情况下进行了分析。"><a href="#有时候我们想要过滤一些信号，这时候我们便可以用RAC的过滤方法。过滤方法有好多种，如下代码，从不同情况下进行了分析。" class="headerlink" title="有时候我们想要过滤一些信号，这时候我们便可以用RAC的过滤方法。过滤方法有好多种，如下代码，从不同情况下进行了分析。"></a>有时候我们想要过滤一些信号，这时候我们便可以用RAC的过滤方法。过滤方法有好多种，如下代码，从不同情况下进行了分析。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// 跳跃 ： 如下，skip传入2 跳过前面两个值</div><div class="line">// 实际用处： 在实际开发中比如 后台返回的数据前面几个没用，我们想跳跃过去，便可以用skip</div><div class="line">RACSubject *subject = [RACSubject subject];</div><div class="line">[[subject skip:2] subscribeNext:^(id x) &#123;</div><div class="line">NSLog(@&quot;%@&quot;, x);</div><div class="line">&#125;];</div><div class="line">[subject sendNext:@1];</div><div class="line">[subject sendNext:@2];</div><div class="line">[subject sendNext:@3];</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//distinctUntilChanged:-- 如果当前的值跟上一次的值一样，就不会被订阅到</div><div class="line">RACSubject *subject = [RACSubject subject];</div><div class="line">[[subject distinctUntilChanged] subscribeNext:^(id x) &#123;</div><div class="line">NSLog(@&quot;%@&quot;, x);</div><div class="line">&#125;];</div><div class="line">// 发送信号</div><div class="line">[subject sendNext:@1];</div><div class="line">[subject sendNext:@2];</div><div class="line">[subject sendNext:@2]; // 不会被订阅</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// take:可以屏蔽一些值,去掉前面几个值---这里take为2 则只拿到前两个值</div><div class="line">RACSubject *subject = [RACSubject subject];</div><div class="line">[[subject take:2] subscribeNext:^(id x) &#123;</div><div class="line">NSLog(@&quot;%@&quot;, x);</div><div class="line">&#125;];</div><div class="line">// 发送信号</div><div class="line">[subject sendNext:@1];</div><div class="line">[subject sendNext:@2];</div><div class="line">[subject sendNext:@3];</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//takeLast:和take的用法一样，不过他取的是最后的几个值，如下，则取的是最后两个值</div><div class="line">//注意点:takeLast 一定要调用sendCompleted，告诉他发送完成了，这样才能取到最后的几个值</div><div class="line">RACSubject *subject = [RACSubject subject];</div><div class="line">[[subject takeLast:2] subscribeNext:^(id x) &#123;</div><div class="line">NSLog(@&quot;%@&quot;, x);</div><div class="line">&#125;];</div><div class="line">// 发送信号</div><div class="line">[subject sendNext:@1];</div><div class="line">[subject sendNext:@2];</div><div class="line">[subject sendNext:@3];</div><div class="line">[subject sendCompleted];</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// takeUntil:---给takeUntil传的是哪个信号，那么当这个信号发送信号或sendCompleted，就不能再接受源信号的内容了。</div><div class="line">RACSubject *subject = [RACSubject subject];</div><div class="line">RACSubject *subject2 = [RACSubject subject];</div><div class="line">[[subject takeUntil:subject2] subscribeNext:^(id x) &#123;</div><div class="line">NSLog(@&quot;%@&quot;, x);</div><div class="line">&#125;];</div><div class="line">// 发送信号</div><div class="line">[subject sendNext:@1];</div><div class="line">[subject sendNext:@2];</div><div class="line">[subject2 sendNext:@3];  // 1</div><div class="line">//    [subject2 sendCompleted]; // 或2</div><div class="line">[subject sendNext:@4];</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">//ignore:忽略一些值</div><div class="line">//ignoreValues:表示忽略所有的值</div><div class="line">// 1.创建信号</div><div class="line">RACSubject *subject = [RACSubject subject];</div><div class="line">// 2.忽略一些值</div><div class="line">RACSignal *ignoreSignal = [subject ignore:@2]; // ignoreValues:表示忽略所有的值</div><div class="line">// 3.订阅信号</div><div class="line">[ignoreSignal subscribeNext:^(id x) &#123;</div><div class="line">NSLog(@&quot;%@&quot;, x);</div><div class="line">&#125;];</div><div class="line">// 4.发送数据</div><div class="line">[subject sendNext:@2];</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// 一般和文本框一起用，添加过滤条件</div><div class="line">// 只有当文本框的内容长度大于5，才获取文本框里的内容</div><div class="line">[[self.textField.rac_textSignal filter:^BOOL(id value) &#123;</div><div class="line">// value 源信号的内容</div><div class="line">return [value length] &gt; 5;</div><div class="line">// 返回值 就是过滤条件。只有满足这个条件才能获取到内容</div><div class="line">&#125;] subscribeNext:^(id x) &#123;</div><div class="line">NSLog(@&quot;%@&quot;, x);</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<h2 id="RAC-映射-1"><a href="#RAC-映射-1" class="headerlink" title="RAC-映射"></a>RAC-映射</h2><h3 id="RAC的映射在实际开发中有什么用呢？比如我们想要拦截服务器返回的数据，给数据拼接特定的东西或想对数据进行操作从而更改返回值，类似于这样的情况下，我们便可以考虑用RAC的映射，实例代码如下"><a href="#RAC的映射在实际开发中有什么用呢？比如我们想要拦截服务器返回的数据，给数据拼接特定的东西或想对数据进行操作从而更改返回值，类似于这样的情况下，我们便可以考虑用RAC的映射，实例代码如下" class="headerlink" title="RAC的映射在实际开发中有什么用呢？比如我们想要拦截服务器返回的数据，给数据拼接特定的东西或想对数据进行操作从而更改返回值，类似于这样的情况下，我们便可以考虑用RAC的映射，实例代码如下"></a>RAC的映射在实际开发中有什么用呢？比如我们想要拦截服务器返回的数据，给数据拼接特定的东西或想对数据进行操作从而更改返回值，类似于这样的情况下，我们便可以考虑用RAC的映射，实例代码如下</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">- (void)map &#123;</div><div class="line">// 创建信号</div><div class="line">RACSubject *subject = [RACSubject subject];</div><div class="line">// 绑定信号</div><div class="line">RACSignal *bindSignal = [subject map:^id(id value) &#123;</div><div class="line"></div><div class="line">// 返回的类型就是你需要映射的值</div><div class="line">return [NSString stringWithFormat:@&quot;ws:%@&quot;, value]; //这里将源信号发送的“123” 前面拼接了ws：</div><div class="line">&#125;];</div><div class="line">// 订阅绑定信号</div><div class="line">[bindSignal subscribeNext:^(id x) &#123;</div><div class="line">NSLog(@&quot;%@&quot;, x);</div><div class="line">&#125;];</div><div class="line">// 发送信号</div><div class="line">[subject sendNext:@&quot;123&quot;];</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">- (void)flatMap &#123;</div><div class="line">// 创建信号</div><div class="line">RACSubject *subject = [RACSubject subject];</div><div class="line">// 绑定信号</div><div class="line">RACSignal *bindSignal = [subject flattenMap:^RACStream *(id value) &#123;</div><div class="line">// block：只要源信号发送内容就会调用</div><div class="line">// value: 就是源信号发送的内容</div><div class="line">// 返回信号用来包装成修改内容的值</div><div class="line">return [RACReturnSignal return:value];</div><div class="line">&#125;];</div><div class="line"></div><div class="line">// flattenMap中返回的是什么信号，订阅的就是什么信号(那么，x的值等于value的值，如果我们操纵value的值那么x也会随之而变)</div><div class="line">// 订阅信号</div><div class="line">[bindSignal subscribeNext:^(id x) &#123;</div><div class="line">NSLog(@&quot;%@&quot;, x);</div><div class="line">&#125;];</div><div class="line">// 发送数据</div><div class="line">[subject sendNext:@&quot;123&quot;];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">-(void)flattenMap2&#123;</div><div class="line">// flattenMap 主要用于信号中的信号</div><div class="line">// 创建信号</div><div class="line">RACSubject *signalofSignals = [RACSubject subject];</div><div class="line">RACSubject *signal = [RACSubject subject];</div><div class="line"></div><div class="line">// 订阅信号</div><div class="line">//方式1</div><div class="line">//    [signalofSignals subscribeNext:^(id x) &#123;</div><div class="line">//</div><div class="line">//        [x subscribeNext:^(id x) &#123;</div><div class="line">//            NSLog(@&quot;%@&quot;, x);</div><div class="line">//        &#125;];</div><div class="line">//    &#125;];</div><div class="line">// 方式2</div><div class="line">//    [signalofSignals.switchToLatest  ];</div><div class="line">// 方式3</div><div class="line">//   RACSignal *bignSignal = [signalofSignals flattenMap:^RACStream *(id value) &#123;</div><div class="line">//</div><div class="line">//        //value:就是源信号发送内容</div><div class="line">//        return value;</div><div class="line">//    &#125;];</div><div class="line">//    [bignSignal subscribeNext:^(id x) &#123;</div><div class="line">//        NSLog(@&quot;%@&quot;, x);</div><div class="line">//    &#125;];</div><div class="line">// 方式4--------也是开发中常用的</div><div class="line">[[signalofSignals flattenMap:^RACStream *(id value) &#123;</div><div class="line">return value;</div><div class="line">&#125;] subscribeNext:^(id x) &#123;</div><div class="line">NSLog(@&quot;%@&quot;, x);</div><div class="line">&#125;];</div><div class="line">// 发送信号</div><div class="line">[signalofSignals sendNext:signal];</div><div class="line">[signal sendNext:@&quot;123&quot;];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="RAC-组合-1"><a href="#RAC-组合-1" class="headerlink" title="RAC-组合"></a>RAC-组合</h2><h3 id="把多个信号聚合成你想要的信号-比如-当多个输入框都有值的时候按钮才可点击"><a href="#把多个信号聚合成你想要的信号-比如-当多个输入框都有值的时候按钮才可点击" class="headerlink" title="把多个信号聚合成你想要的信号,(比如-当多个输入框都有值的时候按钮才可点击)"></a>把多个信号聚合成你想要的信号,(比如-当多个输入框都有值的时候按钮才可点击)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">// 思路--- 就是把输入框输入值的信号都聚合成按钮是否能点击的信号。</div><div class="line">- (void)combineLatest &#123;</div><div class="line">RACSignal *combinSignal = [RACSignal combineLatest:@[self.accountField.rac_textSignal, self.pwdField.rac_textSignal] reduce:^id(NSString *account, NSString *pwd)&#123; //reduce里的参数一定要和combineLatest数组里的一一对应。</div><div class="line">// block: 只要源信号发送内容，就会调用，组合成一个新值。</div><div class="line">NSLog(@&quot;%@ %@&quot;, account, pwd);</div><div class="line">return @(account.length &amp;&amp; pwd.length);</div><div class="line">&#125;];</div><div class="line">//    // 订阅信号</div><div class="line">//    [combinSignal subscribeNext:^(id x) &#123;</div><div class="line">//        self.loginBtn.enabled = [x boolValue];</div><div class="line">//    &#125;];    // ----这样写有些麻烦，可以直接用RAC宏</div><div class="line">RAC(self.loginBtn, enabled) = combinSignal;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">- (void)zipWith &#123;</div><div class="line">//zipWith:把两个信号压缩成一个信号，只有当两个信号同时发出信号内容时，并且把两个信号的内容合并成一个元祖，才会触发压缩流的next事件。</div><div class="line">// 创建信号A</div><div class="line">RACSubject *signalA = [RACSubject subject];</div><div class="line">// 创建信号B</div><div class="line">RACSubject *signalB = [RACSubject subject];</div><div class="line">// 压缩成一个信号</div><div class="line">// **-zipWith-**: 当一个界面多个请求的时候，要等所有请求完成才更新UI</div><div class="line">// 等所有信号都发送内容的时候才会调用</div><div class="line">RACSignal *zipSignal = [signalA zipWith:signalB];</div><div class="line">[zipSignal subscribeNext:^(id x) &#123;</div><div class="line">NSLog(@&quot;%@&quot;, x); //所有的值都被包装成了元组</div><div class="line">&#125;];</div><div class="line"></div><div class="line">// 发送信号 交互顺序，元组内元素的顺序不会变，跟发送的顺序无关，而是跟压缩的顺序有关[signalA zipWith:signalB]---先是A后是B</div><div class="line">[signalA sendNext:@1];</div><div class="line">[signalB sendNext:@2];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">// 任何一个信号请求完成都会被订阅到</div><div class="line">// merge:多个信号合并成一个信号，任何一个信号有新值就会调用</div><div class="line">- (void)merge&#123;</div><div class="line">// 创建信号A</div><div class="line">RACSubject *signalA = [RACSubject subject];</div><div class="line">// 创建信号B</div><div class="line">RACSubject *signalB = [RACSubject subject];</div><div class="line">//组合信号</div><div class="line">RACSignal *mergeSignal = [signalA merge:signalB];</div><div class="line">// 订阅信号</div><div class="line">[mergeSignal subscribeNext:^(id x) &#123;</div><div class="line">NSLog(@&quot;%@&quot;, x);</div><div class="line">&#125;];</div><div class="line">// 发送信号---交换位置则数据结果顺序也会交换</div><div class="line">[signalB sendNext:@&quot;下部分&quot;];</div><div class="line">[signalA sendNext:@&quot;上部分&quot;];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">// then --- 使用需求：有两部分数据：想让上部分先进行网络请求但是过滤掉数据，然后进行下部分的，拿到下部分数据</div><div class="line">- (void)then &#123;</div><div class="line">// 创建信号A</div><div class="line">RACSignal *signalA = [RACSignal createSignal:^RACDisposable *(id&lt;RACSubscriber&gt; subscriber) &#123;</div><div class="line">// 发送请求</div><div class="line">NSLog(@&quot;----发送上部分请求---afn&quot;);</div><div class="line"></div><div class="line">[subscriber sendNext:@&quot;上部分数据&quot;];</div><div class="line">[subscriber sendCompleted]; // 必须要调用sendCompleted方法！</div><div class="line">return nil;</div><div class="line">&#125;];</div><div class="line"></div><div class="line">// 创建信号B，</div><div class="line">RACSignal *signalsB = [RACSignal createSignal:^RACDisposable *(id&lt;RACSubscriber&gt; subscriber) &#123;</div><div class="line">// 发送请求</div><div class="line">NSLog(@&quot;--发送下部分请求--afn&quot;);</div><div class="line">[subscriber sendNext:@&quot;下部分数据&quot;];</div><div class="line">return nil;</div><div class="line">&#125;];</div><div class="line">// 创建组合信号</div><div class="line">// then;忽略掉第一个信号的所有值</div><div class="line">RACSignal *thenSignal = [signalA then:^RACSignal *&#123;</div><div class="line">// 返回的信号就是要组合的信号</div><div class="line">return signalsB;</div><div class="line">&#125;];</div><div class="line"></div><div class="line">// 订阅信号</div><div class="line">[thenSignal subscribeNext:^(id x) &#123;</div><div class="line">NSLog(@&quot;%@&quot;, x);</div><div class="line">&#125;];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">// concat----- 使用需求：有两部分数据：想让上部分先执行，完了之后再让下部分执行（都可获取值）</div><div class="line">- (void)concat &#123;</div><div class="line">// 创建信号A</div><div class="line">RACSignal *signalA = [RACSignal createSignal:^RACDisposable *(id&lt;RACSubscriber&gt; subscriber) &#123;</div><div class="line">// 发送请求</div><div class="line">// NSLog(@&quot;----发送上部分请求---afn&quot;);</div><div class="line">[subscriber sendNext:@&quot;上部分数据&quot;];</div><div class="line">[subscriber sendCompleted]; // 必须要调用sendCompleted方法！</div><div class="line">return nil;</div><div class="line">&#125;];</div><div class="line"></div><div class="line">// 创建信号B，</div><div class="line">RACSignal *signalsB = [RACSignal createSignal:^RACDisposable *(id&lt;RACSubscriber&gt; subscriber) &#123;</div><div class="line">// 发送请求</div><div class="line">// NSLog(@&quot;--发送下部分请求--afn&quot;);</div><div class="line">[subscriber sendNext:@&quot;下部分数据&quot;];</div><div class="line">return nil;</div><div class="line">&#125;];</div><div class="line"></div><div class="line">// concat:按顺序去链接</div><div class="line">//**-注意-**：concat，第一个信号必须要调用sendCompleted</div><div class="line">// 创建组合信号</div><div class="line">RACSignal *concatSignal = [signalA concat:signalsB];</div><div class="line">// 订阅组合信号</div><div class="line">[concatSignal subscribeNext:^(id x) &#123;</div><div class="line">NSLog(@&quot;%@&quot;,x);</div><div class="line">&#125;];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-积累 " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2018/03/12/NSInvocation/" itemprop="url">
                   NSInvocation
                 </a>
@@ -1162,520 +1621,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/10/03/Button图文/" itemprop="url">
-                  button图文
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-10-03T16:58:13+08:00" content="Oct 3 2017">
-              Oct 3 2017
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Button是我们平时用的最多的控件之一，经常会遇到图片文字位置的问题，用下面的方法一行代码就可以搞定"><a href="#Button是我们平时用的最多的控件之一，经常会遇到图片文字位置的问题，用下面的方法一行代码就可以搞定" class="headerlink" title="Button是我们平时用的最多的控件之一，经常会遇到图片文字位置的问题，用下面的方法一行代码就可以搞定"></a>Button是我们平时用的最多的控件之一，经常会遇到图片文字位置的问题，用下面的方法一行代码就可以搞定</h2><h2 id="创建UIButton分类"><a href="#创建UIButton分类" class="headerlink" title="创建UIButton分类"></a>创建UIButton分类</h2><h3 id="h"><a href="#h" class="headerlink" title=".h"></a>.h</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">#import &lt;UIKit/UIKit.h&gt;</div><div class="line"></div><div class="line">typedef NS_ENUM(NSUInteger, DCDButtonEdgeInsetsStyle) &#123;</div><div class="line">    DCDButtonEdgeInsetsStyleTop, // image在上，label在下</div><div class="line">    DCDButtonEdgeInsetsStyleLeft, // image在左，label在右</div><div class="line">    DCDButtonEdgeInsetsStyleBottom, // image在下，label在上</div><div class="line">    DCDButtonEdgeInsetsStyleRight // image在右，label在左</div><div class="line">&#125;;</div><div class="line"></div><div class="line">@interface UIButton (TitleImageSpacing)</div><div class="line"></div><div class="line">/**</div><div class="line"> *  设置button的titleLabel和imageView的布局样式，及间距</div><div class="line"> *</div><div class="line"> *  @param style titleLabel和imageView的布局样式</div><div class="line"> *  @param space titleLabel和imageView的间距</div><div class="line"> */</div><div class="line">- (void)layoutButtonWithEdgeInsetsStyle:(DCDButtonEdgeInsetsStyle)style</div><div class="line">                        imageTitleSpace:(CGFloat)space;</div><div class="line">@end</div></pre></td></tr></table></figure>
-<h3 id="m"><a href="#m" class="headerlink" title=".m"></a>.m</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line">#import &quot;UIButton+TitleImageSpacing.h&quot;</div><div class="line"></div><div class="line">@implementation UIButton (TitleImageSpacing)</div><div class="line"></div><div class="line">- (void)layoutButtonWithEdgeInsetsStyle:(DCDButtonEdgeInsetsStyle)style</div><div class="line">                        imageTitleSpace:(CGFloat)space</div><div class="line">&#123;</div><div class="line">    //    self.backgroundColor = [UIColor cyanColor];</div><div class="line"></div><div class="line">    /**</div><div class="line">     *  前置知识点：titleEdgeInsets是title相对于其上下左右的inset，跟tableView的contentInset是类似的，</div><div class="line">     *  如果只有title，那它上下左右都是相对于button的，image也是一样；</div><div class="line">     *  如果同时有image和label，那这时候image的上左下是相对于button，右边是相对于label的；title的上右下是相对于button，左边是相对于image的。</div><div class="line">     */</div><div class="line"></div><div class="line">    // 1. 得到imageView和titleLabel的宽、高</div><div class="line">    CGFloat imageWith = self.imageView.frame.size.width;</div><div class="line">    CGFloat imageHeight = self.imageView.frame.size.height;</div><div class="line"></div><div class="line">    CGFloat labelWidth = 0.0;</div><div class="line">    CGFloat labelHeight = 0.0;</div><div class="line">    if ([UIDevice currentDevice].systemVersion.floatValue &gt;= 8.0) &#123;</div><div class="line">        // 由于iOS8中titleLabel的size为0，用下面的这种设置</div><div class="line">        labelWidth = self.titleLabel.intrinsicContentSize.width;</div><div class="line">        labelHeight = self.titleLabel.intrinsicContentSize.height;</div><div class="line">    &#125; else &#123;</div><div class="line">        labelWidth = self.titleLabel.frame.size.width;</div><div class="line">        labelHeight = self.titleLabel.frame.size.height;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // 2. 声明全局的imageEdgeInsets和labelEdgeInsets</div><div class="line">    UIEdgeInsets imageEdgeInsets = UIEdgeInsetsZero;</div><div class="line">    UIEdgeInsets labelEdgeInsets = UIEdgeInsetsZero;</div><div class="line"></div><div class="line">    // 3. 根据style和space得到imageEdgeInsets和labelEdgeInsets的值</div><div class="line">    switch (style) &#123;</div><div class="line">        case DCDButtonEdgeInsetsStyleTop:</div><div class="line">        &#123;</div><div class="line">            imageEdgeInsets = UIEdgeInsetsMake(-labelHeight-space/2.0, 0, 0, -labelWidth);</div><div class="line">            labelEdgeInsets = UIEdgeInsetsMake(0, -imageWith, -imageHeight-space/2.0, 0);</div><div class="line">        &#125;</div><div class="line">            break;</div><div class="line">        case DCDButtonEdgeInsetsStyleLeft:</div><div class="line">        &#123;</div><div class="line">            imageEdgeInsets = UIEdgeInsetsMake(0, -space/2.0, 0, space/2.0);</div><div class="line">            labelEdgeInsets = UIEdgeInsetsMake(0, space/2.0, 0, -space/2.0);</div><div class="line">        &#125;</div><div class="line">            break;</div><div class="line">        case DCDButtonEdgeInsetsStyleBottom:</div><div class="line">        &#123;</div><div class="line">            imageEdgeInsets = UIEdgeInsetsMake(0, 0, -labelHeight-space/2.0, -labelWidth);</div><div class="line">            labelEdgeInsets = UIEdgeInsetsMake(-imageHeight-space/2.0, -imageWith, 0, 0);</div><div class="line">        &#125;</div><div class="line">            break;</div><div class="line">        case DCDButtonEdgeInsetsStyleRight:</div><div class="line">        &#123;</div><div class="line">            imageEdgeInsets = UIEdgeInsetsMake(0, labelWidth+space/2.0, 0, -labelWidth-space/2.0);</div><div class="line">            labelEdgeInsets = UIEdgeInsetsMake(0, -imageWith-space/2.0, 0, imageWith+space/2.0);</div><div class="line">        &#125;</div><div class="line">            break;</div><div class="line">        default:</div><div class="line">            break;</div><div class="line">    &#125;</div><div class="line">    // 4. 赋值</div><div class="line">    self.titleEdgeInsets = labelEdgeInsets;</div><div class="line">    self.imageEdgeInsets = imageEdgeInsets;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">for (int i = 1; i &lt; 5; i ++) &#123;</div><div class="line">        UIButton *goBtn = [[UIButton alloc] initWithFrame:CGRectMake(100, 150 * i , 200, 100)];</div><div class="line">        goBtn.backgroundColor = [UIColor redColor];</div><div class="line">        [goBtn setTitle:@&quot;👆微信好友👆&quot; forState:UIControlStateNormal];</div><div class="line">        [goBtn setImage:[UIImage imageNamed:@&quot;img_wechat&quot;] forState:UIControlStateNormal];</div><div class="line">        if (i == 1) &#123;</div><div class="line">            [goBtn layoutButtonWithEdgeInsetsStyle:DCDButtonEdgeInsetsStyleTop imageTitleSpace:10];</div><div class="line">        &#125;else if (i == 2)&#123;</div><div class="line">            [goBtn layoutButtonWithEdgeInsetsStyle:DCDButtonEdgeInsetsStyleLeft imageTitleSpace:10];</div><div class="line">        &#125;else if (i == 3)&#123;</div><div class="line">            [goBtn layoutButtonWithEdgeInsetsStyle:DCDButtonEdgeInsetsStyleBottom imageTitleSpace:10];</div><div class="line">        &#125;else if (i == 4)&#123;</div><div class="line">            [goBtn layoutButtonWithEdgeInsetsStyle:DCDButtonEdgeInsetsStyleRight imageTitleSpace:10];</div><div class="line">        &#125;</div><div class="line">        [self.view addSubview:goBtn];</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<h3 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h3><p><img src="http://oc1jw3mv7.bkt.clouddn.com/button.jpg" alt="button"></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/09/03/性能优化小结/" itemprop="url">
-                  性能优化小结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-09-03T16:58:13+08:00" content="Sep 3 2017">
-              Sep 3 2017
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="性能优化小结"><a href="#性能优化小结" class="headerlink" title="性能优化小结"></a>性能优化小结</h2><h3 id="界面卡顿产生的原因"><a href="#界面卡顿产生的原因" class="headerlink" title="界面卡顿产生的原因"></a>界面卡顿产生的原因</h3><p><img src="http://cc.cocimg.com/api/uploads//20180309/1520562238557613.png" alt=""></p>
-<p>在VSync信号到来后，系统图形服务会通过CADisplayLink等机制通知App，App主线程开始在CPU中计算显示内容，比如视图的创建、布局计算、图片解码、文本绘制等。随后CPU会将计算好的内容提交到GPU去，由GPU进行变换、合成、渲染。随后GPU会把渲染结果提交到帧缓冲区去，等待下一次VSync信号到来时显示到屏幕上。由于垂直同步的机制，如果在一个VSync时间内，CPU或者GPU没有完成内容提交，则那一帧就会被丢弃，等待下一次机会再显示，而这时显示屏会保留之前的内容不变。这就是界面卡顿的原因。</p>
-<p>在开发中，CPU和GPU中任何一个压力过大，都会导致掉帧现象(FPS&lt; 60)</p>
-<h3 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h3><p>加载资源，对象创建，对象调整，对象销毁，布局计算，Autolayout，文本计算，文本渲染，图片的解码， 图像的绘制（Core Graphics）都是在CPU上面进行的。</p>
-<h3 id="CPU资源消耗原因以及解决办法"><a href="#CPU资源消耗原因以及解决办法" class="headerlink" title="CPU资源消耗原因以及解决办法"></a>CPU资源消耗原因以及解决办法</h3><p>1、对象的创建：</p>
-<p>对象的创建会分配内存、设置属性等，会消耗CPU资源。所以尽量使用轻量对象代替，比如能用CALayer的时候尽量不用UIView，敏感位置能不用IB尽量使用纯代码手写。</p>
-<p>推迟同一时间创建对象，推荐使用懒加载在需要使用时候创建对象。</p>
-<p>2、对象调整</p>
-<p>对 UIView 的这些属性进行调整时，消耗的资源要远大于一般的属性。对此你在应用中，应该尽量减少不必要的属性修改。</p>
-<p>当视图层次调整时，UIView、CALayer 之间会出现很多方法调用与通知，所以在优化性能时，应该尽量避免调整视图层次、添加和移除视图。</p>
-<p>3、对象销毁</p>
-<p>当前类持有大量对象时候，其销毁时候的资源消耗就非常明显。建议创建销毁的异步队列，将需要销毁的对象放到队列中销毁。</p>
-<p>4、布局计算</p>
-<p>布局计算在UITableView使用中是最常见的消耗资源的地方。建议取到数据之后，异步进行计算布局并缓存下来，当复用Cell时候直接调用缓存数据。</p>
-<p>5、AutoLayout</p>
-<p>Autolayout 对于复杂视图来说常常会产生严重的性能问题，AutoLayout相对低效的原因是隐藏在底层的命名为”Cassowary“的约束求解系统，随着视图数量的增长，Autolayout 带来的 CPU 消耗会呈指数级上升，当Cell内约束超过25个的时候，会降低滑动的帧率。</p>
-<p>具体：<a href="http://pilky.me/36/" target="_blank" rel="external">http://pilky.me/36/</a></p>
-<p>6、文本的计算以及渲染</p>
-<p>UI中存在大量的对于文本高度的适配，可以参考：用 [NSAttributedString boundingRectWithSize:options:context:] 来计算文本宽高，用 -[NSAttributedString drawWithRect:options:context:] 来绘制文本。尽管这两个方法性能不错，但仍旧需要放到后台线程进行以避免阻塞主线程。</p>
-<p>常见的文本控件 （UILabel、UITextView 等），其排版和绘制都是在主线程进行的，当显示大量文本时，CPU 的压力会非常大。解决办法是利用TextKit或者是CoreText自定义文本控件。详见：<a href="https://github.com/ibireme/YYText" target="_blank" rel="external">YYText</a>。</p>
-<p>7、图片解码以及图像的绘制</p>
-<p>当你用 UIImage 或 CGImageSource 的那几个方法创建图片时，图片数据并不会立刻解码。图片设置到 UIImageView 或者 CALayer.contents 中去，并且 CALayer 被提交到 GPU 前，CGImage 中的数据才会得到解码。这一步是发生在主线程的，并且不可避免。如果想要绕开这个机制，常见的做法是在后台线程先把图片绘制到 CGBitmapContext 中，然后从 Bitmap 直接创建图片。目前常见的网络图片库都自带这个功能。</p>
-<p>个最常见的地方就是 [UIView drawRect:] 里面了。由于 CoreGraphic 方法通常都是线程安全的，所以图像的绘制可以很容易的放到后台线程进行。</p>
-<p>8、文件系统的调用</p>
-<p>NSFileManager获取一个目录获取文件信息，进行多次递归计算，stat几乎瞬间完成，NSFileManager耗时较长且消耗CPU。</p>
-<h3 id="GPU"><a href="#GPU" class="headerlink" title="GPU"></a>GPU</h3><p>GPU是一个专门为图形高并发计算而量身定做的处理单元，比CPU使用更少的电来完成工作并且GPU的浮点计算能力要超出CPU很多。</p>
-<p>GPU的渲染性能要比CPU高效很多，同时对系统的负载和消耗也更低一些，所以在开发中，<strong>我们应该尽量让CPU负责主线程的UI调动，把图形显示相关的工作交给GPU来处理</strong>，当涉及到光栅化等一些工作时，CPU也会参与进来，这点在后面再详细描述。</p>
-<p>相对于CPU来说，GPU能干的事情比较单一：接收提交的纹理（Texture）和顶点描述（三角形），应用变换（transform）、混合（合成）并渲染，然后输出到屏幕上。通常你所能看到的内容，主要也就是纹理（图片）和形状（三角模拟的矢量图形）两类。</p>
-<h3 id="GPU资源消耗原因以及解决办法："><a href="#GPU资源消耗原因以及解决办法：" class="headerlink" title="GPU资源消耗原因以及解决办法："></a>GPU资源消耗原因以及解决办法：</h3><p>1、纹理的渲染</p>
-<p>当在较短时间显示大量图片时（比如 TableView 存在非常多的图片并且快速滑动时），CPU 占用率很低，GPU 占用非常高，界面仍然会掉帧。避免这种情况的方法只能是尽量减少在短时间内大量图片的显示，尽可能将多张图片合成为一张进行显示。</p>
-<p>2、视图的混合（Blended）</p>
-<p>视图结构过于复杂，混合的过程、会消耗很多 GPU 资源。为了减轻这种情况的 GPU 消耗，应用应当尽量减少视图数量和层次，并在不透明的视图里标明 opaque 属性以避免无用的 Alpha 通道合成。当然，这也可以用上面的方法，把多个视图预先渲染为一张图片来显示。</p>
-<p>Blended Layers（视图混合）：在同一个区域内，存在着多个有透明度的图层，那么GPU需要更多的计算，混合上下多个图层才能得出最终像素的RGB值。</p>
-<p>Misaligned Images（像素对齐）：逻辑像素（point）和 物理像素（pixel)无法相匹配；图片的size和显示图片的imageView的size（逻辑像素（point））不相等。</p>
-<p>3、图形的生成</p>
-<p>CALayer 的 border、圆角、阴影、遮罩（mask），CASharpLayer 的矢量图形显示，通常会触发离屏渲染（offscreen rendering），而离屏渲染通常发生在 GPU 中。可以尝试开启 CALayer.shouldRasterize 属性，但这会把原本离屏渲染的操作转嫁到 CPU 上去。</p>
-<p>好的方法是使用图片遮罩等方法，避免使用圆角和隐形等。<a href="http://www.imlifengfeng.com/blog/?p=593" target="_blank" rel="external">详细：iOS的离屏渲染</a></p>
-<p>解决方案：</p>
-<p>1、预先计算UI布局</p>
-<p>获取数据之后，异步计算Cell高度以及各控件高度和位置，并储存在CellLayouModel中，当每次Cell需要高度以及内部布局的时候就可以直接调用，不需要进行重复计算。</p>
-<p>2、使用自动缓存高度</p>
-<p>iOS 8之后出现了UITableView通过约束自动计算高度，但是因为iOS对于约束的算法问题，会导致流畅性降低，<a href="http://blog.sunnyxx.com/2015/05/17/cell-height-calculation/" target="_blank" rel="external">FDTemplateLayoutCell</a>很好的优化了这个问题。</p>
-<p>3、异步绘制</p>
-<p>Facebook的开源项目<a href="https://github.com/TextureGroup/Texture" target="_blank" rel="external">Texture</a>（原AsyncDisplayKit），通过利用ASDisplayNode封装了CALayer，实现了异步绘制。</p>
-<p>第三方微博客户端墨客的是现实，当滑动时，松开手指后，立刻计算出滑动停止时 Cell 的位置，并预先绘制那个位置附近的几个 Cell，而忽略当前滑动中的 Cell。但也有缺点，快速滑动的时候有可能会出现大量空白。</p>
-<p>3、高效图片加载</p>
-<p><a href="https://github.com/rs/SDWebImage" target="_blank" rel="external">SDWebImage-github</a></p>
-<p><a href="https://github.com/ibireme" target="_blank" rel="external">YYImage-github</a></p>
-<p>4、预加载</p>
-<p>列表当中，当滑动到一个可以设定的位置的时候，提前获取下载下一页的数据，并绘制UI。详见：<a href="https://zhuanlan.zhihu.com/p/23418800" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/23418800</a>。</p>
-<p>5、针对Blended Layers以及Misaligned Images</p>
-<p>Blended Layers：</p>
-<p>尽量少的使用具有透明色的图片</p>
-<p>尽量多的将UI部件增加背景色</p>
-<p>减少同一像素点进行过多的颜色计算</p>
-<p>Misaligned Images：</p>
-<p>现象：</p>
-<p>洋红色：UIView的frame像素不对齐，即不能换算成整数像素值。</p>
-<p>黄色：UIImageView的图片像素大小与其frame.size不对齐，图片发生了缩放造成。</p>
-<p>解决：</p>
-<p>尽量使用ceil()，保证没有小数的UI绘制</p>
-<p>尽量不实用0.01f标记UITableView或者UICollectionView的header以及footer</p>
-<p>网络上获取的图片没有@2x和@3x的区别，需要我们缩放图片到与UIImageView对应的尺寸，且缩放后的图片的scale和[UIScreen mainScreen].scale相等，再显示出来。</p>
-<p>其他：</p>
-<p>下面的情况或操作会引发离屏渲染：</p>
-<ul>
-<li><p>为图层设置遮罩（layer.mask）</p>
-</li>
-<li><p>将图层的layer.masksToBounds / view.clipsToBounds属性设置为true</p>
-</li>
-<li><p>将图层layer.allowsGroupOpacity属性设置为YES和layer.opacity小于1.0</p>
-</li>
-<li><p>为图层设置阴影（layer.shadow *）。</p>
-</li>
-<li><p>为图层设置layer.shouldRasterize=true</p>
-</li>
-<li><p>具有layer.cornerRadius，layer.edgeAntialiasingMask，layer.allowsEdgeAntialiasing的图层</p>
-</li>
-<li><p>文本（任何种类，包括UILabel，CATextLayer，Core Text等）。</p>
-</li>
-<li><p>使用CGContext在drawRect :方法中绘制大部分情况下会导致离屏渲染，甚至仅仅是一个空的实现。</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-其他 " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/08/12/ViewController各方法执行顺序/" itemprop="url">
-                  UIViewController各方法的调用顺序及功能
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-08-12T17:25:19+08:00" content="Aug 12 2017">
-              Aug 12 2017
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="UIViewController各方法的调用顺序及功能"><a href="#UIViewController各方法的调用顺序及功能" class="headerlink" title="UIViewController各方法的调用顺序及功能"></a>UIViewController各方法的调用顺序及功能</h1><h2 id="1-instancetype-initWithNibName：bundle："><a href="#1-instancetype-initWithNibName：bundle：" class="headerlink" title="1. -(instancetype)initWithNibName：bundle："></a>1. -(instancetype)initWithNibName：bundle：</h2><p>//这个方法是在controller的类在IB中创建，但是是通过Xcode实例化controller的时候调用的.<br>//一般情况下调用 init 方法或者调用 initWithNibName 方法的实例化UIViewController，不管调用哪个方法都会调用initWithNibName。<br>/<em><br>如果是通过调用initWithNibName:bundle指定nib文件名初始化的话，ViewController会根据此nib来创建View。如果name参数为nil，则ViewController会通过以下两个步骤找到与其关联的nib：<br>1）找跟ViewController类名一样的文件，例如MyViewController，则查找是否存在MyViewController.nib<br>2）如果ViewController的类名以“Controller”结尾，例如ViewController的类名是MyViewController，则查找是否存在MyView.nib；    
-</em>/</p>
-<pre><code>-(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-</code></pre><h2 id="2-void-loadView"><a href="#2-void-loadView" class="headerlink" title="2. -(void)loadView"></a>2. -(void)loadView</h2><p>当访问 UIViewController 的 view 属性时，view 如果此时是 nil，那么 VC 会自动调用 loadView 方法来初始化一个 UIView 并赋值给 view 属性。如果没有重载 loadView 方法，则 UIViewController 会从 nib 或 StoryBoard 中查找默认的 loadView ，默认的 loadView 会返回一个空白的 UIView 对象。</p>
-<p>此方法在控制器的 view 为 nil 的时候被调用。 此方法用于以编程的方式创建 view 的时候用到。loadView 是使用代码生成视图的时候，当视图第一次载入的时候调用的方法。用于使用（写）代码来实现控件。用于使用代码生成控件的函数</p>
-<p>需要注意的是，在view初始化之前，不能先调用view的getter方法，否则将导致死循环（除非先调用了[supper loadView]）;</p>
-<h2 id="3-void-viewDidLoad"><a href="#3-void-viewDidLoad" class="headerlink" title="3. -(void)viewDidLoad"></a>3. -(void)viewDidLoad</h2><p>如果 loadView 不能生成 UIViewController.view, 系统将会反复调用 loadView 及 viewDidLoad 方法, 并且最终调用 [super loadView] 方法返回 UIViewController.view。</p>
-<p>当VC的view对象载入内存后调用，用于对view进行额外的初始化操作 。</p>
-<h2 id="4-void-viewWillAppear-BOOL-animated"><a href="#4-void-viewWillAppear-BOOL-animated" class="headerlink" title="4. -(void)viewWillAppear:(BOOL)animated"></a>4. -(void)viewWillAppear:(BOOL)animated</h2><p>视图即将可见时调用(这个时候 supperView 还是 nil，即显示动画切换之前调用 )。默认情况下不执行任何操作。</p>
-<p>这个方法中完成任何与视图显示相关的任务，例如改变视图方向、状态栏方向、视图显示样式等。</p>
-<h2 id="5-void-viewWillLayoutSubviews"><a href="#5-void-viewWillLayoutSubviews" class="headerlink" title="5. -(void)viewWillLayoutSubviews"></a>5. -(void)viewWillLayoutSubviews</h2><p>view 即将布局其 Subviews。比如 view 的 bounds 改变了(例如状态栏从不显示到显示，视图方向变化)，要调整 Subviews 的位置，在调整之前要做的一些工作就可以在该方法中实现。</p>
-<h2 id="6-void-viewDidLayoutSubviews"><a href="#6-void-viewDidLayoutSubviews" class="headerlink" title="6. -(void)viewDidLayoutSubviews"></a>6. -(void)viewDidLayoutSubviews</h2><p>view 已经布局其 Subviews。比如 view 的 bounds 改变了(例如状态栏从不显示到显示，视图方向变化)，已经调整 Subviews 的位置，在调整完成之后要做的一些工作就可以在该方法中实现。</p>
-<h2 id="7-void-viewDidAppear-BOOL-animated"><a href="#7-void-viewDidAppear-BOOL-animated" class="headerlink" title="7. -(void)viewDidAppear:(BOOL)animated"></a>7. -(void)viewDidAppear:(BOOL)animated</h2><p>视图已完全过渡到屏幕上时调用。在这个方法中执行视图显示相关附件任务，如果重载了这个方法，必须在方法中调用 [supper<br>viewDidAppear]。</p>
-<h1 id="释放过程"><a href="#释放过程" class="headerlink" title="释放过程"></a>释放过程</h1><h2 id="8-void-viewWillDisappear-BOOL-animated"><a href="#8-void-viewWillDisappear-BOOL-animated" class="headerlink" title="8. -(void)viewWillDisappear:(BOOL)animated"></a>8. -(void)viewWillDisappear:(BOOL)animated</h2><p>view 即将从 superView 中移除且移除动画切换之前，此时还没有调用 removeFromSuperview。</p>
-<h2 id="9-void-viewDidDisappear-BOOL-animated"><a href="#9-void-viewDidDisappear-BOOL-animated" class="headerlink" title="9. -(void)viewDidDisappear:(BOOL)animated"></a>9. -(void)viewDidDisappear:(BOOL)animated</h2><p>view从superView中移除，移除动画切换之后调用，此时已调用removeFromSuperview。</p>
-<h2 id="10-void-didReceiveMemoryWarning"><a href="#10-void-didReceiveMemoryWarning" class="headerlink" title="10. -(void)didReceiveMemoryWarning"></a>10. -(void)didReceiveMemoryWarning</h2><p>当系统的内存不足时，该方法会被调用，我们可以在该方法里释放掉部分暂时不用的资源。</p>
-<h2 id="11-void-dealloc"><a href="#11-void-dealloc" class="headerlink" title="11. -(void)dealloc"></a>11. -(void)dealloc</h2><p>viewController 最后的清理工作，释放视图对象的引用和 viewController 所需数据结构。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
-<li>loadView (当访问UIViewController的view属性时)</li>
-<li>viewDidLoad (加载视图时调用)</li>
-<li>viewWillAppear (视图即将可见时调用)</li>
-<li>viewDidAppear (视图即将加入窗口时调用)</li>
-<li>viewWillLayoutSubviews (视图布局改变时调用，如：屏幕旋转）</li>
-<li>viewDidLayoutSubviews 在以下情况下会被调用：<ul>
-<li>1、init初始化不会触发layoutSubviews</li>
-<li>2、addSubview会触发layoutSubviews</li>
-<li>3、设置view的Frame会触发layoutSubviews，当然前提是frame的值设置前后发生了变化</li>
-<li>4、滚动一个UIScrollView会触发layoutSubviews</li>
-<li>5、旋转Screen会触发父UIView上的layoutSubviews事件</li>
-<li>6、改变一个UIView大小的时候也会触发父UIView上的layoutSubviews事件<br>viewWillDisappear（视图将被从屏幕上移除之前调用）<br>viewDidDisappear ( 视图已经被从屏幕上移除，用户看不到这个视图了调用)</li>
-</ul>
-</li>
-<li>当一个视图控制器被创建，并在屏幕上显示的时候。 代码的执行顺序<ul>
-<li>1、alloc                  创建对象，分配空间</li>
-<li>2、init (initWithNibName) 初始化对象，初始化数据</li>
-<li>3、loadView               从nib载入视图 ，通常这一步不需要去干涉。除非你没有使用xib文件创建视图</li>
-<li>4、viewDidLoad            载入完成，可以进行自定义数据以及动态创建其他控件</li>
-<li>5、viewWillAppear         视图将出现在屏幕之前，马上这个视图就会被展现在屏幕上了</li>
-<li>6、viewDidAppear          视图已在屏幕上渲染完成</li>
-</ul>
-</li>
-<li>当一个视图被移除屏幕并且销毁的时候的执行顺序，这个顺序差不多和上面的相反<ul>
-<li>1、viewWillDisappear      视图将被从屏幕上移除之前执行</li>
-<li>2、viewDidDisappear       视图已经被从屏幕上移除，用户看不到这个视图了</li>
-<li>3、dealloc                视图被销毁，此处需要对你在init和viewDidLoad中创建的对象进行释放</li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/08/12/导航栏的正常隐藏方式/" itemprop="url">
-                  顶部导航栏
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-08-12T16:58:13+08:00" content="Aug 12 2017">
-              Aug 12 2017
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><h3 id="项目中经常会碰到顶部导航栏需要隐藏的情况，这里给出三种方法。"><a href="#项目中经常会碰到顶部导航栏需要隐藏的情况，这里给出三种方法。" class="headerlink" title="项目中经常会碰到顶部导航栏需要隐藏的情况，这里给出三种方法。"></a>项目中经常会碰到顶部导航栏需要隐藏的情况，这里给出三种方法。</h3><h2 id="第一种"><a href="#第一种" class="headerlink" title="第一种"></a>第一种</h2><h3 id="简单粗暴直接上来就隐藏掉导航栏，在基类中自己定义view充当导航栏的作用"><a href="#简单粗暴直接上来就隐藏掉导航栏，在基类中自己定义view充当导航栏的作用" class="headerlink" title="简单粗暴直接上来就隐藏掉导航栏，在基类中自己定义view充当导航栏的作用"></a>简单粗暴直接上来就隐藏掉导航栏，在基类中自己定义view充当导航栏的作用</h3><h2 id="第二种"><a href="#第二种" class="headerlink" title="第二种"></a>第二种</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">- (void)viewWillAppear:(BOOL)animated &#123;</div><div class="line">    [super viewWillAppear:animated];</div><div class="line">    </div><div class="line">    [self.navigationController setNavigationBarHidden:YES animated:animated];</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)viewWillDisappear:(BOOL)animated &#123;</div><div class="line">    [super viewWillDisappear:animated];</div><div class="line">    </div><div class="line">    [self.navigationController setNavigationBarHidden:NO animated:animated];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="这里一定要用动画的方式隐藏导航栏-这样在使用滑动返回手势的时候效果最好-和上面动图一致-这样做有一个缺点就是在切换tabBar的时候有一个导航栏向上消失的动画。"><a href="#这里一定要用动画的方式隐藏导航栏-这样在使用滑动返回手势的时候效果最好-和上面动图一致-这样做有一个缺点就是在切换tabBar的时候有一个导航栏向上消失的动画。" class="headerlink" title="这里一定要用动画的方式隐藏导航栏,这样在使用滑动返回手势的时候效果最好,和上面动图一致.这样做有一个缺点就是在切换tabBar的时候有一个导航栏向上消失的动画。"></a>这里一定要用动画的方式隐藏导航栏,这样在使用滑动返回手势的时候效果最好,和上面动图一致.这样做有一个缺点就是在切换tabBar的时候有一个导航栏向上消失的动画。</h3><h2 id="第三种做法（推荐）"><a href="#第三种做法（推荐）" class="headerlink" title="第三种做法（推荐）"></a>第三种做法（推荐）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">@interface HomePageController () &lt;UINavigationControllerDelegate&gt;</div><div class="line"></div><div class="line">@end</div><div class="line"></div><div class="line">@implementation HomePageController </div><div class="line"></div><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line">    </div><div class="line">    // 设置导航控制器的代理为self</div><div class="line">    self.navigationController.delegate = self;</div><div class="line">&#125;</div><div class="line"></div><div class="line">#pragma mark - UINavigationControllerDelegate</div><div class="line">// 将要显示控制器</div><div class="line">- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated &#123;</div><div class="line">    // 判断要显示的控制器是否是自己</div><div class="line">    BOOL isShowHomePage = [viewController isKindOfClass:[self class]];</div><div class="line">    </div><div class="line">    [self.navigationController setNavigationBarHidden:isShowHomePage animated:YES];</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)dealloc &#123;</div><div class="line">    self.navigationController.delegate = nil;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="注意-最后要记得在控制器销毁的时候把导航栏的代理设置为nil"><a href="#注意-最后要记得在控制器销毁的时候把导航栏的代理设置为nil" class="headerlink" title="注意(最后要记得在控制器销毁的时候把导航栏的代理设置为nil)"></a>注意(最后要记得在控制器销毁的时候把导航栏的代理设置为nil)</h3>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1716,7 +1666,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1810,7 +1760,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
